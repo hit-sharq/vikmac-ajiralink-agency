@@ -1,0 +1,133 @@
+.footer {
+  background: linear-gradient(to bottom, #001540, #000a20);
+  color: white;
+  padding: 80px 20px 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footerTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: #ffd700;
+}
+
+.footerText {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.footerHeading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  color: white;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerLink {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footerLink:hover {
+  color: #ffd700;
+  transform: translateX(4px);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.socialLink {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background: #d32f2f;
+  transform: translateY(-4px);
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.legalLink:hover {
+  color: #ffd700;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+}
+
+.footerBottom {
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footerGrid {
+    gap: 40px;
+  }
+
+  .footerSection {
+    min-width: 100%;
+  }
+}

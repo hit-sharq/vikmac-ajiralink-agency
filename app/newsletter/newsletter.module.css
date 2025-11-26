@@ -1,0 +1,163 @@
+.container {
+  min-height: calc(100vh - 80px);
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #034694 0%, #001f3f 100%);
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 60px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #034694;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.benefits {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.benefitsTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #034694;
+  margin-bottom: 16px;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitsList li {
+  padding: 12px 0;
+  padding-left: 28px;
+  position: relative;
+  color: #333;
+  line-height: 1.6;
+}
+
+.benefitsList li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.form {
+  margin-bottom: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #034694;
+}
+
+.input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.button {
+  padding: 16px 32px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.successMessage {
+  padding: 16px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.errorMessage {
+  padding: 16px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.privacy {
+  font-size: 0.875rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 40px 24px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

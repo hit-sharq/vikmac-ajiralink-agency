@@ -1,0 +1,118 @@
+.dashboard {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+
+.dashboardHeader h2 {
+  font-size: 1.5rem;
+  color: #0f766e;
+}
+
+.createBtn {
+  background: #0f766e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.createBtn:hover {
+  background: #134e4a;
+}
+
+.requestsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.requestCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.requestCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  background: #f3f4f6;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: #0f766e;
+  font-size: 1.1rem;
+}
+
+.statusBadge {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cardBody {
+  padding: 15px;
+}
+
+.cardBody p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.cardFooter {
+  padding: 15px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.viewBtn {
+  width: 100%;
+  background: #0f766e;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.viewBtn:hover {
+  background: #134e4a;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+.empty p {
+  font-size: 1.1rem;
+}

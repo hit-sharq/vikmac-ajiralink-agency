@@ -1,0 +1,592 @@
+/* Careers Page Styles */
+.careersPage {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.heroGif {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 150px;
+  border-radius: 12px;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 0.8;
+  animation: none;
+  will-change: auto;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Titles */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #051f20;
+}
+
+/* Featured Careers Section */
+.featuredSection {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-top: 3rem;
+}
+
+.featuredCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.featuredCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.featuredImage {
+  position: relative;
+  height: 250px;
+  width: 100%;
+}
+
+.featuredContent {
+  padding: 2rem;
+}
+
+.featuredTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #051f20;
+}
+
+.featuredDescription {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.featuredMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.featuredCompany {
+  font-weight: 600;
+  color: #051f20;
+}
+
+.featuredType {
+  background: #8eb69b;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.featuredLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Careers Section */
+.careersSection {
+  padding: 5rem 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #8eb69b;
+  background: transparent;
+  color: #8eb69b;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover,
+.filterBtn.active {
+  background: #8eb69b;
+  color: white;
+}
+
+.careersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.careerCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.careerCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.careerImage {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.careerContent {
+  padding: 20px;
+}
+
+.careerTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #051f20;
+  line-height: 1.3;
+}
+
+.careerCompany {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8eb69b;
+  margin-bottom: 0.5rem;
+}
+
+.careerDescription {
+  line-height: 1.5;
+  color: #666;
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.careerMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.careerLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.careerType {
+  background: #f0f8f0;
+  color: #8eb69b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.careerSalary {
+  font-weight: 600;
+  color: #051f20;
+}
+
+.readMoreBtn {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: #8eb69b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.readMoreBtn:hover {
+  background: #051f20;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modalTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #051f20;
+  margin: 0;
+}
+
+.modalClose {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.modalClose:hover {
+  background: #f5f5f5;
+}
+
+.modalBody {
+  padding: 2rem;
+}
+
+.modalImage {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modalDetails h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #051f20;
+  margin-bottom: 1rem;
+}
+
+.modalMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modalCategory,
+.featuredBadge {
+  background: #8eb69b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.featuredBadge {
+  background: #d32f2f;
+}
+
+.modalDescription {
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.modalSection {
+  margin-bottom: 2rem;
+}
+
+.modalSection h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #051f20;
+  margin-bottom: 1rem;
+}
+
+.modalRequirements {
+  color: #333;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.modalLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.liveLink,
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #8eb69b;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.liveLink:hover,
+.githubLink:hover {
+  background: #051f20;
+}
+
+/* Loading and No Careers */
+.loading,
+.noCareers {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.resetFilter {
+  background: #8eb69b;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.resetFilter:hover {
+  background: #051f20;
+}
+
+/* CTA Section */
+.ctaSection {
+  position: relative;
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #8eb69b 0%, #051f20 100%);
+  color: white;
+  text-align: center;
+}
+
+.ctaOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.ctaContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.ctaText {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButton {
+  display: inline-block;
+  background: white;
+  color: #8eb69b;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .heroGif {
+    width: 150px;
+    height: 150px;
+    right: 5%;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filterButtons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .careersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuredLinks {
+    flex-direction: column;
+  }
+
+  .modalBody {
+    padding: 1rem;
+  }
+
+  .modalHeader {
+    padding: 1rem;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+
+  .ctaTitle {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,47 @@
+.employerPage {
+  width: 100%;
+}
+
+.header {
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.content {
+  padding: 40px 20px;
+  background-color: #f9fafb;
+}
+
+.message {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homeLink {
+  color: #0f766e;
+  text-decoration: underline;
+  margin-top: 20px;
+  display: inline-block;
+}

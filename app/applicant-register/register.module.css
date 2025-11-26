@@ -1,0 +1,50 @@
+.registerPage {
+  width: 100%;
+}
+
+.header {
+  background: linear-gradient(135deg, #1a5f7a 0%, #0d3b4e 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.content {
+  padding: 40px 20px;
+  background-color: #f9fafb;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}

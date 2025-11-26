@@ -1,0 +1,383 @@
+.homePage {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroGif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 32, 96, 0.7), rgba(0, 0, 0, 0.8));
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  max-width: 900px;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.heroSubtitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  color: #ffd700;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroDescription {
+  font-size: 1.25rem;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.joinButton {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.joinButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(211, 47, 47, 0.6);
+  background: linear-gradient(135deg, #e53935, #c62828);
+}
+
+/* About Section */
+.aboutSection {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 24px 0;
+  color: #002060;
+}
+
+.aboutText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  color: #333;
+}
+
+.statsGrid {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  min-width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.statNumber {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #d32f2f;
+  margin: 0 0 8px 0;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Events Section */
+.eventsSection {
+  padding: 100px 20px;
+  background: rgb(158, 149, 149);
+}
+
+/* News Section */
+.newsSection {
+  padding: 100px 20px;
+  background: #f5f5f5;
+}
+
+.newsGrid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.newsCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.newsCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.newsImage {
+  position: relative;
+  width: 100%;
+  height: 150px;
+}
+
+.eventDateBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #d32f2f;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+  z-index: 2;
+}
+
+.eventDay {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.eventMonth {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.newsImagePlaceholder {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #002060, #003080);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.newsContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.newsTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #002060;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.newsExcerpt {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* CTA Section */
+.ctaSection {
+  position: relative;
+  padding: 100px 20px;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ctaGif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 32, 96, 0.7), rgba(0, 0, 0, 0.8));
+  z-index: 2;
+}
+
+.ctaContainer {
+  position: relative;
+  z-index: 3;
+}
+
+.ctaTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin: 0 0 24px 0;
+}
+
+.ctaText {
+  font-size: 1.25rem;
+  margin: 0 0 40px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 18px 48px;
+  background: #d32f2f;
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(211, 47, 47, 0.6);
+  background: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    min-height: 400px;
+  }
+
+  .heroImage {
+    object-position: center;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .ctaTitle {
+    font-size: 2rem;
+  }
+
+  .statsGrid {
+    gap: 20px;
+  }
+
+  .statCard {
+    min-width: 150px;
+    padding: 30px 20px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

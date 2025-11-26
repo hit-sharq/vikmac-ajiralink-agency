@@ -1,0 +1,418 @@
+.sponsorshipPage {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #051f20 0%, #163832 50%, #235347 100%);
+  color: white;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(139, 182, 155, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #8eb69b;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.heroDescription {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* Tiers Section */
+.tiersSection {
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #f8faf9, #ffffff);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 16px 0;
+  color: #051f20;
+}
+
+.sectionDescription {
+  font-size: 1.125rem;
+  text-align: center;
+  color: #666;
+  margin: 0 0 60px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tiersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.tierCard {
+  background: #051f20;
+  border-radius: 32px;
+  padding: 40px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(5, 31, 32, 0.2);
+  transform: translateY(50px) rotateX(10deg);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tierCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8eb69b, #daf1de);
+}
+
+.tierCard.visible {
+  transform: translateY(0) rotateX(0);
+  opacity: 1;
+}
+
+.tierHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tierName {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  color: #daf1de;
+}
+
+.tierAmount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  color: #8eb69b;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.checkmark {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: #8eb69b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #051f20;
+  font-size: 0.875rem;
+}
+
+/* How To Section */
+.howToSection {
+  padding: 100px 20px;
+  background: white;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.stepCard {
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f8faf9 0%, #ffffff 100%);
+  border: 2px solid #daf1de;
+  transition: all 0.3s ease;
+}
+
+.stepCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(5, 31, 32, 0.15);
+  border-color: #8eb69b;
+}
+
+.stepNumber {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #163832, #235347);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 auto 24px;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #051f20;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+.ctaContainer {
+  text-align: center;
+}
+
+.primaryButton {
+  display: inline-block;
+  background: linear-gradient(135deg, #163832, #235347);
+  color: white;
+  padding: 16px 48px;
+  border-radius: 50px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(5, 31, 32, 0.3);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(5, 31, 32, 0.4);
+  background: linear-gradient(135deg, #235347, #163832);
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #f8faf9, #daf1de);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.contactCard {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(5, 31, 32, 0.1);
+}
+
+.contactTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: #051f20;
+}
+
+.contactText {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.contactText:last-child {
+  margin-bottom: 0;
+}
+
+.contactLink {
+  color: #235347;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contactLink:hover {
+  color: #163832;
+  text-decoration: underline;
+}
+
+/* Final CTA Section */
+.finalCta {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #051f20 0%, #163832 50%, #235347 100%);
+  color: white;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+}
+
+.ctaDescription {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 40px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.secondaryButton {
+  display: inline-block;
+  background: transparent;
+  color: white;
+  padding: 16px 48px;
+  border-radius: 50px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: white;
+  color: #051f20;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .tierCard {
+    padding: 32px 24px;
+  }
+
+  .tierHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tierName {
+    font-size: 1.5rem;
+  }
+
+  .tierAmount {
+    font-size: 2rem;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaTitle {
+    font-size: 2rem;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+  }
+}

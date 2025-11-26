@@ -1,0 +1,143 @@
+.tracker {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.mainStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statusLabel {
+  font-weight: 600;
+  color: #666;
+}
+
+.statusBadge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.stage {
+  display: flex;
+  gap: 20px;
+}
+
+.stageCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 2px solid #d1d5db;
+}
+
+.stageCircle.active {
+  background: #7c3aed;
+  color: white;
+  border-color: #7c3aed;
+}
+
+.stageCircle.completed {
+  background: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+.stageContent h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.stageContent p {
+  margin: 4px 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.stageContent a {
+  color: #7c3aed;
+  text-decoration: underline;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.details {
+  background: #f9fafb;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.details h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.detailsGrid div {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.detailsGrid strong {
+  display: block;
+  color: #7c3aed;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.detailsGrid p {
+  color: #333;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}

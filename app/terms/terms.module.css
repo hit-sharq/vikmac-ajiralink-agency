@@ -1,0 +1,176 @@
+/* Replaced entire stylesheet with sponsorship-inspired design */
+.termsPage {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #051f20 0%, #163832 50%, #235347 100%);
+  color: white;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(139, 182, 155, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 24px 0;
+  color: #8eb69b;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.lastUpdated {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* Content Section */
+.contentSection {
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #f8faf9, #ffffff);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sectionCard {
+  background: white;
+  border-radius: 24px;
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 40px rgba(5, 31, 32, 0.1);
+  border-left: 4px solid #8eb69b;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sectionCard.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #051f20;
+  margin: 0 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #daf1de;
+}
+
+.sectionContent {
+  color: #333;
+}
+
+.subheading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #163832;
+  margin: 24px 0 12px 0;
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 16px 0;
+}
+
+.list {
+  margin: 16px 0;
+  padding-left: 24px;
+  list-style: none;
+}
+
+.list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 32px;
+}
+
+.list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: #8eb69b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .sectionCard {
+    padding: 32px 24px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .subheading {
+    font-size: 1.125rem;
+  }
+}

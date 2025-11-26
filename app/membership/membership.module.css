@@ -1,0 +1,444 @@
+/* Modern, clean design for membership collaboration page */
+.membershipPage {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Benefits Section */
+.benefitsSection {
+  padding: 100px 20px;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefitsIntro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: #1a202c;
+  letter-spacing: -1px;
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: #718096;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.benefitCard {
+  background: #f7fafc;
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefitCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.benefitCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.benefitIcon {
+  font-size: 3rem;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.benefitTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: #1a202c;
+}
+
+.benefitText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #718096;
+  margin: 0;
+}
+
+/* Form Section */
+.formSection {
+  padding: 100px 20px;
+  background: #f8fafc;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.formTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: #1a202c;
+  letter-spacing: -1px;
+}
+
+.formSubtitle {
+  font-size: 1.25rem;
+  color: #718096;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.successMessage {
+  padding: 48px;
+  background: linear-gradient(135deg, #c6f6d5, #9ae6b4);
+  border: 1px solid #68d391;
+  border-radius: 20px;
+  margin-bottom: 48px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.successIcon {
+  font-size: 3rem;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.successMessage h3 {
+  font-size: 2rem;
+  color: #22543d;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+}
+
+.successMessage p {
+  color: #22543d;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.errorMessage {
+  padding: 24px 32px;
+  background: #fed7d7;
+  border: 1px solid #fc8181;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.errorMessage p {
+  color: #c53030;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Modern form cards */
+.formCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.formCard:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 40px 24px 40px;
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cardIcon {
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 32px 40px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formCard .formGroup:only-child {
+  padding: 32px 40px;
+}
+
+.label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2d3748;
+  letter-spacing: 0.025em;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
+  letter-spacing: 0.025em;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.disclaimer {
+  font-size: 0.9375rem;
+  color: #718096;
+  text-align: center;
+  margin: 24px 0 0 0;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .sectionTitle,
+  .formTitle {
+    font-size: 2rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .formCard .formGroup:only-child {
+    padding: 24px;
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cardHeader {
+    padding: 24px;
+  }
+}

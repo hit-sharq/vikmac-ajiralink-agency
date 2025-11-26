@@ -1,0 +1,374 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  excerpt     String
+  content     String
+  category    String
+  image       String
+  author      String
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([publishedAt])
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  title       String
+  excerpt     String
+  content     String
+  category    String
+  image       String
+  author      String
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([publishedAt])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  date        DateTime
+  time        String
+  location    String
+  image       String
+  category    String
+  registrationLink String?
+  isStaple    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([date])
+  @@index([category])
+}
+
+model GalleryImage {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  category    String
+  uploadedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([uploadedAt])
+}
+
+model Member {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  phone     String?
+  year      String
+  major     String
+  interests String?
+  joinedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([joinedAt])
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+  read      Boolean  @default(false)
+
+  @@index([createdAt])
+  @@index([read])
+}
+
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}
+
+model LeadershipTeam {
+  id          String   @id @default(cuid())
+  name        String
+  position    String
+  role        String
+  imageUrl    String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([order])
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  image       String
+  category    String
+  technologies String[]
+  liveUrl     String?
+  githubUrl   String?
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([featured])
+}
+
+model Career {
+  id                 String   @id @default(cuid())
+  title              String
+  company            String
+  description        String
+  requirements       String?
+  location           String?
+  type               String   @default("full-time")
+  salary             String?
+  applicationDeadline DateTime?
+  applicationUrl     String?
+  contactEmail       String?
+  featured           Boolean  @default(false)
+  image              String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([type])
+  @@index([featured])
+  @@index([applicationDeadline])
+}
+
+model Partner {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  logoUrl     String?
+  website     String?
+  category    String   @default("general")
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([featured])
+  @@index([order])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String   @unique
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clerkId])
+  @@index([role])
+}
+
+model Applicant {
+  id                  String   @id @default(cuid())
+  firstName           String
+  lastName            String
+  email               String   @unique
+  phone               String
+  dateOfBirth         DateTime
+  gender              String   // Male, Female, Other
+  nationality         String
+  passportNumber      String   @unique
+  passportExpiryDate  DateTime
+  profilePhoto        String?
+  cv                  String?
+  status              String   @default("new") // new, pending, ready, shortlisted, selected, deployed
+  category            String   // Nanny, Driver, Cleaner, Security, etc.
+  yearsOfExperience   Int      @default(0)
+  trainingCompleted   Boolean  @default(false)
+  medicalClearance    Boolean  @default(false)
+  medicalExpiryDate   DateTime?
+  documents           Document[]
+  workExperience      WorkExperience[]
+  certifications      Certification[]
+  shortlists          Shortlist[]
+  visaProcessing      VisaProcessing?
+  payments            Payment[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([category])
+  @@index([passportExpiryDate])
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  applicantId String
+  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  type        String   // ID, Passport, Certificate, etc.
+  documentUrl String
+  uploadedAt  DateTime @default(now())
+
+  @@index([applicantId])
+  @@index([type])
+}
+
+model WorkExperience {
+  id          String   @id @default(cuid())
+  applicantId String
+  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  jobTitle    String
+  company     String
+  country     String
+  startDate   DateTime
+  endDate     DateTime?
+  description String?
+  createdAt   DateTime @default(now())
+
+  @@index([applicantId])
+}
+
+model Certification {
+  id          String   @id @default(cuid())
+  applicantId String
+  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  certName    String
+  issuedBy    String
+  issueDate   DateTime
+  expiryDate  DateTime?
+  certificateUrl String?
+  createdAt   DateTime @default(now())
+
+  @@index([applicantId])
+}
+
+model Employer {
+  id          String   @id @default(cuid())
+  companyName String
+  email       String   @unique
+  contactPerson String
+  phone       String
+  country     String
+  address     String?
+  logoUrl     String?
+  status      String   @default("active")
+  jobRequests JobRequest[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+  @@index([country])
+}
+
+model JobRequest {
+  id                  String   @id @default(cuid())
+  employerId          String
+  employer            Employer @relation(fields: [employerId], references: [id], onDelete: Cascade)
+  category            String   // Nanny, Driver, Cleaner, Security, etc.
+  country             String
+  numberOfWorkers     Int
+  salaryMin           Float
+  salaryMax           Float
+  currency            String   @default("USD")
+  contractDuration    String   // 3 months, 6 months, 1 year, etc.
+  jobDescription      String
+  requiredExperience  Int
+  gender              String?  // Optional: Any, Male, Female
+  ageMin              Int?
+  ageMax              Int?
+  status              String   @default("open") // open, shortlisting, completed
+  shortlists          Shortlist[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([employerId])
+  @@index([category])
+  @@index([country])
+  @@index([status])
+}
+
+model Shortlist {
+  id          String   @id @default(cuid())
+  jobRequestId String
+  jobRequest  JobRequest @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
+  applicantId String
+  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  status      String   @default("pending") // pending, approved, rejected, selected
+  notes       String?
+  approvedAt  DateTime?
+  rejectedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([jobRequestId, applicantId])
+  @@index([jobRequestId])
+  @@index([applicantId])
+  @@index([status])
+}
+
+model VisaProcessing {
+  id              String   @id @default(cuid())
+  applicantId     String   @unique
+  applicant       Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  visaStatus      String   @default("pending") // pending, submitted, approved, rejected, stamped
+  visaNumber      String?
+  visaExpiryDate  DateTime?
+  medicalStatus   String   @default("pending") // pending, completed, approved
+  medicalReportUrl String?
+  contractSigned  Boolean  @default(false)
+  trainingStatus  String   @default("pending") // pending, in-progress, completed
+  flightBooked    Boolean  @default(false)
+  flightDetails   String?
+  deploymentDate  DateTime?
+  deploymentNotes String?
+  reminders       String[] // Array of reminder dates
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([applicantId])
+  @@index([visaStatus])
+}
+
+model Payment {
+  id          String   @id @default(cuid())
+  applicantId String
+  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  employerId  String?
+  type        String   @default("processing-fee") // processing-fee, salary-advance, etc.
+  amount      Float
+  currency    String   @default("USD")
+  status      String   @default("pending") // pending, completed, failed
+  description String?
+  receiptUrl  String?
+  paymentDate DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([applicantId])
+  @@index([status])
+  @@index([createdAt])
+}

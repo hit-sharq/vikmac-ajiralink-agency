@@ -1,0 +1,71 @@
+/* Team Section Styles */
+.teamSection {
+  margin-top: 24px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.teamCard {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(5, 31, 32, 0.1);
+  border: 1px solid #e8f4f8;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.teamCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(5, 31, 32, 0.15);
+}
+
+.teamImage {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #8eb69b;
+}
+
+.teamImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8eb69b, #235347);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.teamContent {
+  text-align: center;
+}
+
+.teamName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #051f20;
+  margin: 0 0 8px 0;
+}
+
+.teamPosition {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #8eb69b;
+  margin: 0 0 12px 0;
+}
+
+.teamBio {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
