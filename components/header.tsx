@@ -35,9 +35,6 @@ export default function Header() {
           <Link href="/applicant-register" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
             Apply Now
           </Link>
-          <Link href="/employer-portal" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-            Employers
-          </Link>
           <Link href="/news" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
             News
           </Link>

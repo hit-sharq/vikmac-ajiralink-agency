@@ -19,13 +19,15 @@ const createEventSchema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const upcoming = searchParams.get('upcoming') === 'true'
+    const upcoming = searchParams.get("upcoming") === "true"
 
-    const where = upcoming ? {
-      date: {
-        gte: new Date()
-      }
-    } : {}
+    const where = upcoming
+      ? {
+          date: {
+            gte: new Date(),
+          },
+        }
+      : {}
 
     const events = await prisma.event.findMany({
       where,
@@ -33,7 +35,7 @@ export async function GET(request: NextRequest) {
     })
     return NextResponse.json(events, {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
       },
     })
   } catch (error) {
@@ -50,15 +52,11 @@ export async function POST(request: NextRequest) {
     const validationResult = createEventSchema.safeParse(body)
     if (!validationResult.success) {
       console.log("Validation failed:", validationResult.error.issues)
-      return NextResponse.json(
-        { error: "Validation failed", details: validationResult.error.issues },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Validation failed", details: validationResult.error.issues }, { status: 400 })
     }
 
     const validatedData = validationResult.data
 
-    // Sanitize description
     const sanitizedDescription = sanitizeHtml(validatedData.description)
 
     const event = await prisma.event.create({

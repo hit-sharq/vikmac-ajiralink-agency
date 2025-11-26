@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/db/prisma"
 import logger from "@/lib/logger"
 import { z } from "zod"
-import DOMPurify from "isomorphic-dompurify"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 const createNewsSchema = z.object({
   title: z.string().min(1).max(200),
@@ -18,7 +18,7 @@ const createNewsSchema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined
+    const limit = searchParams.get("limit") ? Number.parseInt(searchParams.get("limit")!) : undefined
 
     const news = await prisma.news.findMany({
       orderBy: { publishedAt: "desc" },
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     })
     return NextResponse.json(news, {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
       },
     })
   } catch (error) {
@@ -42,10 +42,7 @@ export async function POST(request: NextRequest) {
     // Validate input
     const validationResult = createNewsSchema.safeParse(body)
     if (!validationResult.success) {
-      return NextResponse.json(
-        { error: "Validation failed", details: validationResult.error.issues },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Validation failed", details: validationResult.error.issues }, { status: 400 })
     }
 
     const validatedData = validationResult.data
@@ -56,8 +53,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Image is required" }, { status: 400 })
     }
 
-    // Sanitize content
-    const sanitizedContent = DOMPurify.sanitize(validatedData.content)
+    const sanitizedContent = sanitizeHtml(validatedData.content)
 
     const data: any = {
       title: validatedData.title.trim(),

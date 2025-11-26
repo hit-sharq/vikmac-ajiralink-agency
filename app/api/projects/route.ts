@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/db/prisma"
 import logger from "@/lib/logger"
 import { z } from "zod"
-import DOMPurify from "isomorphic-dompurify"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 const createProjectSchema = z.object({
   title: z.string().min(1).max(200),
@@ -19,7 +19,7 @@ const createProjectSchema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined
+    const limit = searchParams.get("limit") ? Number.parseInt(searchParams.get("limit")!) : undefined
 
     const projects = await prisma.project.findMany({
       orderBy: { createdAt: "desc" },
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     })
     return NextResponse.json(projects, {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
       },
     })
   } catch (error) {
@@ -43,16 +43,12 @@ export async function POST(request: NextRequest) {
     // Validate input
     const validationResult = createProjectSchema.safeParse(body)
     if (!validationResult.success) {
-      return NextResponse.json(
-        { error: "Validation failed", details: validationResult.error.issues },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Validation failed", details: validationResult.error.issues }, { status: 400 })
     }
 
     const validatedData = validationResult.data
 
-    // Sanitize description
-    const sanitizedDescription = DOMPurify.sanitize(validatedData.description)
+    const sanitizedDescription = sanitizeHtml(validatedData.description)
 
     const project = await prisma.project.create({
       data: {
