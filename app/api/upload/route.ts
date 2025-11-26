@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { v2 as cloudinary } from 'cloudinary'
+import { type NextRequest, NextResponse } from "next/server"
+import { v2 as cloudinary } from "cloudinary"
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -8,32 +8,29 @@ cloudinary.config({
 })
 
 // Allowed file types and max size (5MB)
-const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"]
 const MAX_SIZE = 5 * 1024 * 1024 // 5MB
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
-    const file = formData.get('file') as File
+    const file = formData.get("file") as File
 
     if (!file) {
-      return NextResponse.json({ error: 'No file provided' }, { status: 400 })
+      return NextResponse.json({ error: "No file provided" }, { status: 400 })
     }
 
     // Validate file type
     if (!ALLOWED_TYPES.includes(file.type)) {
       return NextResponse.json(
-        { error: 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.' },
-        { status: 400 }
+        { error: "Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed." },
+        { status: 400 },
       )
     }
 
     // Validate file size
     if (file.size > MAX_SIZE) {
-      return NextResponse.json(
-        { error: 'File too large. Maximum size is 5MB.' },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "File too large. Maximum size is 5MB." }, { status: 400 })
     }
 
     // Convert file to buffer
@@ -42,22 +39,24 @@ export async function POST(request: NextRequest) {
 
     // Upload to Cloudinary
     const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream(
-        {
-          folder: 'lumyn-uploads',
-          resource_type: 'image',
-          timeout: 60000, // 60 seconds timeout
-        },
-        (error, result) => {
-          if (error) reject(error)
-          else resolve(result)
-        }
-      ).end(buffer)
+      cloudinary.uploader
+        .upload_stream(
+          {
+            folder: "vikmac-uploads",
+            resource_type: "image",
+            timeout: 60000, // 60 seconds timeout
+          },
+          (error, result) => {
+            if (error) reject(error)
+            else resolve(result)
+          },
+        )
+        .end(buffer)
     })
 
     return NextResponse.json({ url: (result as any).secure_url })
   } catch (error) {
-    console.error('Upload error:', error)
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
+    console.error("Upload error:", error)
+    return NextResponse.json({ error: "Upload failed" }, { status: 500 })
   }
 }

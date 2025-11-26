@@ -14,7 +14,17 @@ import ProjectsManager from "./components/projects-manager"
 import CareersManager from "./components/careers-manager"
 import PartnersManager from "./components/partners-manager"
 
-type Tab = "news" | "blog" | "events" | "gallery" | "members" | "contacts" | "leadership" | "projects" | "careers" | "partners"
+type Tab =
+  | "news"
+  | "blog"
+  | "events"
+  | "gallery"
+  | "members"
+  | "contacts"
+  | "leadership"
+  | "projects"
+  | "careers"
+  | "partners"
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<Tab>("news")
@@ -50,7 +60,7 @@ export default function AdminPage() {
     <div className={styles.adminPage}>
       <div className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <h2 className={styles.sidebarTitle}>Lumyn Admin</h2>
+          <h2 className={styles.sidebarTitle}>Vikmac Admin Panel</h2>
           <p className={styles.adminName}>{user.fullName || user.emailAddresses[0].emailAddress}</p>
         </div>
         <nav className={styles.nav}>

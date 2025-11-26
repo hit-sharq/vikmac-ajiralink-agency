@@ -68,15 +68,15 @@ export default function ContactPage() {
             <div className={styles.contactInfo}>
               <h2 className={styles.infoTitle}>Contact Information</h2>
               <p className={styles.infoText}>
-                Have questions about our services? Want to discuss a project? Reach out to us and we'll get back to you as soon as
-                possible.
+                Have questions about our services? Want to discuss a project? Reach out to us and we'll get back to you
+                as soon as possible.
               </p>
 
               <div className={styles.infoCards}>
                 <div className={styles.infoCard}>
                   <div className={styles.infoIcon}>📧</div>
                   <h3 className={styles.infoCardTitle}>Email</h3>
-                  <p className={styles.infoCardText}>lumyntechnologies@gmail.com</p>
+                  <p className={styles.infoCardText}>hello@vikmac-ajira.com</p>
                 </div>
 
                 <div className={styles.infoCard}>

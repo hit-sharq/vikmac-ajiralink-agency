@@ -17,7 +17,7 @@ export default function CookieConsentBanner() {
       location="bottom"
       buttonText="Accept"
       declineButtonText="Decline"
-      cookieName="lumyn-cookie-consent"
+      cookieName="vikmac-cookie-consent"
       style={{ background: "#2B373B" }}
       buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
       declineButtonStyle={{ fontSize: "13px" }}
@@ -31,7 +31,8 @@ export default function CookieConsentBanner() {
         console.log("Cookies declined")
       }}
     >
-      This website uses cookies to enhance the user experience. By continuing to use this site, you agree to our use of cookies.{" "}
+      This website uses cookies to enhance the user experience. By continuing to use this site, you agree to our use of
+      cookies.{" "}
       <a href="/privacy" style={{ color: "#FFD700" }}>
         Learn more
       </a>

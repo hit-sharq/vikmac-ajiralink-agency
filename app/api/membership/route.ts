@@ -35,7 +35,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, errors }, { status: 400 })
     }
 
-    const { firstName, lastName, email, phone, company, projectType, budget, timeline, requirements, goals, references } = validation.data
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      projectType,
+      budget,
+      timeline,
+      requirements,
+      goals,
+      references,
+    } = validation.data
 
     const membership = await prisma.member.create({
       data: {
@@ -53,7 +65,7 @@ export async function POST(request: Request) {
     try {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || "587"),
+        port: Number.parseInt(process.env.SMTP_PORT || "587"),
         secure: process.env.SMTP_SECURE === "true",
         auth: {
           user: process.env.SMTP_USER,
@@ -62,7 +74,7 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail({
-        from: `"Lumyn Technologies" <${process.env.SMTP_USER}>`,
+        from: `"Vikmac Ajira Link Agency" <${process.env.SMTP_USER}>`,
         replyTo: email, // Set reply-to to the sender's email
         to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
         subject: `New Project Inquiry: ${firstName} ${lastName} - ${company}`,

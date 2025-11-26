@@ -32,7 +32,7 @@ interface Stats {
 export default function HomePage() {
   const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([])
   const [latestNews, setLatestNews] = useState<News[]>([])
-  const [stats, setStats] = useState<Stats>({ members: 0, events: 0, news: 0, yearsActive: 1})
+  const [stats, setStats] = useState<Stats>({ members: 0, events: 0, news: 0, yearsActive: 1 })
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -50,10 +50,10 @@ export default function HomePage() {
         setLatestNews(newsData.slice(0, 3))
 
         // Update stats with actual counts
-        setStats(prev => ({
+        setStats((prev) => ({
           ...prev,
           events: eventsData.length,
-          news: newsData.length
+          news: newsData.length,
         }))
       } catch (error) {
         console.error("Failed to fetch data:", error)
@@ -64,8 +64,6 @@ export default function HomePage() {
 
     fetchData()
   }, [])
-
-
 
   return (
     <div className={styles.homePage}>
@@ -78,10 +76,11 @@ export default function HomePage() {
           className={styles.heroGif}
         />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Lumyn</h1>
-          <p className={styles.heroSubtitle}>Modern Digital Solutions</p>
+          <h1 className={styles.heroTitle}>Vikmac Ajira</h1>
+          <p className={styles.heroSubtitle}>Global Workforce Solutions</p>
           <p className={styles.heroDescription}>
-            Transforming businesses with innovative web development, cutting-edge technology, and exceptional digital experiences
+            Connecting skilled workers with employers worldwide. Streamlining recruitment, visa processing, and
+            deployment with transparency and efficiency.
           </p>
           <Link href="/membership" className={styles.joinButton}>
             Start Your Project
@@ -92,10 +91,10 @@ export default function HomePage() {
       {/* About Section */}
       <section className={styles.aboutSection}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Welcome to Lumyn</h2>
+          <h2 className={styles.sectionTitle}>Welcome to Vikmac Ajira Link Agency</h2>
           <p className={styles.aboutText}>
-            We are a forward-thinking tech company specializing in modern digital solutions. From web development to
-            digital strategy, we help businesses shine online with innovative technology and exceptional user experiences.
+            We are a leading workforce management and staffing solutions platform. We connect skilled job applicants
+            with employers globally, streamlining recruitment, visa processing, and international deployment.
           </p>
           <div className={styles.statsGrid}>
             <div className={styles.statCard}>
@@ -163,9 +162,10 @@ export default function HomePage() {
         />
         <div className={styles.ctaOverlay}></div>
         <div className={`${styles.container} ${styles.ctaContainer}`}>
-          <h2 className={styles.ctaTitle}>Ready to Transform Your Business?</h2>
+          <h2 className={styles.ctaTitle}>Ready to Find Your Next Opportunity?</h2>
           <p className={styles.ctaText}>
-            Let's discuss your project and bring your digital vision to life. Get started with a free consultation!
+            Whether you're an employer looking for skilled workers or a professional seeking global opportunities, we're
+            here to connect you with the right fit.
           </p>
           <Link href="/membership" className={styles.ctaButton}>
             Start Your Project
@@ -186,7 +186,9 @@ function EventCard({ event }: { event?: Event }) {
         <div className={styles.newsContent}>
           <h3 className={styles.newsTitle}>No upcoming events</h3>
           <p className={styles.newsExcerpt}>Check back soon for upcoming events</p>
-          <button className={styles.readMore} onClick={() => window.location.href = '/events'}>Read More →</button>
+          <button className={styles.readMore} onClick={() => (window.location.href = "/events")}>
+            Read More →
+          </button>
         </div>
       </div>
     )
@@ -195,7 +197,8 @@ function EventCard({ event }: { event?: Event }) {
   const eventDate = new Date(event.date)
   const day = eventDate.getDate()
   const month = eventDate.toLocaleString("en-US", { month: "short" }).toUpperCase()
-  const truncatedDescription = event.description.length > 80 ? event.description.substring(0, 80) + "..." : event.description
+  const truncatedDescription =
+    event.description.length > 80 ? event.description.substring(0, 80) + "..." : event.description
 
   return (
     <div className={styles.newsCard}>
@@ -209,7 +212,9 @@ function EventCard({ event }: { event?: Event }) {
       <div className={styles.newsContent}>
         <h3 className={styles.newsTitle}>{event.title}</h3>
         <p className={styles.newsExcerpt}>{truncatedDescription}</p>
-        <button className={styles.readMore} onClick={() => window.location.href = `/events?id=${event.id}`}>Read More →</button>
+        <button className={styles.readMore} onClick={() => (window.location.href = `/events?id=${event.id}`)}>
+          Read More →
+        </button>
       </div>
     </div>
   )
@@ -225,7 +230,9 @@ function NewsCard({ news }: { news?: News }) {
         <div className={styles.newsContent}>
           <h3 className={styles.newsTitle}>No news available</h3>
           <p className={styles.newsExcerpt}>Check back soon for the latest updates</p>
-          <button className={styles.readMore} onClick={() => window.location.href = '/news'}>Read More →</button>
+          <button className={styles.readMore} onClick={() => (window.location.href = "/news")}>
+            Read More →
+          </button>
         </div>
       </div>
     )
@@ -247,7 +254,9 @@ function NewsCard({ news }: { news?: News }) {
       <div className={styles.newsContent}>
         <h3 className={styles.newsTitle}>{news.title}</h3>
         <p className={styles.newsExcerpt}>{truncatedExcerpt}</p>
-        <button className={styles.readMore} onClick={() => window.location.href = `/news?id=${news.id}`}>Read More →</button>
+        <button className={styles.readMore} onClick={() => (window.location.href = `/news?id=${news.id}`)}>
+          Read More →
+        </button>
       </div>
     </div>
   )

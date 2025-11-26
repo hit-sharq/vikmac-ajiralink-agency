@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
-import Image from "next/image"
 import styles from "../privacy/privacy.module.css"
 import type { JSX } from "react/jsx-runtime"
 
@@ -50,13 +49,13 @@ export default function AboutPage() {
   useEffect(() => {
     async function fetchLeaders() {
       try {
-        const response = await fetch('/api/leadership')
+        const response = await fetch("/api/leadership")
         if (response.ok) {
           const data = await response.json()
           setLeaders(data)
         }
       } catch (error) {
-        console.error('Failed to fetch leadership team:', error)
+        console.error("Failed to fetch leadership team:", error)
       } finally {
         setLoading(false)
       }
@@ -68,20 +67,21 @@ export default function AboutPage() {
   const sections: Section[] = [
     {
       id: "introduction",
-      title: "About Lumyn",
+      title: "About Vikmac",
       content: (
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+        <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
           <div style={{ flex: 1 }}>
             <p className={styles.text}>
-              Lumyn is a forward-thinking tech company that designs and develops modern, high-performance digital experiences.
-              We blend creativity, strategy, and engineering to help brands shine online — from sleek websites to intelligent web applications.
+              Vikmac Ajira Link Agency is a leading workforce management platform connecting skilled professionals with
+              employers globally. We streamline recruitment, visa processing, and international deployment with
+              transparency, efficiency, and reliability.
             </p>
           </div>
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
             <img
               src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
               alt="Coding Animation"
-              style={{ width: '200px', height: '200px', borderRadius: '12px', objectFit: 'cover' }}
+              style={{ width: "200px", height: "200px", borderRadius: "12px", objectFit: "cover" }}
             />
           </div>
         </div>
@@ -94,11 +94,13 @@ export default function AboutPage() {
         <>
           <h3 className={styles.subheading}>Our Mission</h3>
           <p className={styles.text}>
-            To empower businesses and individuals with elegant, efficient, and scalable digital solutions.
+            To empower workers and employers with seamless, transparent, and efficient global staffing solutions that
+            bridge opportunity with talent.
           </p>
           <h3 className={styles.subheading}>Our Vision</h3>
           <p className={styles.text}>
-            To become a trusted digital partner for startups and enterprises seeking innovation and impact.
+            To be the world's most trusted workforce management platform, enabling millions of professionals to achieve
+            their career aspirations globally.
           </p>
         </>
       ),
@@ -110,27 +112,55 @@ export default function AboutPage() {
         <>
           <p className={styles.text}>We specialize in comprehensive digital solutions:</p>
           <ul className={styles.list}>
-            <li><strong>Web Design & Development:</strong> Creating beautiful, responsive websites that engage users and drive results</li>
-            <li><strong>Branding & Digital Strategy:</strong> Developing comprehensive digital strategies that align with your brand vision</li>
-            <li><strong>Full-Stack Application Development:</strong> Building robust, scalable applications with modern technologies and best practices</li>
-            <li><strong>Cloud Integration & Hosting:</strong> Seamless cloud solutions for reliable, secure, and scalable hosting</li>
-            <li><strong>Maintenance & Security:</strong> Ongoing support, updates, and security monitoring to keep your digital assets safe</li>
+            <li>
+              <strong>Web Design & Development:</strong> Creating beautiful, responsive websites that engage users and
+              drive results
+            </li>
+            <li>
+              <strong>Branding & Digital Strategy:</strong> Developing comprehensive digital strategies that align with
+              your brand vision
+            </li>
+            <li>
+              <strong>Full-Stack Application Development:</strong> Building robust, scalable applications with modern
+              technologies and best practices
+            </li>
+            <li>
+              <strong>Cloud Integration & Hosting:</strong> Seamless cloud solutions for reliable, secure, and scalable
+              hosting
+            </li>
+            <li>
+              <strong>Maintenance & Security:</strong> Ongoing support, updates, and security monitoring to keep your
+              digital assets safe
+            </li>
           </ul>
         </>
       ),
     },
     {
       id: "why-choose",
-      title: "Why Choose Lumyn",
+      title: "Why Choose Vikmac",
       content: (
         <>
           <p className={styles.text}>What sets us apart:</p>
           <ul className={styles.list}>
-            <li><strong>Clean, Modern Design:</strong> We follow clean design principles that prioritize user experience and visual appeal</li>
-            <li><strong>Scalable Technology:</strong> Built with modern, scalable technologies that grow with your business needs</li>
-            <li><strong>Security First:</strong> Implementing best practices for security and data protection</li>
-            <li><strong>Client-First Approach:</strong> Transparent communication and collaboration throughout every project</li>
-            <li><strong>Proven Track Record:</strong> Successfully launched numerous projects with measurable results</li>
+            <li>
+              <strong>Clean, Modern Design:</strong> We follow clean design principles that prioritize user experience
+              and visual appeal
+            </li>
+            <li>
+              <strong>Scalable Technology:</strong> Built with modern, scalable technologies that grow with your
+              business needs
+            </li>
+            <li>
+              <strong>Security First:</strong> Implementing best practices for security and data protection
+            </li>
+            <li>
+              <strong>Client-First Approach:</strong> Transparent communication and collaboration throughout every
+              project
+            </li>
+            <li>
+              <strong>Proven Track Record:</strong> Successfully launched numerous projects with measurable results
+            </li>
           </ul>
         </>
       ),
@@ -139,71 +169,90 @@ export default function AboutPage() {
       id: "team",
       title: "Our Team",
       content: (
-        <div style={{ marginTop: '24px' }}>
+        <div style={{ marginTop: "24px" }}>
           {loading ? (
             <p className={styles.text}>Loading team members...</p>
           ) : leaders.length > 0 ? (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-              gap: '24px',
-              marginTop: '24px'
-            }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                gap: "24px",
+                marginTop: "24px",
+              }}
+            >
               {leaders.map((leader) => (
-                <div key={leader.id} style={{
-                  background: 'white',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  boxShadow: '0 2px 15px rgba(0, 0, 0, 0.08)',
-                  transition: 'all 0.3s ease'
-                }}>
+                <div
+                  key={leader.id}
+                  style={{
+                    background: "white",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    boxShadow: "0 2px 15px rgba(0, 0, 0, 0.08)",
+                    transition: "all 0.3s ease",
+                  }}
+                >
                   <div
                     style={{
-                      height: '200px',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center top',
-                      backgroundColor: leader.imageUrl ? 'transparent' : '#f5f5f5',
-                      backgroundImage: leader.imageUrl ? `url(${leader.imageUrl})` : 'none'
+                      height: "200px",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center top",
+                      backgroundColor: leader.imageUrl ? "transparent" : "#f5f5f5",
+                      backgroundImage: leader.imageUrl ? `url(${leader.imageUrl})` : "none",
                     }}
                   >
                     {!leader.imageUrl && (
-                      <div style={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '3rem',
-                        background: 'linear-gradient(135deg, #8eb69b, #235347)',
-                        color: 'white'
-                      }}>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "3rem",
+                          background: "linear-gradient(135deg, #8eb69b, #235347)",
+                          color: "white",
+                        }}
+                      >
                         👤
                       </div>
                     )}
                   </div>
-                  <div style={{
-                    padding: '16px'
-                  }}>
-                    <h3 style={{
-                      fontSize: '1.125rem',
-                      fontWeight: '700',
-                      margin: '0 0 8px 0',
-                      color: '#051f20'
-                    }}>{leader.name}</h3>
-                    <p style={{
-                      color: '#8eb69b',
-                      fontWeight: 600,
-                      marginBottom: '8px',
-                      fontSize: '0.95rem'
-                    }}>
+                  <div
+                    style={{
+                      padding: "16px",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: "1.125rem",
+                        fontWeight: "700",
+                        margin: "0 0 8px 0",
+                        color: "#051f20",
+                      }}
+                    >
+                      {leader.name}
+                    </h3>
+                    <p
+                      style={{
+                        color: "#8eb69b",
+                        fontWeight: 600,
+                        marginBottom: "8px",
+                        fontSize: "0.95rem",
+                      }}
+                    >
                       {leader.position}
                     </p>
-                    <p style={{
-                      fontSize: '0.875rem',
-                      color: '#666',
-                      lineHeight: '1.5',
-                      margin: '0'
-                    }}>{leader.role}</p>
+                    <p
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "#666",
+                        lineHeight: "1.5",
+                        margin: "0",
+                      }}
+                    >
+                      {leader.role}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -228,32 +277,35 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Lumyn | Modern Digital Solutions Company</title>
+        <title>About Vikmac | Global Workforce Solutions</title>
         <meta
           name="description"
-          content="Learn about Lumyn, a forward-thinking tech company specializing in modern digital solutions, web development, and innovative technology."
+          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
         />
-        <meta name="keywords" content="Lumyn, digital solutions, web development, tech company, software engineering, digital strategy" />
-        <meta property="og:title" content="About Lumyn | Modern Digital Solutions Company" />
+        <meta
+          name="keywords"
+          content="Vikmac, workforce management, staffing solutions, global recruitment, employment"
+        />
+        <meta property="og:title" content="About Vikmac | Global Workforce Solutions" />
         <meta
           name="og:description"
-          content="Learn about Lumyn, a forward-thinking tech company specializing in modern digital solutions, web development, and innovative technology."
+          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
         />
-        <meta property="og:url" content="https://lumyn.vercel.app/about" />
+        <meta property="og:url" content="https://vikmac.vercel.app/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Lumyn | Modern Digital Solutions Company" />
+        <meta name="twitter:title" content="About Vikmac | Global Workforce Solutions" />
         <meta
           name="twitter:description"
-          content="Learn about Lumyn, a forward-thinking tech company specializing in modern digital solutions, web development, and innovative technology."
+          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
         />
-        <link rel="canonical" href="https://lumyn.vercel.app/about" />
+        <link rel="canonical" href="https://vikmac.vercel.app/about" />
       </Head>
       <div className={styles.privacyPage}>
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>About Lumyn</h1>
-            <p className={styles.heroSubtitle}>Forward-thinking tech company crafting digital experiences</p>
+            <h1 className={styles.heroTitle}>About Vikmac</h1>
+            <p className={styles.heroSubtitle}>Connecting global talent with opportunity</p>
             <p className={styles.lastUpdated}>Empowering businesses with innovative technology</p>
           </div>
         </section>

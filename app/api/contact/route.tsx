@@ -22,10 +22,7 @@ export async function POST(request: Request) {
     // Validate input
     const validationResult = contactSchema.safeParse(body)
     if (!validationResult.success) {
-      return NextResponse.json(
-        { error: "Validation failed", details: validationResult.error.issues },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Validation failed", details: validationResult.error.issues }, { status: 400 })
     }
 
     const validatedData = validationResult.data
@@ -39,7 +36,7 @@ export async function POST(request: Request) {
         name: validatedData.name.trim(),
         email: validatedData.email.trim(),
         subject: validatedData.subject.trim(),
-        message: `${sanitizedMessage}${validatedData.phone ? `\n\nPhone: ${validatedData.phone}` : ''}${validatedData.interests ? `\n\nAreas of Interest: ${validatedData.interests}` : ''}`,
+        message: `${sanitizedMessage}${validatedData.phone ? `\n\nPhone: ${validatedData.phone}` : ""}${validatedData.interests ? `\n\nAreas of Interest: ${validatedData.interests}` : ""}`,
       },
     })
 
@@ -47,7 +44,7 @@ export async function POST(request: Request) {
     try {
       const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || "587"),
+        port: Number.parseInt(process.env.SMTP_PORT || "587"),
         secure: process.env.SMTP_SECURE === "true",
         auth: {
           user: process.env.SMTP_USER,
@@ -56,7 +53,7 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail({
-        from: `"Lumyn Technologies" <${process.env.SMTP_USER}>`,
+        from: `"Vikmac Ajira Link Agency" <${process.env.SMTP_USER}>`,
         replyTo: validatedData.email, // Set reply-to to the sender's email
         to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
         subject: `New Contact Form Submission: ${validatedData.subject}`,
