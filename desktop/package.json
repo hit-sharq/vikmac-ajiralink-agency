@@ -1,0 +1,62 @@
+{
+  "name": "vikmac-ajira-desktop",
+  "version": "1.0.0",
+  "description": "Desktop application for Vikmac Ajira Link Agency - Office Management System",
+  "private": true,
+  "main": "dist/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "concurrently \"npm:dev-react\" \"npm:dev-electron\"",
+    "dev-react": "vite",
+    "dev-electron": "wait-on http://localhost:5173 && electron .",
+    "build": "npm run build-react && npm run build-electron",
+    "build-react": "vite build",
+    "build-electron": "electron-builder",
+    "preview": "vite preview",
+    "start": "electron .",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.15.0",
+    "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "electron-squirrel-startup": "^1.1.0",
+    "lucide-react": "^0.454.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.4",
+    "react-router-dom": "^6.22.3",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@types/electron": "^1.6.10",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.18",
+    "concurrently": "^8.2.2",
+    "electron": "^29.0.0",
+    "electron-builder": "^24.9.1",
+    "postcss": "^8.4.33",
+    "prisma": "^5.15.0",
+    "tailwindcss": "^4.1.9",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.0",
+    "wait-on": "^7.1.0"
+  },
+  "build": {
+    "appId": "com.vikmac.ajira.desktop",
+    "productName": "Vikmac Ajira Desktop",
+    "files": ["dist/**/*", "dist-electron/**/*", "package.json"],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import logger from "@/lib/logger"
 import { z } from "zod"
-import sanitizeHtml from "sanitize-html"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 const createEventSchema = z.object({
   title: z.string().min(1).max(200),
