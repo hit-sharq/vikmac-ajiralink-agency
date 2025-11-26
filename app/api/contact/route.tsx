@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
 import nodemailer from "nodemailer"
 import { z } from "zod"
-import DOMPurify from "isomorphic-dompurify"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 const prisma = new PrismaClient()
 
@@ -27,8 +27,7 @@ export async function POST(request: Request) {
 
     const validatedData = validationResult.data
 
-    // Sanitize message
-    const sanitizedMessage = DOMPurify.sanitize(validatedData.message)
+    const sanitizedMessage = sanitizeHtml(validatedData.message)
 
     // Save to database
     const contact = await prisma.contact.create({

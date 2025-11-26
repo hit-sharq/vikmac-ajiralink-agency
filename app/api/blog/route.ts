@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/db/prisma"
 import { z } from "zod"
-import DOMPurify from "isomorphic-dompurify"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 const createBlogSchema = z.object({
   title: z.string().min(1).max(200),
@@ -17,7 +17,7 @@ const createBlogSchema = z.object({
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined
+    const limit = searchParams.get("limit") ? Number.parseInt(searchParams.get("limit")!) : undefined
 
     const posts = await prisma.blog.findMany({
       orderBy: { publishedAt: "desc" },
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
     })
     return NextResponse.json(posts, {
       headers: {
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
       },
     })
   } catch (error) {
@@ -41,16 +41,12 @@ export async function POST(request: NextRequest) {
     // Validate input
     const validationResult = createBlogSchema.safeParse(body)
     if (!validationResult.success) {
-      return NextResponse.json(
-        { error: "Validation failed", details: validationResult.error.issues },
-        { status: 400 }
-      )
+      return NextResponse.json({ error: "Validation failed", details: validationResult.error.issues }, { status: 400 })
     }
 
     const validatedData = validationResult.data
 
-    // Sanitize content
-    const sanitizedContent = DOMPurify.sanitize(validatedData.content)
+    const sanitizedContent = sanitizeHtml(validatedData.content)
 
     const post = await prisma.blog.create({
       data: {
