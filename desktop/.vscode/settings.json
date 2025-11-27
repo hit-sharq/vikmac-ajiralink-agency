@@ -1,0 +1,4 @@
+{
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.preferences.tsconfig": "./tsconfig.json"
+}

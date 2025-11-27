@@ -10,9 +10,16 @@ import GalleryManager from "./components/gallery-manager"
 import MembersManager from "./components/members-manager"
 import ContactsManager from "./components/contacts-manager"
 import LeadershipManager from "./components/leadership-manager"
-import ProjectsManager from "./components/projects-manager"
 import CareersManager from "./components/careers-manager"
 import PartnersManager from "./components/partners-manager"
+import ApplicantsManager from "./components/applicants-manager.tsx"
+import EmployersManager from "./components/employers-manager.tsx"
+import JobRequestsManager from "./components/job-requests-manager.tsx"
+import MatchingManager from "./components/matching-manager.tsx"
+import VisaProcessingManager from "./components/visa-processing-manager.tsx"
+import PaymentsManager from "./components/payments-manager.tsx"
+import ReportsManager from "./components/reports-manager.tsx"
+import UsersManager from "./components/users-manager.tsx"
 
 type Tab =
   | "news"
@@ -22,9 +29,14 @@ type Tab =
   | "members"
   | "contacts"
   | "leadership"
-  | "projects"
   | "careers"
   | "partners"
+  | "applicants"
+  | "matching"
+  | "visa-processing"
+  | "payments"
+  | "reports"
+  | "users"
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<Tab>("news")
@@ -94,12 +106,7 @@ export default function AdminPage() {
           >
             Members
           </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "projects" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("projects")}
-          >
-            Projects
-          </button>
+          
           <button
             className={`${styles.navBtn} ${activeTab === "leadership" ? styles.navBtnActive : ""}`}
             onClick={() => setActiveTab("leadership")}
@@ -124,6 +131,46 @@ export default function AdminPage() {
           >
             Partners
           </button>
+          <div className={styles.navSection}>
+            <h3 className={styles.navSectionTitle}>VicMac Management</h3>
+            <button
+              className={`${styles.navBtn} ${activeTab === "applicants" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("applicants")}
+            >
+              Applicants
+            </button>
+           
+            <button
+              className={`${styles.navBtn} ${activeTab === "matching" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("matching")}
+            >
+              Matching
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "visa-processing" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("visa-processing")}
+            >
+              Visa Processing
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "payments" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("payments")}
+            >
+              Payments
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "reports" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("reports")}
+            >
+              Reports
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "users" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("users")}
+            >
+              Users
+            </button>
+          </div>
           <div className={styles.navSection}>
             <h3 className={styles.navSectionTitle}>GDPR</h3>
             <button
@@ -180,11 +227,16 @@ export default function AdminPage() {
         {activeTab === "events" && <EventsManager />}
         {activeTab === "gallery" && <GalleryManager />}
         {activeTab === "members" && <MembersManager />}
-        {activeTab === "projects" && <ProjectsManager />}
         {activeTab === "leadership" && <LeadershipManager />}
         {activeTab === "contacts" && <ContactsManager />}
         {activeTab === "careers" && <CareersManager />}
         {activeTab === "partners" && <PartnersManager />}
+        {activeTab === "applicants" && <ApplicantsManager />}
+        {activeTab === "matching" && <MatchingManager />}
+        {activeTab === "visa-processing" && <VisaProcessingManager />}
+        {activeTab === "payments" && <PaymentsManager />}
+        {activeTab === "reports" && <ReportsManager />}
+        {activeTab === "users" && <UsersManager />}
       </div>
     </div>
   )

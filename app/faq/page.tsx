@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Head from "next/head"
 import styles from "./faq.module.css"
 import type { JSX } from "react/jsx-runtime"
 
@@ -36,29 +35,32 @@ export default function FAQPage() {
 
   const sections: Section[] = [
     {
-      id: "about-lumyn",
-      title: "About Lumyn",
+      id: "about-vikmac",
+      title: "About Vikmac AjiraLink Agency",
       content: (
         <>
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>What is Lumyn?</summary>
+            <summary className={styles.faqQuestion}>What is Vikmac AjiraLink Agency?</summary>
             <p className={styles.faqAnswer}>
-              Lumyn is a forward-thinking tech company specializing in modern digital solutions. We design and develop
-              high-performance websites, web applications, and digital experiences that help businesses shine online.
+              Vikmac AjiraLink Agency is a professional recruitment and employment agency that connects job seekers 
+              with employers across various industries. We provide job placement, visa processing, interview preparation, 
+              and career support services.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>What is Lumyn's mission?</summary>
+            <summary className={styles.faqQuestion}>What is the mission of Vikmac AjiraLink Agency?</summary>
             <p className={styles.faqAnswer}>
-              Our mission is to empower businesses with elegant, efficient, and scalable digital solutions that drive
-              growth and success in the modern digital landscape.
+              Our mission is to create strong bridges between employers and job seekers by offering transparent, reliable, 
+              and effective employment solutions locally and internationally.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>When was Lumyn founded?</summary>
+            <summary className={styles.faqQuestion}>When was Vikmac AjiraLink Agency founded?</summary>
             <p className={styles.faqAnswer}>
-              Lumyn was founded by Joshua Mwendwa, a passionate software engineer dedicated to crafting seamless user
-              experiences and innovative digital solutions.
+              Vikmac AjiraLink Agency was established by a team of recruitment professionals dedicated to improving access 
+              to employment opportunities for people in Kenya and beyond.
             </p>
           </details>
         </>
@@ -70,31 +72,34 @@ export default function FAQPage() {
       content: (
         <>
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>What services does Lumyn offer?</summary>
+            <summary className={styles.faqQuestion}>What services does Vikmac AjiraLink Agency offer?</summary>
             <p className={styles.faqAnswer}>
-              We offer comprehensive digital solutions including web design and development, branding and digital strategy,
-              full-stack application development, cloud integration and hosting, and ongoing maintenance and security.
+              We offer job placement, overseas recruitment, visa processing assistance, CV writing, interview coaching, 
+              employer sourcing, and long-term career development support.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>Do you work with businesses of all sizes?</summary>
+            <summary className={styles.faqQuestion}>Do you work with job seekers of all levels?</summary>
             <p className={styles.faqAnswer}>
-              Yes! We work with startups, small businesses, and established companies. Our scalable solutions are designed
-              to grow with your business needs.
+              Yes! We support entry-level candidates, skilled professionals, and senior executives. We match candidates 
+              based on skills, goals, and the requirements of our partner employers.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>How long does a typical project take?</summary>
+            <summary className={styles.faqQuestion}>How long does the recruitment process take?</summary>
             <p className={styles.faqAnswer}>
-              Project timelines vary based on complexity and scope. A simple website might take 2-4 weeks, while a full
-              web application could take 8-12 weeks or more. We'll provide a detailed timeline during our initial consultation.
+              Timelines vary depending on the job type and employer requirements. Some placements take 2–4 weeks, while 
+              international roles may take longer due to documentation and visa processing.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>Do you provide ongoing support?</summary>
+            <summary className={styles.faqQuestion}>Do you provide ongoing career support?</summary>
             <p className={styles.faqAnswer}>
-              Absolutely! We offer maintenance packages for updates, security monitoring, performance optimization,
-              and technical support to ensure your digital assets remain secure and up-to-date.
+              Yes! We support candidates beyond placement, including career advice, skill development guidance, and 
+              progress monitoring.
             </p>
           </details>
         </>
@@ -106,31 +111,34 @@ export default function FAQPage() {
       content: (
         <>
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>What is your development process?</summary>
+            <summary className={styles.faqQuestion}>What is your recruitment process?</summary>
             <p className={styles.faqAnswer}>
-              Our process includes discovery and planning, design and prototyping, development and testing,
-              deployment and launch, followed by ongoing maintenance and support.
+              Our recruitment process includes consultation, candidate sourcing, screening, interviews, employer matching, 
+              documentation assistance, and placement support.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>How do you ensure project quality?</summary>
+            <summary className={styles.faqQuestion}>How do you ensure quality candidates?</summary>
             <p className={styles.faqAnswer}>
-              We follow industry best practices with thorough testing, code reviews, performance optimization,
-              and security audits. We also provide regular updates and feedback sessions throughout the project.
+              We maintain strict screening procedures, document verification, interview preparation, and continuous 
+              communication with both employer and candidate.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>Can I see examples of your work?</summary>
+            <summary className={styles.faqQuestion}>Can I see testimonials or case studies?</summary>
             <p className={styles.faqAnswer}>
-              While we maintain client confidentiality, we can discuss our approach and show relevant case studies.
-              Contact us to learn more about how we've helped similar businesses achieve their goals.
+              Yes, we can provide success stories and placement examples during consultation while maintaining 
+              confidentiality where required.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>What technologies do you use?</summary>
+            <summary className={styles.faqQuestion}>What industries do you recruit for?</summary>
             <p className={styles.faqAnswer}>
-              We use modern, scalable technologies including React, Next.js, Node.js, TypeScript, PostgreSQL,
-              and cloud platforms like Vercel and AWS. We choose the best tools for each project's specific needs.
+              We recruit across multiple sectors including hospitality, security, healthcare, domestic work, driving, 
+              construction, and corporate positions.
             </p>
           </details>
         </>
@@ -144,29 +152,32 @@ export default function FAQPage() {
           <details className={styles.faqItem}>
             <summary className={styles.faqQuestion}>How much do your services cost?</summary>
             <p className={styles.faqAnswer}>
-              Our pricing depends on project scope, complexity, and timeline. We provide custom quotes after understanding
-              your specific needs. Contact us for a free consultation and detailed proposal.
+              Pricing depends on the job type, destination country, and documentation requirements. We provide a full 
+              quotation after understanding your specific needs.
             </p>
           </details>
+
           <details className={styles.faqItem}>
             <summary className={styles.faqQuestion}>Do you offer payment plans?</summary>
             <p className={styles.faqAnswer}>
-              Yes, we offer flexible payment terms for larger projects. We typically require a deposit to begin work,
-              with milestone payments throughout the project lifecycle.
+              Yes, flexible payment plans are available for certain placements. A deposit is usually required to begin 
+              processing, followed by milestone payments.
             </p>
           </details>
+
           <details className={styles.faqItem}>
             <summary className={styles.faqQuestion}>What is your refund policy?</summary>
             <p className={styles.faqAnswer}>
-              We offer a satisfaction guarantee. If you're not happy with our work, we'll work to make it right.
-              Refunds are considered on a case-by-case basis for deposits on cancelled projects.
+              Refunds depend on the stage of processing and circumstances. We aim for transparency and fairness, reviewing 
+              each case individually.
             </p>
           </details>
+
           <details className={styles.faqItem}>
             <summary className={styles.faqQuestion}>Do you provide contracts?</summary>
             <p className={styles.faqAnswer}>
-              Yes, we provide detailed project contracts outlining scope, timeline, deliverables, and terms.
-              All agreements are transparent and protect both parties' interests.
+              Yes. All services include written agreements outlining scope, terms, timelines, and responsibilities for 
+              transparency and protection.
             </p>
           </details>
         </>
@@ -178,24 +189,24 @@ export default function FAQPage() {
       content: (
         <>
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>How do I contact Lumyn?</summary>
+            <summary className={styles.faqQuestion}>How do I contact Vikmac AjiraLink Agency?</summary>
             <p className={styles.faqAnswer}>
-              You can reach us through our contact form on the website or email us directly. We'll respond to all
-              inquiries within 24 hours and schedule a free consultation to discuss your project needs.
+              You can reach us through our website contact form, WhatsApp, or direct email. We respond within 24 hours and 
+              schedule consultations when needed.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>Where is Lumyn located?</summary>
+            <summary className={styles.faqQuestion}>Where are you located?</summary>
             <p className={styles.faqAnswer}>
-              Lumyn operates remotely, serving clients worldwide. Our founder Joshua Mwendwa is based in the Minneapolis area,
-              allowing us to serve local clients effectively while working with businesses globally.
+              We are located in Nairobi, Kenya, serving clients across Kenya and internationally.
             </p>
           </details>
+
           <details className={styles.faqItem}>
-            <summary className={styles.faqQuestion}>How can I provide feedback or suggestions?</summary>
+            <summary className={styles.faqQuestion}>How can I give feedback?</summary>
             <p className={styles.faqAnswer}>
-              We value your feedback! You can share suggestions through our contact form or email us directly.
-              We use client feedback to continuously improve our services and processes.
+              You can provide feedback via our website or email. We value all suggestions to improve our services.
             </p>
           </details>
         </>
@@ -204,38 +215,33 @@ export default function FAQPage() {
   ]
 
   return (
-    <>
+    <div className={styles.faqPage}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Frequently Asked Questions</h1>
+          <p className={styles.heroSubtitle}>Everything you need to know about Vikmac AjiraLink Agency</p>
+          <p className={styles.lastUpdated}>Last Updated: {new Date().toLocaleDateString()}</p>
+        </div>
+      </section>
 
-      <div className={styles.faqPage}>
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>Frequently Asked Questions</h1>
-            <p className={styles.heroSubtitle}>Everything you need to know about Lumyn</p>
-            <p className={styles.lastUpdated}>Last Updated: {new Date().toLocaleDateString()}</p>
-          </div>
-        </section>
-
-        <section className={styles.contentSection}>
-          <div className={styles.container}>
-            {sections.map((section, index) => (
-              <section
-                key={section.id}
-                id={section.id}
-                ref={(el) => {
-                  sectionRefs.current[section.id] = el
-                }}
-                className={`${styles.sectionCard} ${visibleSections.has(section.id) ? styles.visible : ""}`}
-                style={{
-                  animationDelay: `${index * 0.1}s`,
-                }}
-              >
-                <h2 className={styles.sectionTitle}>{section.title}</h2>
-                <div className={styles.sectionContent}>{section.content}</div>
-              </section>
-            ))}
-          </div>
-        </section>
-      </div>
-    </>
+      <section className={styles.contentSection}>
+        <div className={styles.container}>
+          {sections.map((section, index) => (
+            <section
+              key={section.id}
+              id={section.id}
+              ref={(el) => {
+                sectionRefs.current[section.id] = el
+              }}
+              className={`${styles.sectionCard} ${visibleSections.has(section.id) ? styles.visible : ""}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <h2 className={styles.sectionTitle}>{section.title}</h2>
+              <div className={styles.sectionContent}>{section.content}</div>
+            </section>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }

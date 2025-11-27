@@ -52,10 +52,10 @@ export async function POST(request: Request) {
       })
 
       await transporter.sendMail({
-        from: `"Vikmac Ajira Link Agency" <${process.env.SMTP_USER}>`,
+        from: `"VIKMAC AJIRALINK" <vikagencyltd@gmail.com>`,
         replyTo: validatedData.email, // Set reply-to to the sender's email
-        to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
-        subject: `New Contact Form Submission: ${validatedData.subject}`,
+        to: "vikagencyltd@gmail.com",
+        subject: `New Contact Form Submission from Vikmac AjiraLink Agency Website: ${validatedData.subject}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 20px;">
             <div style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 30px; margin: 20px 0;">

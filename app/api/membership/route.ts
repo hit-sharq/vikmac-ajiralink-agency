@@ -9,19 +9,11 @@ const membershipSchema = z.object({
   lastName: z.string().min(1, "Last name is required").max(50, "Last name too long"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits").max(15, "Phone number too long"),
-  company: z.string().min(1, "Company/organization name is required").max(100, "Company name too long"),
-  projectType: z.enum(["website", "web-app", "mobile-app", "e-commerce", "cms", "api", "other"], {
-    errorMap: () => ({ message: "Please select a valid project type" }),
+  company: z.string().max(100, "Company name too long").optional(),
+  inquiryType: z.enum(["membership-benefits", "membership-fees", "recruitment-services", "job-placement", "member-support", "other"], {
+    errorMap: () => ({ message: "Please select a valid inquiry type" }),
   }),
-  budget: z.enum(["under-5k", "5k-15k", "15k-30k", "30k-50k", "50k-100k", "over-100k"], {
-    errorMap: () => ({ message: "Please select a valid budget range" }),
-  }),
-  timeline: z.enum(["asap", "1-month", "2-3-months", "3-6-months", "6-months-plus", "flexible"], {
-    errorMap: () => ({ message: "Please select a valid timeline" }),
-  }),
-  requirements: z.string().min(10, "Please provide project requirements").max(2000, "Requirements too long"),
-  goals: z.string().min(10, "Please describe your project goals").max(1000, "Goals description too long"),
-  references: z.string().max(1000, "References too long").optional(),
+  message: z.string().min(10, "Please provide your inquiry message").max(2000, "Message too long"),
 })
 
 export async function POST(request: Request) {
@@ -41,12 +33,8 @@ export async function POST(request: Request) {
       email,
       phone,
       company,
-      projectType,
-      budget,
-      timeline,
-      requirements,
-      goals,
-      references,
+      inquiryType,
+      message,
     } = validation.data
 
     const membership = await prisma.member.create({
@@ -55,9 +43,9 @@ export async function POST(request: Request) {
         lastName,
         email,
         phone,
-        year: projectType, // Map projectType to year field in DB
-        major: company, // Map company to major field in DB
-        interests: `Budget: ${budget} | Timeline: ${timeline} | Goals: ${goals} | Requirements: ${requirements}${references ? ` | References: ${references}` : ""}`, // Combine project details
+        year: inquiryType, // Map inquiryType to year field in DB
+        major: company || "", // Map company to major field in DB (optional)
+        interests: message, // Store the inquiry message
       },
     })
 

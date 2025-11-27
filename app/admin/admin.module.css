@@ -176,4 +176,60 @@
     margin-left: 0;
     padding: 24px;
   }
+
+  .vikmacSection {
+    margin: 24px 4px 16px 4px;
+    padding: 16px 8px 12px 8px;
+    border-radius: 12px;
+  }
+
+  .vikmacSection .navBtn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .vikmacSection .navBtn:hover,
+  .vikmacSection .navBtnActive {
+    transform: translateX(4px);
+  }
+}
+/* Special styling for VicMac Management section */
+.vikmacSection {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.08), rgba(33, 150, 243, 0.04));
+  border-radius: 16px;
+  margin: 32px 8px 24px 8px;
+  padding: 20px 12px 16px 12px;
+  border: 1px solid rgba(79, 195, 247, 0.2);
+  box-shadow: 0 4px 20px rgba(79, 195, 247, 0.1);
+}
+
+.vikmacSection .navSectionTitle {
+  color: #4fc3f7;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(79, 195, 247, 0.3);
+}
+
+.vikmacSection .navBtn {
+  background: rgba(79, 195, 247, 0.05);
+  border: 1px solid rgba(79, 195, 247, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vikmacSection .navBtn:hover {
+  background: rgba(79, 195, 247, 0.15);
+  border-color: rgba(79, 195, 247, 0.3);
+  transform: translateX(6px);
+  box-shadow: 0 6px 16px rgba(79, 195, 247, 0.2);
+}
+
+.vikmacSection .navBtnActive {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  border-color: #4fc3f7;
+  box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+  transform: translateX(6px);
+}
+
+.vikmacSection .navBtnActive::before {
+  background: rgba(255, 255, 255, 0.9);
 }

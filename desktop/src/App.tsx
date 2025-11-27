@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { AuthProvider, useAuth } from "./contexts/AuthContext"
 import { DashboardLayout } from "./layouts/DashboardLayout"
 import { LoginPage } from "./pages/LoginPage"
 import { DashboardPage } from "./pages/DashboardPage"
@@ -11,6 +11,7 @@ import { ShortlistPage } from "./pages/ShortlistPage"
 import { VisaProcessingPage } from "./pages/VisaProcessingPage"
 import { PaymentsPage } from "./pages/PaymentsPage"
 import { ReportsPage } from "./pages/ReportsPage"
+import { UserManagementPage } from "./pages/UserManagementPage"
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -38,11 +39,11 @@ function App() {
       <Routes>
         {!isAuthenticated ? (
           <>
-            <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" replace />} />
           </>
         ) : (
-          <Route element={<DashboardLayout setIsAuthenticated={setIsAuthenticated} />}>
+          <Route element={<DashboardLayout />}>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/applicants" element={<ApplicantsPage />} />
             <Route path="/job-requests" element={<JobRequestsPage />} />
@@ -50,11 +51,20 @@ function App() {
             <Route path="/visa-processing" element={<VisaProcessingPage />} />
             <Route path="/payments" element={<PaymentsPage />} />
             <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/user-management" element={<UserManagementPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         )}
       </Routes>
     </Router>
+  )
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   )
 }
 

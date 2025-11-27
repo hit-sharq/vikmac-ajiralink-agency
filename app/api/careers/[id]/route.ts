@@ -40,7 +40,7 @@ export async function PUT(
         type: body.type,
         salary: body.salary,
         applicationDeadline: body.applicationDeadline ? new Date(body.applicationDeadline) : null,
-        applicationLink: body.applicationLink,
+        applicationUrl: body.applicationUrl,
         contactEmail: body.contactEmail,
         featured: body.featured,
       }

@@ -14,10 +14,13 @@ interface Career {
   location: string
   type: string
   salary?: string
+  commission?: number
+  commissionType?: string
   applicationDeadline?: string
   applicationUrl?: string
   contactEmail?: string
   featured: boolean
+  image?: string
   createdAt: string
 }
 
@@ -244,6 +247,35 @@ export default function CareersManager() {
             </div>
 
             <div className={styles.formGroup}>
+              <label className={styles.label}>Commission (%)</label>
+              <input
+                type="number"
+                value={currentItem.commission || ""}
+                onChange={(e) => setCurrentItem({ ...currentItem, commission: parseFloat(e.target.value) || undefined })}
+                className={styles.input}
+                placeholder="e.g., 10"
+                min="0"
+                max="100"
+              />
+            </div>
+          </div>
+
+          <div className={styles.formRow}>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Commission Type</label>
+              <select
+                value={currentItem.commissionType || ""}
+                onChange={(e) => setCurrentItem({ ...currentItem, commissionType: e.target.value })}
+                className={styles.input}
+              >
+                <option value="">Select type</option>
+                <option value="percentage">Percentage</option>
+                <option value="fixed">Fixed Amount</option>
+                <option value="tiered">Tiered</option>
+              </select>
+            </div>
+
+            <div className={styles.formGroup}>
               <label className={styles.label}>Application Deadline</label>
               <input
                 type="date"
@@ -329,6 +361,7 @@ export default function CareersManager() {
                   <div className={styles.cardMeta}>
                     <span className={styles.cardCategory}>{item.type}</span>
                     {item.salary && <span className={styles.cardSalary}>{item.salary}</span>}
+                    {item.commission && <span className={styles.cardCommission}>{item.commission}% Commission</span>}
                     <span className={styles.cardDate}>
                       {item.applicationDeadline
                         ? `Deadline: ${new Date(item.applicationDeadline).toLocaleDateString()}`

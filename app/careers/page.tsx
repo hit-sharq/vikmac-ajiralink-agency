@@ -11,13 +11,16 @@ interface Career {
   company: string
   description: string
   requirements?: string
-  location: string
+  location?: string
   type: string
   salary?: string
   applicationDeadline?: string
-  applicationLink?: string
+  applicationUrl?: string
   contactEmail?: string
   featured: boolean
+  image?: string
+  commission?: number
+  commissionType?: string
   createdAt: string
 }
 
@@ -46,7 +49,7 @@ export default function CareersPage() {
     }
   }
 
-  const careerTypes = ["all", "full-time", "part-time", "internship", "contract"]
+  const careerTypes = ["all", "contract"]
 
   const filteredCareers = filter === "all"
     ? careers
@@ -62,16 +65,16 @@ export default function CareersPage() {
   return (
     <>
       <Head>
-        <title>Careers | Lumyn - Join Our Team</title>
+        <title>Careers | Vikmac AjiraLink Agency - Join Our Team</title>
         <meta
           name="description"
-          content="Explore career opportunities at Lumyn. Join our team and work on innovative digital solutions."
+          content="Explore career opportunities at Vikmac AjiraLink Agency. Join our team and work on innovative recruitment and placement solutions."
         />
-        <meta name="keywords" content="careers, jobs, employment, opportunities, digital solutions, technology" />
-        <meta property="og:title" content="Careers | Lumyn - Join Our Team" />
+        <meta name="keywords" content="careers, jobs, employment, opportunities, recruitment, placement, agency" />
+        <meta property="og:title" content="Careers | Vikmac AjiraLink Agency - Join Our Team" />
         <meta
-          property="og:description"
-          content="Explore career opportunities at Lumyn. Join our team and work on innovative digital solutions."
+          name="og:description"
+          content="Explore career opportunities at Vikmac AjiraLink Agency. Join our team and work on innovative recruitment and placement solutions."
         />
       </Head>
 
@@ -82,10 +85,10 @@ export default function CareersPage() {
           <div className={`${styles.container} ${styles.heroContainer}`}>
             <h1 className={styles.heroTitle}>Join Our Team</h1>
             <p className={styles.heroSubtitle}>
-              Shape the future of digital solutions with us
+              Shape the future of recruitment and placement with us
             </p>
             <p className={styles.heroDescription}>
-              We're always looking for talented individuals who are passionate about creating innovative digital experiences.
+              We're always looking for talented individuals who are passionate about connecting people with career opportunities.
             </p>
           </div>
         </section>
@@ -99,6 +102,17 @@ export default function CareersPage() {
                 {featuredCareers.map((career) => (
                   <div key={career.id} className={styles.featuredCard}>
                     <div className={styles.featuredBadge}>Featured</div>
+                    {career.image && (
+                      <div className={styles.featuredImage}>
+                        <Image
+                          src={career.image}
+                          alt={career.title}
+                          width={400}
+                          height={200}
+                          className={styles.careerImage}
+                        />
+                      </div>
+                    )}
                     <div className={styles.featuredContent}>
                       <h3 className={styles.featuredTitle}>{career.title}</h3>
                       <p className={styles.featuredCompany}>{career.company}</p>
@@ -108,8 +122,10 @@ export default function CareersPage() {
                           : career.description}
                       </p>
                       <div className={styles.featuredMeta}>
-                        <span className={styles.featuredLocation}>📍 {career.location}</span>
+                        {career.location && <span className={styles.featuredLocation}>📍 {career.location}</span>}
                         <span className={styles.featuredType}>{career.type.replace("-", " ")}</span>
+                        {career.salary && <span className={styles.featuredSalary}>💰 {career.salary}</span>}
+                        {career.commission && <span className={styles.featuredCommission}>💵 Commission: {career.commission}%</span>}
                       </div>
                       <button
                         className={styles.featuredApplyBtn}
@@ -151,6 +167,17 @@ export default function CareersPage() {
               <div className={styles.careersGrid}>
                 {filteredCareers.map((career) => (
                   <div key={career.id} className={styles.careerCard}>
+                    {career.image && (
+                      <div className={styles.careerImageContainer}>
+                        <Image
+                          src={career.image}
+                          alt={career.title}
+                          width={300}
+                          height={150}
+                          className={styles.careerImage}
+                        />
+                      </div>
+                    )}
                     <div className={styles.careerHeader}>
                       <h3 className={styles.careerTitle}>{career.title}</h3>
                       <p className={styles.careerCompany}>{career.company}</p>
@@ -161,10 +188,16 @@ export default function CareersPage() {
                         : career.description}
                     </p>
                     <div className={styles.careerMeta}>
-                      <span className={styles.careerLocation}>📍 {career.location}</span>
+                      {career.location && <span className={styles.careerLocation}>📍 {career.location}</span>}
                       <span className={styles.careerType}>{career.type.replace("-", " ")}</span>
                       {career.salary && (
                         <span className={styles.careerSalary}>💰 {career.salary}</span>
+                      )}
+                      {career.commission && <span className={styles.careerCommission}>💵 Commission: {career.commission}%</span>}
+                      {career.applicationDeadline && (
+                        <span className={styles.careerDeadline}>
+                          ⏰ Deadline: {new Date(career.applicationDeadline).toLocaleDateString()}
+                        </span>
                       )}
                     </div>
                     <button
@@ -215,12 +248,23 @@ export default function CareersPage() {
                 </button>
               </div>
               <div className={styles.modalBody}>
+                {selectedCareer.image && (
+                  <div className={styles.modalImage}>
+                    <Image
+                      src={selectedCareer.image}
+                      alt={selectedCareer.title}
+                      width={600}
+                      height={300}
+                      className={styles.modalImage}
+                    />
+                  </div>
+                )}
                 <div className={styles.modalMeta}>
                   <div className={styles.modalCompany}>
                     <strong>{selectedCareer.company}</strong>
                   </div>
                   <div className={styles.modalDetails}>
-                    <span className={styles.modalLocation}>📍 {selectedCareer.location}</span>
+                    {selectedCareer.location && <span className={styles.modalLocation}>📍 {selectedCareer.location}</span>}
                     <span className={styles.modalType}>{selectedCareer.type.replace("-", " ")}</span>
                     {selectedCareer.salary && (
                       <span className={styles.modalSalary}>💰 {selectedCareer.salary}</span>
@@ -245,10 +289,17 @@ export default function CareersPage() {
                   </div>
                 )}
 
+                {selectedCareer.commission && (
+                  <div className={styles.modalCommission}>
+                    <h4>Commission</h4>
+                    <p>{selectedCareer.commission}% {selectedCareer.commissionType ? `(${selectedCareer.commissionType})` : ''}</p>
+                  </div>
+                )}
+
                 <div className={styles.modalActions}>
-                  {selectedCareer.applicationLink ? (
+                  {selectedCareer.applicationUrl ? (
                     <a
-                      href={selectedCareer.applicationLink}
+                      href={selectedCareer.applicationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.applyBtn}

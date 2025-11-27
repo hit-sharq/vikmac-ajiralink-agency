@@ -40,7 +40,7 @@ export default function TermsPage() {
       title: "1. Acceptance of Terms",
       content: (
         <p className={styles.text}>
-          By accessing and using Lumyn's website and services, you accept and agree to be
+          By accessing and using Vikmac AjiraLink Agency's website and services, you accept and agree to be
           bound by these Terms and Conditions. If you do not agree to these terms, please do not use our website or
           services.
         </p>
@@ -53,22 +53,22 @@ export default function TermsPage() {
         <>
           <h3 className={styles.subheading}>2.1 Service Description</h3>
           <p className={styles.text}>
-            Lumyn provides digital solutions including web design and development, branding, full-stack applications,
-            cloud integration, and ongoing maintenance services.
+            Vikmac AjiraLink Agency provides recruitment services including job placement, visa processing assistance, career counseling,
+            employer connections, resume building, interview preparation, and ongoing career development support.
           </p>
 
           <h3 className={styles.subheading}>2.2 Client Obligations</h3>
           <p className={styles.text}>As a client, you agree to:</p>
           <ul className={styles.list}>
-            <li>Provide accurate and complete project requirements</li>
+            <li>Provide accurate and complete job requirements and candidate profiles</li>
             <li>Respond to communications in a timely manner</li>
-            <li>Provide necessary access and materials for project completion</li>
+            <li>Provide necessary documentation and access for recruitment processes</li>
             <li>Respect intellectual property rights and licensing agreements</li>
           </ul>
 
           <h3 className={styles.subheading}>2.3 Service Termination</h3>
           <p className={styles.text}>
-            Either party may terminate services with written notice. Lumyn reserves the right to terminate services
+            Either party may terminate services with written notice. Vikmac AjiraLink Agency reserves the right to terminate services
             for non-payment or breach of these terms.
           </p>
         </>
@@ -76,17 +76,17 @@ export default function TermsPage() {
     },
     {
       id: "projects",
-      title: "3. Projects and Deliverables",
+      title: "3. Recruitment Process and Deliverables",
       content: (
         <>
-          <h3 className={styles.subheading}>3.1 Project Scope</h3>
+          <h3 className={styles.subheading}>3.1 Recruitment Scope</h3>
           <p className={styles.text}>
-            Project scope and deliverables will be defined in writing before work begins. Any changes to scope may
-            affect timeline and pricing. Lumyn reserves the right to modify project approach for technical reasons.
+            Recruitment scope and deliverables will be defined in writing before work begins. Any changes to scope may
+            affect timeline and pricing. Vikmac AjiraLink Agency reserves the right to modify recruitment approach for technical reasons.
           </p>
 
-          <h3 className={styles.subheading}>3.2 Project Conduct</h3>
-          <p className={styles.text}>During project collaboration, all parties must:</p>
+          <h3 className={styles.subheading}>3.2 Recruitment Conduct</h3>
+          <p className={styles.text}>During recruitment collaboration, all parties must:</p>
           <ul className={styles.list}>
             <li>Maintain professional and respectful communication</li>
             <li>Meet agreed-upon deadlines and milestones</li>
@@ -96,7 +96,7 @@ export default function TermsPage() {
 
           <h3 className={styles.subheading}>3.3 Intellectual Property</h3>
           <p className={styles.text}>
-            Upon final payment, clients receive full ownership of deliverables. Lumyn retains rights to showcase work
+            Upon final payment, clients receive full ownership of recruitment deliverables. Vikmac AjiraLink Agency retains rights to showcase work
             in portfolios unless otherwise agreed. Third-party assets remain subject to their original licenses.
           </p>
         </>
@@ -114,12 +114,12 @@ export default function TermsPage() {
             <li>Attempt to gain unauthorized access to any part of the website</li>
             <li>Interfere with or disrupt the website's functionality</li>
             <li>Upload malicious code, viruses, or harmful content</li>
-            <li>Impersonate others or misrepresent your affiliation with Lumyn</li>
+            <li>Impersonate others or misrepresent your affiliation with Vikmac AjiraLink Agency</li>
           </ul>
 
           <h3 className={styles.subheading}>4.2 User Content</h3>
           <p className={styles.text}>
-            If you submit content to our website (contact forms, project inquiries, etc.), you grant Lumyn a non-exclusive, royalty-free
+            If you submit content to our website (contact forms, job applications, etc.), you grant Vikmac AjiraLink Agency a non-exclusive, royalty-free
             license to use, reproduce, and display that content. You represent that you own or have permission to share
             any content you submit.
           </p>
@@ -131,8 +131,8 @@ export default function TermsPage() {
       title: "5. Intellectual Property",
       content: (
         <p className={styles.text}>
-          All content on the Lumyn website, including text, graphics, logos, images, and software, is the property of
-          Lumyn or its content suppliers and is protected by copyright and intellectual property laws. You may not
+          All content on the Vikmac AjiraLink Agency website, including text, graphics, logos, images, and software, is the property of
+          Vikmac AjiraLink Agency or its content suppliers and is protected by copyright and intellectual property laws. You may not
           reproduce, distribute, or create derivative works without explicit permission.
         </p>
       ),
@@ -145,14 +145,14 @@ export default function TermsPage() {
           <h3 className={styles.subheading}>6.1 Service Fees</h3>
           <p className={styles.text}>
             Service fees are agreed upon in writing before work begins. All fees must be paid according to the
-            payment schedule outlined in the project contract. Payment information is processed securely through
+            payment schedule outlined in the service contract. Payment information is processed securely through
             third-party payment processors.
           </p>
 
           <h3 className={styles.subheading}>6.2 Refund Policy</h3>
           <p className={styles.text}>
             Refunds for services are handled on a case-by-case basis. Requests must be submitted in writing.
-            Lumyn reserves the right to deny refund requests for completed work or services already rendered.
+            Vikmac AjiraLink Agency reserves the right to deny refund requests for completed work or services already rendered.
           </p>
         </>
       ),
@@ -162,7 +162,7 @@ export default function TermsPage() {
       title: "7. Disclaimer of Warranties",
       content: (
         <p className={styles.text}>
-          The Lumyn website and services are provided "as is" without warranties of any kind, either express or implied.
+          The Vikmac AjiraLink Agency website and services are provided "as is" without warranties of any kind, either express or implied.
           We do not guarantee that the website will be uninterrupted, secure, or error-free.
         </p>
       ),
@@ -172,7 +172,7 @@ export default function TermsPage() {
       title: "8. Limitation of Liability",
       content: (
         <p className={styles.text}>
-          To the fullest extent permitted by law, Lumyn shall not be liable for any indirect, incidental, special, or
+          To the fullest extent permitted by law, Vikmac AjiraLink Agency shall not be liable for any indirect, incidental, special, or
           consequential damages arising from your use of the website or engagement of our services.
         </p>
       ),
@@ -182,26 +182,26 @@ export default function TermsPage() {
   return (
     <>
       <Head>
-        <title>Terms and Conditions | Lumyn - Modern Digital Solutions</title>
+        <title>Terms and Conditions | Vikmac AjiraLink Agency - Recruitment Services</title>
         <meta
           name="description"
-          content="Read the terms and conditions for using Lumyn's digital solutions services and website."
+          content="Read the terms and conditions for using Vikmac AjiraLink Agency's recruitment services and website."
         />
-        <meta name="keywords" content="Lumyn, digital solutions, terms and conditions, terms of use, tech company" />
-        <meta property="og:title" content="Terms and Conditions | Lumyn - Modern Digital Solutions" />
+        <meta name="keywords" content="Vikmac AjiraLink Agency, recruitment services, terms and conditions, terms of use, employment agency" />
+        <meta property="og:title" content="Terms and Conditions | Vikmac AjiraLink Agency - Recruitment Services" />
         <meta
-          property="og:description"
-          content="Read the terms and conditions for using Lumyn's digital solutions services and website."
+          name="og:description"
+          content="Read the terms and conditions for using Vikmac AjiraLink Agency's recruitment services and website."
         />
-        <meta property="og:url" content="https://lumyn.vercel.app/terms" />
+        <meta property="og:url" content="https://vikmacajiralink.vercel.app/terms" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terms and Conditions | Lumyn - Modern Digital Solutions" />
+        <meta name="twitter:title" content="Terms and Conditions | Vikmac AjiraLink Agency - Recruitment Services" />
         <meta
           name="twitter:description"
-          content="Read the terms and conditions for using Lumyn's digital solutions services and website."
+          content="Read the terms and conditions for using Vikmac AjiraLink Agency's recruitment services and website."
         />
-        <link rel="canonical" href="https://lumyn.vercel.app/terms" />
+        <link rel="canonical" href="https://vikmacajiralink.vercel.app/terms" />
       </Head>
       <div className={styles.termsPage}>
         <section className={styles.hero}>

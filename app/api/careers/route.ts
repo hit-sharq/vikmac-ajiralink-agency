@@ -3,13 +3,32 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET() {
+// Function to trigger auto-matching for new job
+async function triggerAutoMatching(jobRequestId: string) {
+  try {
+    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+    const response = await fetch(`${baseUrl}/api/auto-match/job`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ jobRequestId }),
+    })
+
+    if (response.ok) {
+      console.log('Auto-matching triggered successfully for job:', jobRequestId)
+    } else {
+      console.error('Failed to trigger auto-matching for job:', jobRequestId, 'Status:', response.status)
+    }
+  } catch (error) {
+    console.error('Error triggering auto-matching:', error)
+  }
+}
+
+export async function GET(request: NextRequest) {
   try {
     const careers = await prisma.career.findMany({
-      orderBy: [
-        { featured: 'desc' },
-        { createdAt: 'desc' }
-      ]
+      orderBy: { createdAt: 'desc' }
     })
     return NextResponse.json(careers)
   } catch (error) {
@@ -24,14 +43,15 @@ export async function POST(request: NextRequest) {
     const career = await prisma.career.create({
       data: {
         title: body.title,
-        company: body.company,
         description: body.description,
-        requirements: body.requirements,
+        company: body.company,
         location: body.location,
         type: body.type,
         salary: body.salary,
+        commission: body.commission,
+        commissionType: body.commissionType,
         applicationDeadline: body.applicationDeadline ? new Date(body.applicationDeadline) : null,
-        applicationLink: body.applicationLink,
+        applicationUrl: body.applicationUrl,
         contactEmail: body.contactEmail,
         featured: body.featured || false,
       }

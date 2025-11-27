@@ -149,6 +149,8 @@ model Career {
   location           String?
   type               String   @default("full-time")
   salary             String?
+  commission         Float?
+  commissionType     String?
   applicationDeadline DateTime?
   applicationUrl     String?
   contactEmail       String?
@@ -191,6 +193,36 @@ model User {
   @@index([role])
 }
 
+model DesktopUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String   // Hashed password
+  role      String   @default("staff") // staff, manager, admin
+  status    String   @default("active") // active, inactive
+  assignedAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@index([status])
+}
+
+model PendingUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  password     String   // Hashed password
+  registeredAt DateTime @default(now())
+  status       String   @default("pending") // pending, approved, rejected
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+}
+
 model Applicant {
   id                  String   @id @default(cuid())
   firstName           String
@@ -213,9 +245,10 @@ model Applicant {
   documents           Document[]
   workExperience      WorkExperience[]
   certifications      Certification[]
-  shortlists          Shortlist[]
   visaProcessing      VisaProcessing?
   payments            Payment[]
+  shortlists          Shortlist[]
+  autoApplications    AutoApplication[]
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 
@@ -264,51 +297,6 @@ model Certification {
   createdAt   DateTime @default(now())
 
   @@index([applicantId])
-}
-
-model Employer {
-  id          String   @id @default(cuid())
-  companyName String
-  email       String   @unique
-  contactPerson String
-  phone       String
-  country     String
-  address     String?
-  logoUrl     String?
-  status      String   @default("active")
-  jobRequests JobRequest[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([email])
-  @@index([country])
-}
-
-model JobRequest {
-  id                  String   @id @default(cuid())
-  employerId          String
-  employer            Employer @relation(fields: [employerId], references: [id], onDelete: Cascade)
-  category            String   // Nanny, Driver, Cleaner, Security, etc.
-  country             String
-  numberOfWorkers     Int
-  salaryMin           Float
-  salaryMax           Float
-  currency            String   @default("USD")
-  contractDuration    String   // 3 months, 6 months, 1 year, etc.
-  jobDescription      String
-  requiredExperience  Int
-  gender              String?  // Optional: Any, Male, Female
-  ageMin              Int?
-  ageMax              Int?
-  status              String   @default("open") // open, shortlisting, completed
-  shortlists          Shortlist[]
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
-
-  @@index([employerId])
-  @@index([category])
-  @@index([country])
-  @@index([status])
 }
 
 model Shortlist {
@@ -371,4 +359,71 @@ model Payment {
   @@index([applicantId])
   @@index([status])
   @@index([createdAt])
+}
+
+model Employer {
+  id            String       @id @default(cuid())
+  companyName   String
+  email         String       @unique
+  contactPerson String
+  phone         String
+  country       String
+  address       String?
+  logoUrl       String?
+  status        String       @default("active")
+  jobRequests   JobRequest[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([email])
+  @@index([country])
+}
+
+model JobRequest {
+  id                 String      @id @default(cuid())
+  employerId         String
+  employer           Employer    @relation(fields: [employerId], references: [id], onDelete: Cascade)
+  category           String // Nanny, Driver, Cleaner, Security, etc.
+  country            String
+  numberOfWorkers    Int
+  salaryMin          Float
+  salaryMax          Float
+  currency           String      @default("USD")
+  contractDuration   String // 3 months, 6 months, 1 year, etc.
+  jobDescription     String
+  requiredExperience Int
+  gender             String? // Optional: Any, Male, Female
+  ageMin             Int?
+  ageMax             Int?
+  status             String      @default("open") // open, shortlisting, completed
+  shortlists         Shortlist[]
+  autoApplications   AutoApplication[]
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  @@index([employerId])
+  @@index([category])
+  @@index([country])
+  @@index([status])
+}
+
+model AutoApplication {
+  id            String     @id @default(cuid())
+  applicantId   String
+  applicant     Applicant  @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  jobRequestId  String
+  jobRequest    JobRequest @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
+  status        String     @default("pending") // pending, submitted, declined
+  matchScore    Float // 0-100 match percentage
+  reviewedAt    DateTime?
+  submittedAt   DateTime?
+  declinedAt    DateTime?
+  notes         String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@unique([applicantId, jobRequestId])
+  @@index([applicantId])
+  @@index([jobRequestId])
+  @@index([status])
 }

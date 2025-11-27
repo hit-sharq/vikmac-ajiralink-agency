@@ -26,6 +26,9 @@ export default function Footer() {
               <Link href="/employer-portal" className={styles.footerLink}>
                 Employer Portal
               </Link>
+              <Link href="/careers" className={styles.footerLink}>
+                Careers
+              </Link>
               <Link href="/news" className={styles.footerLink}>
                 News
               </Link>
@@ -56,14 +59,14 @@ export default function Footer() {
           <div className={styles.footerSection}>
             <h4 className={styles.footerHeading}>Connect</h4>
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialLink} aria-label="Facebook">
-                V
+              <a href="https://www.facebook.com/vikmac.ajiralink/" className={styles.socialLink} aria-label="Facebook">
+                FB
               </a>
-              <a href="#" className={styles.socialLink} aria-label="Instagram">
-                A
+              <a href="https://www.instagram.com/_vikmac?igsh=YzljYTk1ODg3Zg%3D%3D" className={styles.socialLink} aria-label="Instagram">
+                IG
               </a>
-              <a href="#" className={styles.socialLink} aria-label="Twitter">
-                L
+              <a href="https://www.tiktok.com/@vikmac.ajiralink?_t=8qvFDmi7W57&_r=1" className={styles.socialLink} aria-label="TikTok">
+                TT
               </a>
             </div>
             <div className={styles.legalLinks}>

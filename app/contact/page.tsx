@@ -57,8 +57,8 @@ export default function ContactPage() {
     <div className={styles.contactPage}>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Get In Touch</h1>
-          <p className={styles.heroSubtitle}>We'd love to hear from you. Send us a message!</p>
+          <h1 className={styles.heroTitle}>Contact Vikmac Agency</h1>
+          <p className={styles.heroSubtitle}>Ready to find the perfect domestic worker or have questions about our services? Get in touch with us today!</p>
         </div>
       </section>
 
@@ -68,21 +68,29 @@ export default function ContactPage() {
             <div className={styles.contactInfo}>
               <h2 className={styles.infoTitle}>Contact Information</h2>
               <p className={styles.infoText}>
-                Have questions about our services? Want to discuss a project? Reach out to us and we'll get back to you
-                as soon as possible.
+                Have questions about our recruitment services or need assistance finding qualified domestic workers? Reach out to us and we'll get back to you as soon as possible.
               </p>
 
               <div className={styles.infoCards}>
                 <div className={styles.infoCard}>
                   <div className={styles.infoIcon}>📧</div>
                   <h3 className={styles.infoCardTitle}>Email</h3>
-                  <p className={styles.infoCardText}>hello@vikmac-ajira.com</p>
+                  <p className={styles.infoCardText}>vikagencyltd@gmail.com</p>
+                  <p className={styles.infoCardText}>director@norineforbessafarisltd.com</p>
                 </div>
 
                 <div className={styles.infoCard}>
                   <div className={styles.infoIcon}>📍</div>
-                  <h3 className={styles.infoCardTitle}>Location</h3>
-                  <p className={styles.infoCardText}>Remote & On-site Services</p>
+                  <h3 className={styles.infoCardTitle}>Address</h3>
+                  <p className={styles.infoCardText}>Pioneer Bazzar, Office No. 26, Opposite Cardinal Otunga. Koinange Street</p>
+                </div>
+
+                <div className={styles.infoCard}>
+                  <div className={styles.infoIcon}>📞</div>
+                  <h3 className={styles.infoCardTitle}>Phone</h3>
+                  <p className={styles.infoCardText}>Director: Mrs. Elizabeth Kyule +254714727128</p>
+                  <p className={styles.infoCardText}>Operations Manager: +254741555222</p>
+                  <p className={styles.infoCardText}>Sourcing Manager: +254750091727</p>
                 </div>
 
                 <div className={styles.infoCard}>
@@ -95,7 +103,7 @@ export default function ContactPage() {
               <div className={styles.socialSection}>
                 <h3 className={styles.socialTitle}>Follow Us</h3>
                 <div className={styles.socialLinks}>
-                  <a href="https://www.instagram.com/j_lee087/" className={styles.socialLink}>
+                  <a href="https://www.instagram.com/_vikmac?igsh=YzljYTk1ODg3Zg==" className={styles.socialLink}>
                     Instagram
                   </a>
                 </div>
@@ -180,10 +188,11 @@ export default function ContactPage() {
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
-                    <option value="project">Project Discussion</option>
-                    <option value="services">Service Information</option>
+                    <option value="job-inquiry">Job Inquiry</option>
+                    <option value="employer-services">Employer Services</option>
+                    <option value="worker-application">Worker Application</option>
+                    <option value="visa-support">Visa & Documentation Support</option>
                     <option value="partnership">Partnership Opportunity</option>
-                    <option value="support">Technical Support</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -200,14 +209,14 @@ export default function ContactPage() {
                     className={styles.select}
                   >
                     <option value="">Select areas of interest (optional)</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="mobile-apps">Mobile Applications</option>
-                    <option value="e-commerce">E-commerce Solutions</option>
-                    <option value="digital-strategy">Digital Strategy</option>
-                    <option value="branding">Branding & Design</option>
-                    <option value="consulting">Technical Consulting</option>
-                    <option value="maintenance">Ongoing Maintenance</option>
-                    <option value="other">Other Services</option>
+                    <option value="nanny">Nanny Services</option>
+                    <option value="housekeeper">Housekeeper/Cleaner</option>
+                    <option value="driver">Driver Services</option>
+                    <option value="security">Security Guard</option>
+                    <option value="chef">Chef/Cook</option>
+                    <option value="gardener">Gardener</option>
+                    <option value="elderly-care">Elderly Care</option>
+                    <option value="other">Other Positions</option>
                   </select>
                   {/* Added interests field for more detailed contact information */}
                 </div>
@@ -224,7 +233,7 @@ export default function ContactPage() {
                     required
                     className={styles.textarea}
                     rows={6}
-                    placeholder="Tell us what's on your mind..."
+                    placeholder="Tell us about your requirements, experience, or any questions you have about our recruitment services..."
                   />
                 </div>
 

@@ -12,12 +12,8 @@ export default function MembershipPage() {
     email: "",
     phone: "",
     company: "",
-    projectType: "",
-    budget: "",
-    timeline: "",
-    requirements: "",
-    goals: "",
-    references: "",
+    inquiryType: "",
+    message: "",
   })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
@@ -51,17 +47,13 @@ export default function MembershipPage() {
           email: "",
           phone: "",
           company: "",
-          projectType: "",
-          budget: "",
-          timeline: "",
-          requirements: "",
-          goals: "",
-          references: "",
+          inquiryType: "",
+          message: "",
         })
       } else {
         const errorData = await response.json()
         setStatus("error")
-        setErrorMessage(errorData.error || "Failed to submit project inquiry. Please try again.")
+        setErrorMessage(errorData.error || "Failed to submit inquiry. Please try again.")
       }
     } catch (error) {
       setStatus("error")
@@ -72,32 +64,32 @@ export default function MembershipPage() {
   return (
     <>
       <Head>
-        <title>Project Inquiry | Custom Development Services - Lumyn</title>
+        <title>Membership Inquiry | VicMac AjiraLink Agency</title>
         <meta
           name="description"
-          content="Tell us about your project needs. Get custom web development, mobile apps, and digital solutions from Lumyn's expert team."
+          content="Inquire about membership opportunities with VicMac AjiraLink Agency. Join our network of employers and access qualified workers across East Africa."
         />
-        <meta name="keywords" content="custom development, web development, mobile apps, project inquiry, digital solutions" />
-        <meta property="og:title" content="Project Inquiry | Custom Development Services - Lumyn" />
+        <meta name="keywords" content="employment agency membership, job placement network, East Africa recruitment, business membership, membership inquiry" />
+        <meta property="og:title" content="Membership Inquiry | VicMac AjiraLink Agency" />
         <meta
           property="og:description"
-          content="Tell us about your project needs. Get custom web development, mobile apps, and digital solutions from Lumyn's expert team."
+          content="Inquire about membership opportunities with VicMac AjiraLink Agency."
         />
-        <meta property="og:url" content="https://lumyn.vercel.app/membership" />
+        <meta property="og:url" content="https://vikmac-ajira.com/membership" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Join Lumyn Network | Collaborate on Innovative Projects" />
+        <meta name="twitter:title" content="Join VicMac AjiraLink Agency | Membership Inquiry" />
       </Head>
 
       <div className={styles.membershipPage}>
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <div className={styles.badge}>START YOUR PROJECT</div>
-            <h1 className={styles.heroTitle}>Tell Us What You Need Built</h1>
+            <div className={styles.badge}>BECOME A MEMBER</div>
+            <h1 className={styles.heroTitle}>Join VicMac AjiraLink Agency Network</h1>
             <p className={styles.heroSubtitle}>
-              Share your project vision and requirements. We'll create a custom solution that brings your ideas to life
-              with our expert development team.
+              Access qualified workers and expand your business opportunities. Become a member of our extensive
+              employment network across East Africa.
             </p>
           </div>
         </section>
@@ -106,52 +98,52 @@ export default function MembershipPage() {
         <section className={styles.benefitsSection}>
           <div className={styles.container}>
             <div className={styles.benefitsIntro}>
-              <h2 className={styles.sectionTitle}>Why Choose Lumyn for Your Project?</h2>
+              <h2 className={styles.sectionTitle}>Why Become a Member of VicMac AjiraLink Agency?</h2>
               <p className={styles.sectionSubtitle}>
-                We combine technical expertise with creative vision to deliver exceptional digital solutions.
-                From concept to launch, we're with you every step of the way.
+                Join our growing network of employers and access qualified talent across East Africa.
+                Membership provides exclusive access to our recruitment services and job placement opportunities.
               </p>
             </div>
             <div className={styles.benefitsGrid}>
               <div className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>🚀</div>
-                <h3 className={styles.benefitTitle}>Custom Development</h3>
+                <div className={styles.benefitIcon}>🌍</div>
+                <h3 className={styles.benefitTitle}>East African Network</h3>
                 <p className={styles.benefitText}>
-                  Tailored solutions built specifically for your business needs and goals.
+                  Access to qualified workers and job opportunities across Kenya, Tanzania, and Uganda.
                 </p>
               </div>
               <div className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>⚡</div>
-                <h3 className={styles.benefitTitle}>Fast Delivery</h3>
+                <div className={styles.benefitIcon}>👥</div>
+                <h3 className={styles.benefitTitle}>Verified Candidates</h3>
                 <p className={styles.benefitText}>
-                  Efficient development process with clear timelines and regular updates.
+                  Pre-screened and qualified applicants ready for immediate placement.
                 </p>
               </div>
               <div className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>🎯</div>
-                <h3 className={styles.benefitTitle}>Quality Assurance</h3>
+                <div className={styles.benefitIcon}>💼</div>
+                <h3 className={styles.benefitTitle}>Business Growth</h3>
                 <p className={styles.benefitText}>
-                  Rigorous testing and quality checks to ensure your project exceeds expectations.
+                  Expand your business through our extensive employment network and recruitment services.
                 </p>
               </div>
               <div className={styles.benefitCard}>
-                <div className={styles.benefitIcon}>🛠️</div>
-                <h3 className={styles.benefitTitle}>Full Support</h3>
+                <div className={styles.benefitIcon}>🤝</div>
+                <h3 className={styles.benefitTitle}>Member Support</h3>
                 <p className={styles.benefitText}>
-                  Ongoing maintenance and support to keep your digital solution running smoothly.
+                  Dedicated support and resources to help members succeed in the employment sector.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Application Form */}
+        {/* Inquiry Form */}
         <section className={styles.formSection}>
           <div className={styles.container}>
             <div className={styles.formHeader}>
-              <h2 className={styles.formTitle}>Tell Us About Your Project</h2>
+              <h2 className={styles.formTitle}>Membership Inquiry</h2>
               <p className={styles.formSubtitle}>
-                Share your vision and requirements so we can create something amazing together
+                Have questions about membership? Send us your inquiry and we'll provide detailed information about joining our network.
               </p>
             </div>
 
@@ -159,7 +151,7 @@ export default function MembershipPage() {
               <div className={styles.successMessage}>
                 <div className={styles.successIcon}>🎉</div>
                 <h3>Thank You!</h3>
-            <p>Your project inquiry has been received! We'll review your requirements and get back to you within 2-3 business days with a detailed proposal.</p>
+                <p>Your membership inquiry has been received! We'll review your questions and get back to you within 2-3 business days with detailed information about our membership opportunities.</p>
               </div>
             )}
 
@@ -174,7 +166,7 @@ export default function MembershipPage() {
               <div className={styles.formCard}>
                 <div className={styles.cardHeader}>
                   <div className={styles.cardIcon}>👤</div>
-                  <h3 className={styles.cardTitle}>Personal Information</h3>
+                  <h3 className={styles.cardTitle}>Contact Information</h3>
                 </div>
                 <div className={styles.formGrid}>
                   <div className={styles.formGroup}>
@@ -204,14 +196,6 @@ export default function MembershipPage() {
                     />
                   </div>
                 </div>
-              </div>
-
-              {/* Contact Information */}
-              <div className={styles.formCard}>
-                <div className={styles.cardHeader}>
-                  <div className={styles.cardIcon}>📞</div>
-                  <h3 className={styles.cardTitle}>Contact Details</h3>
-                </div>
                 <div className={styles.formGrid}>
                   <div className={styles.formGroup}>
                     <label htmlFor="email" className={styles.label}>Email Address *</label>
@@ -236,137 +220,60 @@ export default function MembershipPage() {
                       onChange={handleChange}
                       required
                       className={styles.input}
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+254 712 345 678"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Project Details */}
+              {/* Organization & Inquiry */}
               <div className={styles.formCard}>
                 <div className={styles.cardHeader}>
-                  <div className={styles.cardIcon}>💼</div>
-                  <h3 className={styles.cardTitle}>Project Details</h3>
-                </div>
-                <div className={styles.formGrid}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="projectType" className={styles.label}>Project Type *</label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleChange}
-                      required
-                      className={styles.select}
-                    >
-                      <option value="">Select project type</option>
-                      <option value="website">Website</option>
-                      <option value="web-app">Web Application</option>
-                      <option value="mobile-app">Mobile App</option>
-                      <option value="e-commerce">E-commerce Platform</option>
-                      <option value="cms">Content Management System</option>
-                      <option value="api">API Development</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="company" className={styles.label}>Company/Organization *</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      required
-                      className={styles.input}
-                      placeholder="Your company or organization name"
-                    />
-                  </div>
+                  <div className={styles.cardIcon}>🏢</div>
+                  <h3 className={styles.cardTitle}>Organization & Inquiry</h3>
                 </div>
                 <div className={styles.formGroup}>
-                  <label htmlFor="requirements" className={styles.label}>Project Requirements *</label>
-                  <textarea
-                    id="requirements"
-                    name="requirements"
-                    value={formData.requirements}
+                  <label htmlFor="company" className={styles.label}>Company/Organization (Optional)</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
                     onChange={handleChange}
-                    required
-                    className={styles.textarea}
-                    rows={4}
-                    placeholder="Describe what you need built, key features, functionality, and any specific requirements..."
-                  />
-                </div>
-              </div>
-
-              {/* Project Scope & Timeline */}
-              <div className={styles.formCard}>
-                <div className={styles.cardHeader}>
-                  <div className={styles.cardIcon}>📅</div>
-                  <h3 className={styles.cardTitle}>Scope & Timeline</h3>
-                </div>
-                <div className={styles.formGrid}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="budget" className={styles.label}>Budget Range *</label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      required
-                      className={styles.select}
-                    >
-                      <option value="">Select budget range</option>
-                      <option value="under-5k">Under $5,000</option>
-                      <option value="5k-15k">$5,000 - $15,000</option>
-                      <option value="15k-30k">$15,000 - $30,000</option>
-                      <option value="30k-50k">$30,000 - $50,000</option>
-                      <option value="50k-100k">$50,000 - $100,000</option>
-                      <option value="over-100k">Over $100,000</option>
-                    </select>
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="timeline" className={styles.label}>Preferred Timeline *</label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleChange}
-                      required
-                      className={styles.select}
-                    >
-                      <option value="">Select timeline</option>
-                      <option value="asap">ASAP</option>
-                      <option value="1-month">Within 1 month</option>
-                      <option value="2-3-months">2-3 months</option>
-                      <option value="3-6-months">3-6 months</option>
-                      <option value="6-months-plus">6+ months</option>
-                      <option value="flexible">Flexible</option>
-                    </select>
-                  </div>
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="goals" className={styles.label}>Project Goals & Objectives *</label>
-                  <textarea
-                    id="goals"
-                    name="goals"
-                    value={formData.goals}
-                    onChange={handleChange}
-                    required
-                    className={styles.textarea}
-                    rows={3}
-                    placeholder="What are the main goals and objectives you want to achieve with this project?"
+                    className={styles.input}
+                    placeholder="Your company or organization name"
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label htmlFor="references" className={styles.label}>References & Inspiration (Optional)</label>
-                  <textarea
-                    id="references"
-                    name="references"
-                    value={formData.references}
+                  <label htmlFor="inquiryType" className={styles.label}>Inquiry Type *</label>
+                  <select
+                    id="inquiryType"
+                    name="inquiryType"
+                    value={formData.inquiryType}
                     onChange={handleChange}
+                    required
+                    className={styles.select}
+                  >
+                    <option value="">Select inquiry type</option>
+                    <option value="membership-benefits">Membership Benefits</option>
+                    <option value="membership-fees">Membership Fees & Costs</option>
+                    <option value="recruitment-services">Recruitment Services</option>
+                    <option value="job-placement">Job Placement Opportunities</option>
+                    <option value="member-support">Member Support Services</option>
+                    <option value="other">Other Questions</option>
+                  </select>
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="message" className={styles.label}>Your Message *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     className={styles.textarea}
-                    rows={3}
-                    placeholder="Share any websites, apps, or examples that inspire your vision..."
+                    rows={5}
+                    placeholder="Please describe your inquiry, questions, or what you'd like to learn about our membership opportunities..."
                   />
                 </div>
               </div>
@@ -375,15 +282,15 @@ export default function MembershipPage() {
                 {status === "loading" ? (
                   <>
                     <span className={styles.spinner}></span>
-                    Submitting Project Inquiry...
+                    Submitting Inquiry...
                   </>
                 ) : (
-              "Submit Project Inquiry →"
+                  "Submit Inquiry →"
                 )}
               </button>
 
               <p className={styles.disclaimer}>
-                By submitting this project inquiry, you agree to receive communications from Lumyn about your project.
+                By submitting this inquiry, you agree to receive communications from VicMac AjiraLink Agency about membership opportunities.
                 We respect your privacy and will never share your information without permission.
               </p>
             </form>

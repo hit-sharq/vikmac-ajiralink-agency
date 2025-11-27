@@ -3,6 +3,35 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
+export async function GET(request: NextRequest) {
+  try {
+    const applicants = await prisma.applicant.findMany({
+      orderBy: { createdAt: "desc" },
+    })
+    return NextResponse.json(applicants)
+  } catch (error: any) {
+    console.error("Error fetching applicants:", error)
+    return NextResponse.json({ error: "Failed to fetch applicants" }, { status: 500 })
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { id, status } = body
+
+    const applicant = await prisma.applicant.update({
+      where: { id },
+      data: { status },
+    })
+
+    return NextResponse.json(applicant)
+  } catch (error: any) {
+    console.error("Error updating applicant:", error)
+    return NextResponse.json({ error: "Failed to update applicant" }, { status: 500 })
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
