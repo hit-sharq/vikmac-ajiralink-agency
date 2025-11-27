@@ -56,6 +56,8 @@ export async function POST(request: NextRequest) {
         featured: body.featured || false,
       }
     })
+    // Trigger auto-matching for the new job
+    await triggerAutoMatching(career.id)
     return NextResponse.json(career, { status: 201 })
   } catch (error) {
     console.error('Error creating career:', error)

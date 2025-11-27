@@ -101,90 +101,104 @@ export default function VisaProcessingManager() {
     }
   }
 
-  if (loading) return <div className={styles.loading}>Loading visa processes...</div>
-  if (error) return <div className={styles.error}>{error}</div>
-
   return (
-    <div className={styles.manager}>
+    <div className={styles.reportsContainer}>
       <div className={styles.header}>
-        <h2>Visa Processing Management</h2>
+        <h2 className={styles.gradientTitle}>Visa Processing Management</h2>
         <button className={styles.refreshBtn} onClick={fetchVisaProcesses}>
-          Refresh
+          🔄 Refresh
         </button>
       </div>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Applicant</th>
-              <th>Medical Status</th>
-              <th>Biometrics Status</th>
-              <th>Visa Status</th>
-              <th>Visa Number</th>
-              <th>Visa Expiry</th>
-              <th>Contract Signed</th>
-              <th>Training Status</th>
-              <th>Flight Booked</th>
-              <th>Deployment Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {visaProcesses.map((process) => (
-              <tr key={process.id}>
-                <td>{process.applicant.firstName} {process.applicant.lastName}</td>
-                <td>{process.medicalStatus}</td>
-                <td>{process.biometricsStatus || "pending"}</td>
-                <td>{process.visaStatus}</td>
-                <td>{process.visaNumber || "N/A"}</td>
-                <td>{process.visaExpiryDate ? new Date(process.visaExpiryDate).toLocaleDateString() : "N/A"}</td>
-                <td>{process.contractSigned ? "Yes" : "No"}</td>
-                <td>{process.trainingStatus}</td>
-                <td>{process.flightBooked ? "Yes" : "No"}</td>
-                <td>{process.deploymentDate ? new Date(process.deploymentDate).toLocaleDateString() : "N/A"}</td>
-                <td>
-                  <div className={styles.actions}>
-                    <select
-                      value={process.medicalStatus}
-                      onChange={(e) => updateMedicalStatus(process.id, e.target.value)}
-                      className={styles.statusSelect}
-                      style={{ marginRight: '8px' }}
-                    >
-                      <option value="pending">Medical Pending</option>
-                      <option value="passed">Medical Passed</option>
-                      <option value="failed">Medical Failed</option>
-                    </select>
-                    <select
-                      value={process.biometricsStatus || "pending"}
-                      onChange={(e) => updateBiometricsStatus(process.id, e.target.value)}
-                      className={styles.statusSelect}
-                      style={{ marginRight: '8px' }}
-                      disabled={process.medicalStatus !== 'passed'}
-                    >
-                      <option value="pending">Biometrics Pending</option>
-                      <option value="completed">Biometrics Completed</option>
-                      <option value="failed">Biometrics Failed</option>
-                    </select>
-                    <select
-                      value={process.visaStatus}
-                      onChange={(e) => updateVisaStatus(process.id, e.target.value)}
-                      className={styles.statusSelect}
-                      disabled={process.medicalStatus !== 'passed' || process.biometricsStatus !== 'completed'}
-                    >
-                      <option value="pending">Visa Pending</option>
-                      <option value="submitted">Visa Submitted</option>
-                      <option value="approved">Visa Approved</option>
-                      <option value="rejected">Visa Rejected</option>
-                      <option value="stamped">Visa Stamped</option>
-                    </select>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {loading && (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>Loading visa processes...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className={styles.error}>
+          <p>{error}</p>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className={styles.tablesSection}>
+          <div className={styles.tableCard}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Medical Status</th>
+                  <th>Biometrics Status</th>
+                  <th>Visa Status</th>
+                  <th>Visa Number</th>
+                  <th>Visa Expiry</th>
+                  <th>Contract Signed</th>
+                  <th>Training Status</th>
+                  <th>Flight Booked</th>
+                  <th>Deployment Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visaProcesses.map((process) => (
+                  <tr key={process.id}>
+                    <td>{process.applicant.firstName} {process.applicant.lastName}</td>
+                    <td>{process.medicalStatus}</td>
+                    <td>{process.biometricsStatus || "pending"}</td>
+                    <td>{process.visaStatus}</td>
+                    <td>{process.visaNumber || "N/A"}</td>
+                    <td>{process.visaExpiryDate ? new Date(process.visaExpiryDate).toLocaleDateString() : "N/A"}</td>
+                    <td>{process.contractSigned ? "Yes" : "No"}</td>
+                    <td>{process.trainingStatus}</td>
+                    <td>{process.flightBooked ? "Yes" : "No"}</td>
+                    <td>{process.deploymentDate ? new Date(process.deploymentDate).toLocaleDateString() : "N/A"}</td>
+                    <td>
+                      <div className={styles.actions}>
+                        <select
+                          value={process.medicalStatus}
+                          onChange={(e) => updateMedicalStatus(process.id, e.target.value)}
+                          className={styles.statusSelect}
+                          style={{ marginRight: '8px' }}
+                        >
+                          <option value="pending">Medical Pending</option>
+                          <option value="passed">Medical Passed</option>
+                          <option value="failed">Medical Failed</option>
+                        </select>
+                        <select
+                          value={process.biometricsStatus || "pending"}
+                          onChange={(e) => updateBiometricsStatus(process.id, e.target.value)}
+                          className={styles.statusSelect}
+                          style={{ marginRight: '8px' }}
+                          disabled={process.medicalStatus !== 'passed'}
+                        >
+                          <option value="pending">Biometrics Pending</option>
+                          <option value="completed">Biometrics Completed</option>
+                          <option value="failed">Biometrics Failed</option>
+                        </select>
+                        <select
+                          value={process.visaStatus}
+                          onChange={(e) => updateVisaStatus(process.id, e.target.value)}
+                          className={styles.statusSelect}
+                          disabled={process.medicalStatus !== 'passed' || process.biometricsStatus !== 'completed'}
+                        >
+                          <option value="pending">Visa Pending</option>
+                          <option value="submitted">Visa Submitted</option>
+                          <option value="approved">Visa Approved</option>
+                          <option value="rejected">Visa Rejected</option>
+                          <option value="stamped">Visa Stamped</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -67,59 +67,73 @@ export default function MatchingManager() {
     }
   }
 
-  if (loading) return <div className={styles.loading}>Loading matches...</div>
-  if (error) return <div className={styles.error}>{error}</div>
-
   return (
-    <div className={styles.manager}>
+    <div className={styles.reportsContainer}>
       <div className={styles.header}>
-        <h2>Matching Management</h2>
+        <h2 className={styles.gradientTitle}>Matching Management</h2>
         <button className={styles.refreshBtn} onClick={fetchMatches}>
-          Refresh
+          🔄 Refresh
         </button>
       </div>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Applicant</th>
-              <th>Category</th>
-              <th>Employer</th>
-              <th>Job Category</th>
-              <th>Country</th>
-              <th>Status</th>
-              <th>Created</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {matches.map((match) => (
-              <tr key={match.id}>
-                <td>{match.applicant.firstName} {match.applicant.lastName}</td>
-                <td>{match.applicant.category}</td>
-                <td>{match.jobRequest.employer.companyName}</td>
-                <td>{match.jobRequest.category}</td>
-                <td>{match.jobRequest.country}</td>
-                <td>{match.status}</td>
-                <td>{new Date(match.createdAt).toLocaleDateString()}</td>
-                <td>
-                  <select
-                    value={match.status}
-                    onChange={(e) => updateMatchStatus(match.id, e.target.value)}
-                    className={styles.statusSelect}
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="approved">Approved</option>
-                    <option value="rejected">Rejected</option>
-                    <option value="selected">Selected</option>
-                  </select>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {loading && (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>Loading matches...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className={styles.error}>
+          <p>{error}</p>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className={styles.tablesSection}>
+          <div className={styles.tableCard}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Category</th>
+                  <th>Employer</th>
+                  <th>Job Category</th>
+                  <th>Country</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {matches.map((match) => (
+                  <tr key={match.id}>
+                    <td>{match.applicant.firstName} {match.applicant.lastName}</td>
+                    <td>{match.applicant.category}</td>
+                    <td>{match.jobRequest.employer.companyName}</td>
+                    <td>{match.jobRequest.category}</td>
+                    <td>{match.jobRequest.country}</td>
+                    <td>{match.status}</td>
+                    <td>{new Date(match.createdAt).toLocaleDateString()}</td>
+                    <td>
+                      <select
+                        value={match.status}
+                        onChange={(e) => updateMatchStatus(match.id, e.target.value)}
+                        className={styles.statusSelect}
+                      >
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="selected">Selected</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

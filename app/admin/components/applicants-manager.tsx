@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import styles from "./manager.module.css"
+import styles from "./reports-manager.module.css"
 
 interface Applicant {
   id: string
@@ -56,58 +56,75 @@ export default function ApplicantsManager() {
     }
   }
 
-  if (loading) return <div className={styles.loading}>Loading applicants...</div>
-  if (error) return <div className={styles.error}>{error}</div>
+  if (loading) return (
+    <div className={styles.reportsContainer}>
+      <div className={styles.loading}>
+        <div className={styles.spinner}></div>
+        Loading applicants...
+      </div>
+    </div>
+  )
+
+  if (error) return (
+    <div className={styles.reportsContainer}>
+      <div className={styles.error}>{error}</div>
+    </div>
+  )
 
   return (
-    <div className={styles.manager}>
+    <div className={styles.reportsContainer}>
       <div className={styles.header}>
-        <h2>Applicants Management</h2>
+        <h1 className={styles.title}>Applicants Management</h1>
         <button className={styles.refreshBtn} onClick={fetchApplicants}>
           Refresh
         </button>
       </div>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Category</th>
-              <th>Status</th>
-              <th>Created</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {applicants.map((applicant) => (
-              <tr key={applicant.id}>
-                <td>{applicant.firstName} {applicant.lastName}</td>
-                <td>{applicant.email}</td>
-                <td>{applicant.phone}</td>
-                <td>{applicant.category}</td>
-                <td>{applicant.status}</td>
-                <td>{new Date(applicant.createdAt).toLocaleDateString()}</td>
-                <td>
-                  <select
-                    value={applicant.status}
-                    onChange={(e) => updateStatus(applicant.id, e.target.value)}
-                    className={styles.statusSelect}
-                  >
-                    <option value="new">New</option>
-                    <option value="pending">Pending</option>
-                    <option value="ready">Ready</option>
-                    <option value="shortlisted">Shortlisted</option>
-                    <option value="selected">Selected</option>
-                    <option value="deployed">Deployed</option>
-                  </select>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className={styles.tablesSection}>
+        <div className={styles.tableCard}>
+          <h2 className={styles.tableTitle}>All Applicants</h2>
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {applicants.map((applicant) => (
+                  <tr key={applicant.id}>
+                    <td>{applicant.firstName} {applicant.lastName}</td>
+                    <td>{applicant.email}</td>
+                    <td>{applicant.phone}</td>
+                    <td>{applicant.category}</td>
+                    <td>{applicant.status}</td>
+                    <td>{new Date(applicant.createdAt).toLocaleDateString()}</td>
+                    <td>
+                      <select
+                        value={applicant.status}
+                        onChange={(e) => updateStatus(applicant.id, e.target.value)}
+                        className={styles.statusSelect}
+                      >
+                        <option value="new">New</option>
+                        <option value="pending">Pending</option>
+                        <option value="ready">Ready</option>
+                        <option value="shortlisted">Shortlisted</option>
+                        <option value="selected">Selected</option>
+                        <option value="deployed">Deployed</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   )
