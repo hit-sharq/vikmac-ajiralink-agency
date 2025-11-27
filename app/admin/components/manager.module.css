@@ -646,28 +646,77 @@ de.manager {
 
 @media (max-width: 768px) {
   .manager {
-    padding: 24px;
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .addBtn {
+    width: 100%;
+    max-width: 200px;
   }
 
   .formRow {
     grid-template-columns: 1fr;
   }
 
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .searchInput {
     min-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .table {
+    min-width: 800px; /* Ensure table doesn't get too compressed */
+    font-size: 0.8rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 12px;
+    white-space: nowrap;
   }
 
   .gridList {
     grid-template-columns: 1fr;
   }
 
+  .gridCard {
+    height: auto;
+    min-height: 280px;
+  }
+
   .gridActions {
     flex-direction: column;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 100%;
+  }
+
+  .modalContent {
+    padding: 24px;
+    margin: 16px;
+    max-width: calc(100vw - 32px);
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
   }
 
   .detailCard {
@@ -677,5 +726,26 @@ de.manager {
     max-height: 80vh;
     overflow-y: auto;
     box-sizing: border-box;
+  }
+
+  .detailImageWrapper {
+    height: 200px;
+  }
+
+  .detailBody {
+    padding: 16px;
+  }
+
+  .detailTitle {
+    font-size: 1.5rem;
+  }
+
+  .detailActions {
+    flex-direction: column;
+  }
+
+  .detailEditBtn,
+  .detailDeleteBtn {
+    width: 100%;
   }
 }

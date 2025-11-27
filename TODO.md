@@ -1,11 +1,11 @@
-# TODO: Fix API Errors
+# TODO: Desktop Application Improvements
 
 ## Completed
-- [x] Add GET method to /api/careers to handle GET requests (405 error)
-- [x] Change fetch in triggerAutoMatching to use relative URL (/api/auto-match/job 404 error)
-- [x] Start the development server (npm run dev)
+- [x] Fix duplicate App function declarations in App.tsx
+- [x] Pass setIsAuthenticated prop to DashboardLayout
 
 ## Pending
-- [ ] Test the fixes by making requests to the endpoints
-- [ ] Verify that GET /api/careers now returns 200
-- [ ] Verify that POST /api/auto-match/job no longer returns 404
+- [ ] Apply card-based styling to desktop navigation sidebar
+- [ ] Group navigation items into logical sections with card styling
+- [ ] Add visual enhancements (gradients, shadows, animations)
+- [ ] Test the desktop application

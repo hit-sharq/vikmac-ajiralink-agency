@@ -76,62 +76,65 @@ export default function AdminPage() {
           <p className={styles.adminName}>{user.fullName || user.emailAddresses[0].emailAddress}</p>
         </div>
         <nav className={styles.nav}>
-          <button
-            className={`${styles.navBtn} ${activeTab === "news" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("news")}
-          >
-            News
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "blog" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("blog")}
-          >
-            Blog
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "events" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("events")}
-          >
-            Events
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "gallery" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("gallery")}
-          >
-            Gallery
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "members" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("members")}
-          >
-            Members
-          </button>
-          
-          <button
-            className={`${styles.navBtn} ${activeTab === "leadership" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("leadership")}
-          >
-            Leadership
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "contacts" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("contacts")}
-          >
-            Contact Messages
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "careers" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("careers")}
-          >
-            Careers
-          </button>
-          <button
-            className={`${styles.navBtn} ${activeTab === "partners" ? styles.navBtnActive : ""}`}
-            onClick={() => setActiveTab("partners")}
-          >
-            Partners
-          </button>
-          <div className={styles.navSection}>
+          <div className={`${styles.navSection} ${styles.vikmacSection}`}>
+            <h3 className={styles.navSectionTitle}>Content Management</h3>
+            <button
+              className={`${styles.navBtn} ${activeTab === "news" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("news")}
+            >
+              News
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "blog" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("blog")}
+            >
+              Blog
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "events" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("events")}
+            >
+              Events
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "gallery" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("gallery")}
+            >
+              Gallery
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "members" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("members")}
+            >
+              Members
+            </button>
+
+            <button
+              className={`${styles.navBtn} ${activeTab === "leadership" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("leadership")}
+            >
+              Leadership
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "contacts" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("contacts")}
+            >
+              Contact Messages
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "careers" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("careers")}
+            >
+              Careers
+            </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "partners" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("partners")}
+            >
+              Partners
+            </button>
+          </div>
+          <div className={`${styles.navSection} ${styles.vikmacSection}`}>
             <h3 className={styles.navSectionTitle}>VicMac Management</h3>
             <button
               className={`${styles.navBtn} ${activeTab === "applicants" ? styles.navBtnActive : ""}`}
@@ -139,7 +142,7 @@ export default function AdminPage() {
             >
               Applicants
             </button>
-           
+
             <button
               className={`${styles.navBtn} ${activeTab === "matching" ? styles.navBtnActive : ""}`}
               onClick={() => setActiveTab("matching")}
@@ -171,7 +174,7 @@ export default function AdminPage() {
               Users
             </button>
           </div>
-          <div className={styles.navSection}>
+          <div className={`${styles.navSection} ${styles.gdprSection}`}>
             <h3 className={styles.navSectionTitle}>GDPR</h3>
             <button
               className={styles.navBtn}

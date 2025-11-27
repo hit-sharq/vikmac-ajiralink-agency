@@ -153,6 +153,11 @@
   border: 1px solid #e2e8f0;
 }
 
+.tableWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -166,16 +171,50 @@
   font-weight: 600;
   color: #475569;
   border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
 }
 
 .table td {
   padding: 12px 16px;
   border-bottom: 1px solid #f1f5f9;
   color: #64748b;
+  white-space: nowrap;
 }
 
 .table tbody tr:hover {
   background: #f8fafc;
+}
+
+.actionCell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.statusSelect {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background: white;
+}
+
+.payBtn {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
 .loading {
@@ -222,10 +261,16 @@
     flex-direction: column;
     gap: 16px;
     text-align: center;
+    padding: 20px;
   }
 
   .title {
     font-size: 2rem;
+  }
+
+  .refreshBtn {
+    width: 100%;
+    max-width: 200px;
   }
 
   .kpiGrid {
@@ -240,6 +285,22 @@
     grid-template-columns: 1fr;
   }
 
+  .tableCard {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px; /* Ensure table doesn't get too compressed */
+    font-size: 0.8rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
   .kpiCard {
     flex-direction: column;
     text-align: center;
@@ -252,5 +313,10 @@
 
   .kpiValue {
     font-size: 2rem;
+  }
+
+  .loading,
+  .error {
+    min-height: 300px;
   }
 }

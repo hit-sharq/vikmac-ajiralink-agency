@@ -1,0 +1,181 @@
+/* Desktop Dashboard Layout Styles */
+
+/* Navigation Section Base Styles */
+.navSection {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(37, 99, 235, 0.04));
+  border-radius: 16px;
+  margin: 8px 0;
+  padding: 16px 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navSection:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.navSectionTitle {
+  color: #3b82f6;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 2px rgba(59, 130, 246, 0.3);
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  font-weight: 500;
+  position: relative;
+}
+
+.navBtn:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #e5e7eb;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.navBtnActive {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-color: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  transform: translateX(4px);
+}
+
+.navBtnActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+}
+
+/* Section-specific color variations */
+.overviewSection {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.04));
+  border-color: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+.overviewSection .navSectionTitle {
+  color: #10b981;
+  text-shadow: 0 1px 2px rgba(16, 185, 129, 0.3);
+}
+
+.overviewSection .navBtn:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.overviewSection .navBtnActive {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: #10b981;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+
+.applicantSection {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(37, 99, 235, 0.04));
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+}
+
+.applicantSection .navSectionTitle {
+  color: #3b82f6;
+  text-shadow: 0 1px 2px rgba(59, 130, 246, 0.3);
+}
+
+.applicantSection .navBtn:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.applicantSection .navBtnActive {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.processingSection {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(217, 119, 6, 0.04));
+  border-color: rgba(245, 158, 11, 0.2);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
+}
+
+.processingSection .navSectionTitle {
+  color: #f59e0b;
+  text-shadow: 0 1px 2px rgba(245, 158, 11, 0.3);
+}
+
+.processingSection .navBtn:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.processingSection .navBtnActive {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #f59e0b;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+}
+
+.reportsSection {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(124, 58, 237, 0.04));
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+}
+
+.reportsSection .navSectionTitle {
+  color: #8b5cf6;
+  text-shadow: 0 1px 2px rgba(139, 92, 246, 0.3);
+}
+
+.reportsSection .navBtn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.reportsSection .navBtnActive {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navSection {
+    margin: 4px 0;
+    padding: 12px 8px;
+  }
+
+  .navBtn {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+}

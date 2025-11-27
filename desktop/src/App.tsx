@@ -1,19 +1,20 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider, useAuth } from "./contexts/AuthContext"
-import { DashboardLayout } from "./layouts/DashboardLayout"
-import { LoginPage } from "./pages/LoginPage"
-import { DashboardPage } from "./pages/DashboardPage"
-import { ApplicantsPage } from "./pages/ApplicantsPage"
-import { JobRequestsPage } from "./pages/JobRequestsPage"
-import { ShortlistPage } from "./pages/ShortlistPage"
-import { VisaProcessingPage } from "./pages/VisaProcessingPage"
-import { PaymentsPage } from "./pages/PaymentsPage"
-import { ReportsPage } from "./pages/ReportsPage"
-import { UserManagementPage } from "./pages/UserManagementPage"
+import { AuthProvider } from "./contexts/AuthContext"
+import DashboardLayout from "./layouts/DashboardLayout"
+import LoginPage from "./pages/LoginPage"
+import DashboardPage from "./pages/DashboardPage"
+import ApplicantsPage from "./pages/ApplicantsPage"
+import JobRequestsPage from "./pages/JobRequestsPage"
+import ShortlistPage from "./pages/ShortlistPage"
+import VisaProcessingPage from "./pages/VisaProcessingPage"
+import PaymentsPage from "./pages/PaymentsPage"
+import ReportsPage from "./pages/ReportsPage"
+import UserManagementPage from "./pages/UserManagementPage"
 
-function App() {
+function AppContent() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -43,7 +44,7 @@ function App() {
             <Route path="*" element={<Navigate to="/login" replace />} />
           </>
         ) : (
-          <Route element={<DashboardLayout />}>
+          <Route element={<DashboardLayout setIsAuthenticated={setIsAuthenticated} />}>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/applicants" element={<ApplicantsPage />} />
             <Route path="/job-requests" element={<JobRequestsPage />} />

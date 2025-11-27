@@ -96,7 +96,7 @@ export default function PaymentsManager() {
         </button>
       </div>
 
-      <div className={styles.tableContainer}>
+      <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead>
             <tr>
@@ -122,7 +122,7 @@ export default function PaymentsManager() {
                 <td>{payment.status}</td>
                 <td>{payment.description || "N/A"}</td>
                 <td>{payment.paymentDate ? new Date(payment.paymentDate).toLocaleDateString() : "N/A"}</td>
-                <td>
+                <td className={styles.actionCell}>
                   <select
                     value={payment.status}
                     onChange={(e) => updatePaymentStatus(payment.id, e.target.value)}

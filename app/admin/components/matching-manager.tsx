@@ -90,48 +90,46 @@ export default function MatchingManager() {
       )}
 
       {!loading && !error && (
-        <div className={styles.tablesSection}>
-          <div className={styles.tableCard}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Applicant</th>
-                  <th>Category</th>
-                  <th>Employer</th>
-                  <th>Job Category</th>
-                  <th>Country</th>
-                  <th>Status</th>
-                  <th>Created</th>
-                  <th>Actions</th>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Category</th>
+                <th>Employer</th>
+                <th>Job Category</th>
+                <th>Country</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matches.map((match) => (
+                <tr key={match.id}>
+                  <td>{match.applicant.firstName} {match.applicant.lastName}</td>
+                  <td>{match.applicant.category}</td>
+                  <td>{match.jobRequest.employer.companyName}</td>
+                  <td>{match.jobRequest.category}</td>
+                  <td>{match.jobRequest.country}</td>
+                  <td>{match.status}</td>
+                  <td>{new Date(match.createdAt).toLocaleDateString()}</td>
+                  <td>
+                    <select
+                      value={match.status}
+                      onChange={(e) => updateMatchStatus(match.id, e.target.value)}
+                      className={styles.statusSelect}
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="approved">Approved</option>
+                      <option value="rejected">Rejected</option>
+                      <option value="selected">Selected</option>
+                    </select>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {matches.map((match) => (
-                  <tr key={match.id}>
-                    <td>{match.applicant.firstName} {match.applicant.lastName}</td>
-                    <td>{match.applicant.category}</td>
-                    <td>{match.jobRequest.employer.companyName}</td>
-                    <td>{match.jobRequest.category}</td>
-                    <td>{match.jobRequest.country}</td>
-                    <td>{match.status}</td>
-                    <td>{new Date(match.createdAt).toLocaleDateString()}</td>
-                    <td>
-                      <select
-                        value={match.status}
-                        onChange={(e) => updateMatchStatus(match.id, e.target.value)}
-                        className={styles.statusSelect}
-                      >
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">Rejected</option>
-                        <option value="selected">Selected</option>
-                      </select>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
