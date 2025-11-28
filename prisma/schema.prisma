@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -426,4 +427,21 @@ model AutoApplication {
   @@index([applicantId])
   @@index([jobRequestId])
   @@index([status])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String   // LOGIN, LOGOUT, USER_CREATED, USER_UPDATED, PASSWORD_CHANGED, etc.
+  userId    String?  // Email or ID of the user who performed the action
+  targetId  String?  // ID of the resource affected (e.g., user ID, applicant ID)
+  details   String?  // JSON string with additional details
+  ipAddress String?  // IP address of the request
+  status    String   @default("success") // success, failure
+  errorMessage String?
+  createdAt DateTime @default(now())
+
+  @@index([action])
+  @@index([userId])
+  @@index([targetId])
+  @@index([createdAt])
 }

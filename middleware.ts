@@ -22,6 +22,8 @@ const isPublicRoute = createRouteMatcher([
   "/api/newsletter",
   "/api/stats",
   "/api/partners(.*)",
+  "/api/auth(.*)", // Allow desktop user authentication routes
+  "/api/desktop-users(.*)", // Allow desktop user management routes
   "/sign-in(.*)",
   "/sign-up(.*)",
 ])

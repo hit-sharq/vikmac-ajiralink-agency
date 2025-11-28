@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Desktop application for Vikmac Ajira Link Agency - Office Management System",
   "private": true,
-  "main": "dist/main.js",
+  "main": "dist-electron/main.js",
   "homepage": "./",
   "scripts": {
     "dev": "concurrently \"npm:dev-react\" \"npm:dev-electron\"",
@@ -11,7 +11,7 @@
     "dev-electron": "wait-on http://localhost:5173 && electron .",
     "build": "npm run build-react && npm run build-electron",
     "build-react": "vite build",
-    "build-electron": "electron-builder",
+    "build-electron": "tsc electron-main.ts --outDir dist-electron --module commonjs --target es2020 --skipLibCheck --esModuleInterop && mv dist-electron/electron-main.js dist-electron/main.js && electron-builder",
     "preview": "vite preview",
     "start": "electron .",
     "prisma:generate": "prisma generate",
@@ -25,6 +25,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^3.0.0",
     "dotenv": "^16.4.5",
+    "electron-is-dev": "^1.0.1",
     "electron-squirrel-startup": "^1.0.1",
     "lucide-react": "^0.454.0",
     "react": "^18.3.1",
@@ -57,13 +58,16 @@
   "build": {
     "appId": "com.vikmac.ajira.desktop",
     "productName": "Vikmac Ajira Desktop",
-    "files": [
-      "dist/**/*",
-      "dist-electron/**/*",
-      "package.json"
-    ],
+    "files": ["dist/**/*", "dist-electron/**/*", "package.json"],
     "directories": {
       "buildResources": "assets"
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }

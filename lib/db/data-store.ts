@@ -1,4 +1,3 @@
-// In-memory data store (replace with actual database later)
 import type { News, BlogPost, Event, GalleryItem, ContactMessage } from "./schema"
 
 class DataStore {

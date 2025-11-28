@@ -4,10 +4,10 @@ import { UserCheck, Users, Briefcase, CheckSquare, FileText, CreditCard, BarChar
 import './DashboardLayout.css'
 
 interface DashboardLayoutProps {
-  setIsAuthenticated: (value: boolean) => void
+  logout: () => void
 }
 
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ setIsAuthenticated }) => {
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ logout }) => {
   const location = useLocation()
 
   const navigationSections = [
@@ -46,8 +46,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ setIsAuthenticated })
   ]
 
   const handleLogout = () => {
-    localStorage.removeItem('desktopUser')
-    setIsAuthenticated(false)
+    logout()
   }
 
   return (

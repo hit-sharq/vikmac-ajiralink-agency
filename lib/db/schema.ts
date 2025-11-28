@@ -1,4 +1,3 @@
-// Database schema types for the application
 export interface News {
   id: string
   title: string

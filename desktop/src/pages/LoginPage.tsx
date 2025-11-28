@@ -1,19 +1,41 @@
-import React, { useState } from 'react'
-import { useAuth } from '../contexts/AuthContext'
+"use client"
+
+import type React from "react"
+import { useState } from "react"
+import { useAuth } from "../contexts/AuthContext"
 
 const LoginPage: React.FC = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
   const { login } = useAuth()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simple authentication - in a real app, this would call an API
-    if (username === 'admin' && password === 'password') {
-      login({ username })
-    } else {
-      setError('Invalid credentials')
+    setError("")
+    setLoading(true)
+
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json()
+        setError(data.error || "Login failed")
+        return
+      }
+
+      const userData = await response.json()
+      login(userData)
+    } catch (err) {
+      setError("Failed to connect to server")
+      console.error("Login error:", err)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -23,16 +45,17 @@ const LoginPage: React.FC = () => {
         <h2 className="text-2xl font-bold text-white text-center mb-6">Vikmac Ajira Desktop</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="username">
-              Username
+            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="email">
+              Email
             </label>
             <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              disabled={loading}
             />
           </div>
           <div className="mb-6">
@@ -46,14 +69,16 @@ const LoginPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              disabled={loading}
             />
           </div>
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+            disabled={loading}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>

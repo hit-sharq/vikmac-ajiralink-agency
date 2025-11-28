@@ -1,26 +1,45 @@
-import { app, BrowserWindow, Menu, dialog, type Electron } from "electron"
+import { app, BrowserWindow, Menu, dialog, type MenuItemConstructorOptions } from "electron"
 import isDev from "electron-is-dev"
 import path from "path"
-import { fileURLToPath } from "url"
 
-const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 let mainWindow: BrowserWindow | null = null
 
 const createWindow = () => {
+  // Get screen dimensions for responsive sizing
+  const { screen } = require('electron')
+  const primaryDisplay = screen.getPrimaryDisplay()
+  const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize
+
+  // Calculate responsive window size (80% of screen size for better visibility)
+  const windowWidth = Math.floor(screenWidth * 0.8)
+  const windowHeight = Math.floor(screenHeight * 0.8)
+
   mainWindow = new BrowserWindow({
-    width: 1400,
-    height: 900,
+    width: windowWidth,
+    height: windowHeight,
     minWidth: 1024,
     minHeight: 768,
+    resizable: true,
+    maximizable: true,
+    fullscreenable: true,
+    show: false, // Don't show until ready-to-show
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "../dist-electron/preload.js"),
       contextIsolation: true,
-      enableRemoteModule: false,
       sandbox: true,
+      nodeIntegration: false,
     },
     icon: path.join(__dirname, "../assets/icon.png"),
+  })
+
+  // Center the window on screen
+  mainWindow.center()
+
+  // Show window when ready to prevent visual flash
+  mainWindow.once('ready-to-show', () => {
+    mainWindow!.show()
   })
 
   const startUrl = isDev ? "http://localhost:5173" : `file://${path.join(__dirname, "../dist/index.html")}`
@@ -51,7 +70,7 @@ app.on("activate", () => {
 })
 
 // Menu
-const template: Electron.MenuItemConstructorOptions[] = [
+const template: MenuItemConstructorOptions[] = [
   {
     label: "File",
     submenu: [

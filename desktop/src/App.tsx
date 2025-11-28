@@ -1,8 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider } from "./contexts/AuthContext"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { AuthProvider, useAuth } from "./contexts/AuthContext"
 import DashboardLayout from "./layouts/DashboardLayout"
 import LoginPage from "./pages/LoginPage"
 import DashboardPage from "./pages/DashboardPage"
@@ -15,17 +14,7 @@ import ReportsPage from "./pages/ReportsPage"
 import UserManagementPage from "./pages/UserManagementPage"
 
 function AppContent() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    // Check if user is logged in (stored in localStorage)
-    const user = localStorage.getItem("desktopUser")
-    if (user) {
-      setIsAuthenticated(true)
-    }
-    setIsLoading(false)
-  }, [])
+  const { user, logout, isLoading } = useAuth()
 
   if (isLoading) {
     return (
@@ -36,36 +25,36 @@ function AppContent() {
   }
 
   return (
-    <Router>
-      <Routes>
-        {!isAuthenticated ? (
-          <>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          </>
-        ) : (
-          <Route element={<DashboardLayout setIsAuthenticated={setIsAuthenticated} />}>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/applicants" element={<ApplicantsPage />} />
-            <Route path="/job-requests" element={<JobRequestsPage />} />
-            <Route path="/shortlist" element={<ShortlistPage />} />
-            <Route path="/visa-processing" element={<VisaProcessingPage />} />
-            <Route path="/payments" element={<PaymentsPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-            <Route path="/user-management" element={<UserManagementPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        )}
-      </Routes>
-    </Router>
+    <Routes>
+      {!user ? (
+        <>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </>
+      ) : (
+        <Route element={<DashboardLayout logout={logout} />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/applicants" element={<ApplicantsPage />} />
+          <Route path="/job-requests" element={<JobRequestsPage />} />
+          <Route path="/shortlist" element={<ShortlistPage />} />
+          <Route path="/visa-processing" element={<VisaProcessingPage />} />
+          <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/user-management" element={<UserManagementPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      )}
+    </Routes>
   )
 }
 
 function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 

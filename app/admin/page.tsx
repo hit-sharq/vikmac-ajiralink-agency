@@ -13,13 +13,12 @@ import LeadershipManager from "./components/leadership-manager"
 import CareersManager from "./components/careers-manager"
 import PartnersManager from "./components/partners-manager"
 import ApplicantsManager from "./components/applicants-manager.tsx"
-import EmployersManager from "./components/employers-manager.tsx"
-import JobRequestsManager from "./components/job-requests-manager.tsx"
 import MatchingManager from "./components/matching-manager.tsx"
 import VisaProcessingManager from "./components/visa-processing-manager.tsx"
 import PaymentsManager from "./components/payments-manager.tsx"
 import ReportsManager from "./components/reports-manager.tsx"
 import UsersManager from "./components/users-manager.tsx"
+import AuditLogsViewer from "./components/audit-logs-viewer"
 
 type Tab =
   | "news"
@@ -37,6 +36,7 @@ type Tab =
   | "payments"
   | "reports"
   | "users"
+  | "audit-logs"
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<Tab>("news")
@@ -173,6 +173,12 @@ export default function AdminPage() {
             >
               Users
             </button>
+            <button
+              className={`${styles.navBtn} ${activeTab === "audit-logs" ? styles.navBtnActive : ""}`}
+              onClick={() => setActiveTab("audit-logs")}
+            >
+              Audit Logs
+            </button>
           </div>
           <div className={`${styles.navSection} ${styles.gdprSection}`}>
             <h3 className={styles.navSectionTitle}>GDPR</h3>
@@ -240,6 +246,7 @@ export default function AdminPage() {
         {activeTab === "payments" && <PaymentsManager />}
         {activeTab === "reports" && <ReportsManager />}
         {activeTab === "users" && <UsersManager />}
+        {activeTab === "audit-logs" && <AuditLogsViewer />}
       </div>
     </div>
   )

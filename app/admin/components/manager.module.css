@@ -57,6 +57,7 @@ de.manager {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 1rem;
 }
 
 .formRow {
@@ -640,8 +641,14 @@ de.manager {
 }
 
 @keyframes slideInFromRight {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
@@ -748,4 +755,172 @@ de.manager {
   .detailDeleteBtn {
     width: 100%;
   }
+}
+
+/* Add CSS for authentication forms and modals */
+
+.formModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 500px;
+  width: 90%;
+}
+
+.formModal h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.formModal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formModal form input,
+.formModal form select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.formModal form input:focus,
+.formModal form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formModal form button {
+  padding: 0.75rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formModal form button:hover {
+  background-color: #2563eb;
+}
+
+.closeBtn {
+  padding: 0.5rem 1rem;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.closeBtn:hover {
+  background-color: #4b5563;
+}
+
+.createBtn {
+  padding: 0.5rem 1rem;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.createBtn:hover {
+  background-color: #059669;
+}
+
+.refreshBtn {
+  padding: 0.5rem 1rem;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.refreshBtn:hover {
+  background-color: #4f46e5;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.detailsCode {
+  background-color: #f3f4f6;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  overflow-x: auto;
+  margin: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  font-family: monospace;
+}
+
+.actionBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.statusSelect {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.passwordDisplay {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0;
+  word-break: break-all;
 }
