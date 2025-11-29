@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../node_modules/.prisma/client"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -41,18 +41,18 @@ model Blog {
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  date        DateTime
-  time        String
-  location    String
-  image       String
-  category    String
+  id               String   @id @default(cuid())
+  title            String
+  description      String
+  date             DateTime
+  time             String
+  location         String
+  image            String
+  category         String
   registrationLink String?
-  isStaple    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  isStaple         Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   @@index([date])
   @@index([category])
@@ -65,8 +65,8 @@ model GalleryImage {
   imageUrl    String
   category    String
   uploadedAt  DateTime @default(now())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([category])
   @@index([uploadedAt])
@@ -112,53 +112,54 @@ model Newsletter {
 }
 
 model LeadershipTeam {
-  id          String   @id @default(cuid())
-  name        String
-  position    String
-  role        String
-  imageUrl    String?
-  order       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  name      String
+  position  String
+  role      String
+  imageUrl  String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([order])
 }
 
 model Project {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  image       String
-  category    String
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  image        String
+  category     String
   technologies String[]
-  liveUrl     String?
-  githubUrl   String?
-  featured    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  liveUrl      String?
+  githubUrl    String?
+  featured     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([category])
   @@index([featured])
 }
 
 model Career {
-  id                 String   @id @default(cuid())
-  title              String
-  company            String
-  description        String
-  requirements       String?
-  location           String?
-  type               String   @default("full-time")
-  salary             String?
-  commission         Float?
-  commissionType     String?
+  id                  String            @id @default(cuid())
+  title               String
+  company             String
+  description         String
+  requirements        String?
+  location            String?
+  type                String            @default("full-time")
+  salary              String?
+  commission          Float?
+  commissionType      String?
   applicationDeadline DateTime?
-  applicationUrl     String?
-  contactEmail       String?
-  featured           Boolean  @default(false)
-  image              String?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  applicationUrl      String?
+  contactEmail        String?
+  featured            Boolean           @default(false)
+  image               String?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  AutoApplication     AutoApplication[]
 
   @@index([type])
   @@index([featured])
@@ -195,15 +196,15 @@ model User {
 }
 
 model DesktopUser {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String
-  password  String   // Hashed password
-  role      String   @default("staff") // staff, manager, admin
-  status    String   @default("active") // active, inactive
+  id         String   @id @default(cuid())
+  email      String   @unique
+  name       String
+  password   String // Hashed password
+  role       String   @default("staff") // staff, manager, admin
+  status     String   @default("active") // active, inactive
   assignedAt DateTime @default(now())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@index([email])
   @@index([role])
@@ -214,7 +215,7 @@ model PendingUser {
   id           String   @id @default(cuid())
   email        String   @unique
   name         String
-  password     String   // Hashed password
+  password     String // Hashed password
   registeredAt DateTime @default(now())
   status       String   @default("pending") // pending, approved, rejected
   createdAt    DateTime @default(now())
@@ -225,33 +226,33 @@ model PendingUser {
 }
 
 model Applicant {
-  id                  String   @id @default(cuid())
-  firstName           String
-  lastName            String
-  email               String   @unique
-  phone               String
-  dateOfBirth         DateTime
-  gender              String   // Male, Female, Other
-  nationality         String
-  passportNumber      String   @unique
-  passportExpiryDate  DateTime
-  profilePhoto        String?
-  cv                  String?
-  status              String   @default("new") // new, pending, ready, shortlisted, selected, deployed
-  category            String   // Nanny, Driver, Cleaner, Security, etc.
-  yearsOfExperience   Int      @default(0)
-  trainingCompleted   Boolean  @default(false)
-  medicalClearance    Boolean  @default(false)
-  medicalExpiryDate   DateTime?
-  documents           Document[]
-  workExperience      WorkExperience[]
-  certifications      Certification[]
-  visaProcessing      VisaProcessing?
-  payments            Payment[]
-  shortlists          Shortlist[]
-  autoApplications    AutoApplication[]
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id                 String            @id @default(cuid())
+  firstName          String
+  lastName           String
+  email              String            @unique
+  phone              String
+  dateOfBirth        DateTime
+  gender             String // Male, Female, Other
+  nationality        String
+  passportNumber     String            @unique
+  passportExpiryDate DateTime
+  profilePhoto       String?
+  cv                 String?
+  status             String            @default("new") // new, pending, ready, shortlisted, selected, deployed
+  category           String // Nanny, Driver, Cleaner, Security, etc.
+  yearsOfExperience  Int               @default(0)
+  trainingCompleted  Boolean           @default(false)
+  medicalClearance   Boolean           @default(false)
+  medicalExpiryDate  DateTime?
+  documents          Document[]
+  workExperience     WorkExperience[]
+  certifications     Certification[]
+  visaProcessing     VisaProcessing?
+  payments           Payment[]
+  shortlists         Shortlist[]
+  autoApplications   AutoApplication[]
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
 
   @@index([email])
   @@index([status])
@@ -260,19 +261,19 @@ model Applicant {
 }
 
 model Document {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   applicantId String
   applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  type        String   // ID, Passport, Certificate, etc.
+  type        String // ID, Passport, Certificate, etc.
   documentUrl String
-  uploadedAt  DateTime @default(now())
+  uploadedAt  DateTime  @default(now())
 
   @@index([applicantId])
   @@index([type])
 }
 
 model WorkExperience {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   applicantId String
   applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
   jobTitle    String
@@ -281,37 +282,37 @@ model WorkExperience {
   startDate   DateTime
   endDate     DateTime?
   description String?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
 
   @@index([applicantId])
 }
 
 model Certification {
-  id          String   @id @default(cuid())
-  applicantId String
-  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  certName    String
-  issuedBy    String
-  issueDate   DateTime
-  expiryDate  DateTime?
+  id             String    @id @default(cuid())
+  applicantId    String
+  applicant      Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  certName       String
+  issuedBy       String
+  issueDate      DateTime
+  expiryDate     DateTime?
   certificateUrl String?
-  createdAt   DateTime @default(now())
+  createdAt      DateTime  @default(now())
 
   @@index([applicantId])
 }
 
 model Shortlist {
-  id          String   @id @default(cuid())
+  id           String     @id @default(cuid())
   jobRequestId String
-  jobRequest  JobRequest @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
-  applicantId String
-  applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  status      String   @default("pending") // pending, approved, rejected, selected
-  notes       String?
-  approvedAt  DateTime?
-  rejectedAt  DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  jobRequest   JobRequest @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
+  applicantId  String
+  applicant    Applicant  @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  status       String     @default("pending") // pending, approved, rejected, selected
+  notes        String?
+  approvedAt   DateTime?
+  rejectedAt   DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
   @@unique([jobRequestId, applicantId])
   @@index([jobRequestId])
@@ -320,42 +321,42 @@ model Shortlist {
 }
 
 model VisaProcessing {
-  id              String   @id @default(cuid())
-  applicantId     String   @unique
-  applicant       Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  visaStatus      String   @default("pending") // pending, submitted, approved, rejected, stamped
-  visaNumber      String?
-  visaExpiryDate  DateTime?
-  medicalStatus   String   @default("pending") // pending, completed, approved
+  id               String    @id @default(cuid())
+  applicantId      String    @unique
+  applicant        Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  visaStatus       String    @default("pending") // pending, submitted, approved, rejected, stamped
+  visaNumber       String?
+  visaExpiryDate   DateTime?
+  medicalStatus    String    @default("pending") // pending, completed, approved
   medicalReportUrl String?
-  contractSigned  Boolean  @default(false)
-  trainingStatus  String   @default("pending") // pending, in-progress, completed
-  flightBooked    Boolean  @default(false)
-  flightDetails   String?
-  deploymentDate  DateTime?
-  deploymentNotes String?
-  reminders       String[] // Array of reminder dates
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  contractSigned   Boolean   @default(false)
+  trainingStatus   String    @default("pending") // pending, in-progress, completed
+  flightBooked     Boolean   @default(false)
+  flightDetails    String?
+  deploymentDate   DateTime?
+  deploymentNotes  String?
+  reminders        String[] // Array of reminder dates
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 
   @@index([applicantId])
   @@index([visaStatus])
 }
 
 model Payment {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   applicantId String
   applicant   Applicant @relation(fields: [applicantId], references: [id], onDelete: Cascade)
   employerId  String?
-  type        String   @default("processing-fee") // processing-fee, salary-advance, etc.
+  type        String    @default("processing-fee") // processing-fee, salary-advance, etc.
   amount      Float
-  currency    String   @default("USD")
-  status      String   @default("pending") // pending, completed, failed
+  currency    String    @default("USD")
+  status      String    @default("pending") // pending, completed, failed
   description String?
   receiptUrl  String?
   paymentDate DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@index([applicantId])
   @@index([status])
@@ -381,26 +382,26 @@ model Employer {
 }
 
 model JobRequest {
-  id                 String      @id @default(cuid())
+  id                 String            @id @default(cuid())
   employerId         String
-  employer           Employer    @relation(fields: [employerId], references: [id], onDelete: Cascade)
+  employer           Employer          @relation(fields: [employerId], references: [id], onDelete: Cascade)
   category           String // Nanny, Driver, Cleaner, Security, etc.
   country            String
   numberOfWorkers    Int
   salaryMin          Float
   salaryMax          Float
-  currency           String      @default("USD")
+  currency           String            @default("USD")
   contractDuration   String // 3 months, 6 months, 1 year, etc.
   jobDescription     String
   requiredExperience Int
   gender             String? // Optional: Any, Male, Female
   ageMin             Int?
   ageMax             Int?
-  status             String      @default("open") // open, shortlisting, completed
+  status             String            @default("open") // open, shortlisting, completed
   shortlists         Shortlist[]
   autoApplications   AutoApplication[]
-  createdAt          DateTime    @default(now())
-  updatedAt          DateTime    @updatedAt
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
 
   @@index([employerId])
   @@index([category])
@@ -409,36 +410,40 @@ model JobRequest {
 }
 
 model AutoApplication {
-  id            String     @id @default(cuid())
-  applicantId   String
-  applicant     Applicant  @relation(fields: [applicantId], references: [id], onDelete: Cascade)
-  jobRequestId  String
-  jobRequest    JobRequest @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
-  status        String     @default("pending") // pending, submitted, declined
-  matchScore    Float // 0-100 match percentage
-  reviewedAt    DateTime?
-  submittedAt   DateTime?
-  declinedAt    DateTime?
-  notes         String?
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  id           String      @id @default(cuid())
+  applicantId  String
+  applicant    Applicant   @relation(fields: [applicantId], references: [id], onDelete: Cascade)
+  careerId     String?
+  career       Career?     @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  jobRequestId String?
+  jobRequest   JobRequest? @relation(fields: [jobRequestId], references: [id], onDelete: Cascade)
+  status       String      @default("pending") // pending, submitted, declined
+  matchScore   Float // 0-100 match percentage
+  reviewedAt   DateTime?
+  submittedAt  DateTime?
+  declinedAt   DateTime?
+  notes        String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
+  @@unique([applicantId, careerId])
   @@unique([applicantId, jobRequestId])
   @@index([applicantId])
+  @@index([careerId])
   @@index([jobRequestId])
   @@index([status])
 }
 
 model AuditLog {
-  id        String   @id @default(cuid())
-  action    String   // LOGIN, LOGOUT, USER_CREATED, USER_UPDATED, PASSWORD_CHANGED, etc.
-  userId    String?  // Email or ID of the user who performed the action
-  targetId  String?  // ID of the resource affected (e.g., user ID, applicant ID)
-  details   String?  // JSON string with additional details
-  ipAddress String?  // IP address of the request
-  status    String   @default("success") // success, failure
+  id           String   @id @default(cuid())
+  action       String // LOGIN, LOGOUT, USER_CREATED, USER_UPDATED, PASSWORD_CHANGED, etc.
+  userId       String? // Email or ID of the user who performed the action
+  targetId     String? // ID of the resource affected (e.g., user ID, applicant ID)
+  details      String? // JSON string with additional details
+  ipAddress    String? // IP address of the request
+  status       String   @default("success") // success, failure
   errorMessage String?
-  createdAt DateTime @default(now())
+  createdAt    DateTime @default(now())
 
   @@index([action])
   @@index([userId])

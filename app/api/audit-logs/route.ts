@@ -9,15 +9,21 @@ export async function GET(request: NextRequest) {
     const limit = Number.parseInt(searchParams.get("limit") || "50")
     const userId = searchParams.get("userId")
 
-    const query: any = {}
-    if (userId) query.user_id = userId
-
-    const logs = await prisma.$queryRaw`
-      SELECT * FROM audit_logs 
-      WHERE ${userId ? "user_id = $1" : "1=1"}
-      ORDER BY created_at DESC 
-      LIMIT $${userId ? "2" : "1"}
-    `
+    let logs
+    if (userId) {
+      logs = await prisma.$queryRaw`
+        SELECT * FROM "AuditLog"
+        WHERE "userId" = ${userId}
+        ORDER BY "createdAt" DESC
+        LIMIT ${limit}
+      `
+    } else {
+      logs = await prisma.$queryRaw`
+        SELECT * FROM "AuditLog"
+        ORDER BY "createdAt" DESC
+        LIMIT ${limit}
+      `
+    }
 
     return NextResponse.json(logs)
   } catch (error) {

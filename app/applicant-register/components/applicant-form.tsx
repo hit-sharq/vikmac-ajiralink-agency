@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import styles from "./form.module.css"
 
 interface FormData {
@@ -39,8 +39,11 @@ interface FormData {
 
 export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdate }: any) {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const careerId = searchParams.get('careerId')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [selectedCareer, setSelectedCareer] = useState<any>(null)
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -62,6 +65,24 @@ export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdat
     documents: [],
   })
 
+  // Fetch career details if careerId is provided
+  useEffect(() => {
+    if (careerId) {
+      fetch(`/api/careers/${careerId}`)
+        .then(response => response.json())
+        .then(data => {
+          setSelectedCareer(data)
+          // Pre-fill category based on career type if available
+          if (data.category) {
+            setFormData(prev => ({ ...prev, category: data.category }))
+          }
+        })
+        .catch(error => {
+          console.error("Failed to fetch career details:", error)
+        })
+    }
+  }, [careerId])
+
   const handleInputChange = (e: any) => {
     const { name, value, type, checked } = e.target
     setFormData((prev) => ({
@@ -75,7 +96,7 @@ export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdat
     if (fieldName === "documents") {
       setFormData((prev) => ({
         ...prev,
-        documents: [...prev.documents, ...Array.from(files)],
+        documents: [...prev.documents, ...(Array.from(files) as File[])],
       }))
     } else {
       setFormData((prev) => ({
@@ -167,6 +188,16 @@ export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdat
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       {error && <div className={styles.error}>{error}</div>}
+
+      {selectedCareer && (
+        <div className={styles.careerInfo}>
+          <h3>Applying for: {selectedCareer.title}</h3>
+          <p><strong>Company:</strong> {selectedCareer.company}</p>
+          {selectedCareer.location && <p><strong>Location:</strong> {selectedCareer.location}</p>}
+          {selectedCareer.salary && <p><strong>Salary:</strong> {selectedCareer.salary}</p>}
+          {selectedCareer.commission && <p><strong>Commission:</strong> {selectedCareer.commission}%</p>}
+        </div>
+      )}
 
       {currentStep === 0 && (
         <div className={styles.formStep}>

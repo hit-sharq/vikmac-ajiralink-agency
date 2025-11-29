@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import styles from "./manager.module.css"
+import styles from "./visa-processing-manager.module.css"
 
 interface VisaProcessing {
   id: string

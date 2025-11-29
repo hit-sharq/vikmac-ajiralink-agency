@@ -11,6 +11,13 @@ export interface MatchCriteria {
   ageMax?: number
 }
 
+export interface CareerCriteria {
+  category?: string
+  location?: string
+  type?: string
+  requiredExperience?: number
+}
+
 export interface ApplicantProfile {
   id: string
   category: string
@@ -19,7 +26,6 @@ export interface ApplicantProfile {
   gender: string
   dateOfBirth: Date
   passportNumber: string
-  autoMatchEnabled: boolean
 }
 
 /**
@@ -98,31 +104,68 @@ export function calculateMatchScore(applicant: ApplicantProfile, criteria: Match
 }
 
 /**
- * Find matching applicants for a job request
+ * Calculate match score for career matching (simplified version)
  */
-export async function findMatchingApplicants(jobRequestId: string): Promise<Array<{applicant: ApplicantProfile, score: number}>> {
-  // Get job request details
-  const jobRequest = await prisma.jobRequest.findUnique({
-    where: { id: jobRequestId }
+export function calculateCareerMatchScore(applicant: ApplicantProfile, criteria: CareerCriteria): number {
+  let score = 0
+  let totalCriteria = 0
+
+  // Category/title match (required)
+  totalCriteria++
+  if (criteria.category && applicant.category.toLowerCase().includes(criteria.category.toLowerCase())) {
+    score += 25
+  }
+
+  // Location match (optional)
+  if (criteria.location) {
+    totalCriteria++
+    if (applicant.nationality.toLowerCase().includes(criteria.location.toLowerCase())) {
+      score += 25
+    }
+  }
+
+  // Experience match (optional)
+  if (criteria.requiredExperience !== undefined) {
+    totalCriteria++
+    if (applicant.yearsOfExperience >= criteria.requiredExperience) {
+      score += 20
+    } else if (applicant.yearsOfExperience >= criteria.requiredExperience * 0.8) {
+      score += 15 // Partial match
+    }
+  }
+
+  // Passport validation (required - must have valid passport)
+  totalCriteria++
+  if (applicant.passportNumber && applicant.passportNumber.trim() !== '') {
+    score += 15
+  }
+
+  return Math.round((score / (totalCriteria * 15)) * 100)
+}
+
+/**
+ * Find matching applicants for a career
+ */
+export async function findMatchingApplicantsForCareer(careerId: string): Promise<Array<{applicant: ApplicantProfile, score: number}>> {
+  // Get career details
+  const career = await prisma.career.findUnique({
+    where: { id: careerId }
   })
 
-  if (!jobRequest) {
-    throw new Error('Job request not found')
+  if (!career) {
+    throw new Error('Career not found')
   }
 
-  const criteria: MatchCriteria = {
-    category: jobRequest.category,
-    country: jobRequest.country,
-    requiredExperience: jobRequest.requiredExperience,
-    gender: jobRequest.gender || undefined,
-    ageMin: jobRequest.ageMin || undefined,
-    ageMax: jobRequest.ageMax || undefined,
+  const criteria: CareerCriteria = {
+    category: career.title,
+    location: career.location || undefined,
+    type: career.type,
+    requiredExperience: 0, // Careers may not have required experience, default to 0
   }
 
-  // Get all applicants who have enabled auto-matching
+  // Get all applicants who are available (new or ready status)
   const applicants = await prisma.applicant.findMany({
     where: {
-      autoMatchEnabled: true,
       status: { in: ['new', 'ready'] } // Only match applicants who are available
     },
     select: {
@@ -133,7 +176,6 @@ export async function findMatchingApplicants(jobRequestId: string): Promise<Arra
       gender: true,
       dateOfBirth: true,
       passportNumber: true,
-      autoMatchEnabled: true,
     }
   })
 
@@ -141,7 +183,7 @@ export async function findMatchingApplicants(jobRequestId: string): Promise<Arra
   const matches = applicants
     .map(applicant => ({
       applicant: applicant as ApplicantProfile,
-      score: calculateMatchScore(applicant as ApplicantProfile, criteria)
+      score: calculateCareerMatchScore(applicant as ApplicantProfile, criteria)
     }))
     .filter(match => match.score >= 60) // Only include matches with 60% or higher score
     .sort((a, b) => b.score - a.score) // Sort by score descending
@@ -150,9 +192,9 @@ export async function findMatchingApplicants(jobRequestId: string): Promise<Arra
 }
 
 /**
- * Find matching jobs for an applicant profile
+ * Find matching careers for an applicant profile
  */
-export async function findMatchingJobs(applicantId: string): Promise<Array<{jobRequest: any, score: number}>> {
+export async function findMatchingCareers(applicantId: string): Promise<Array<{career: any, score: number}>> {
   // Get applicant details
   const applicant = await prisma.applicant.findUnique({
     where: { id: applicantId },
@@ -164,36 +206,33 @@ export async function findMatchingJobs(applicantId: string): Promise<Array<{jobR
       gender: true,
       dateOfBirth: true,
       passportNumber: true,
-      autoMatchEnabled: true,
     }
   })
 
-  if (!applicant || !applicant.autoMatchEnabled) {
+  if (!applicant) {
     return []
   }
 
-  // Get all open job requests
-  const jobRequests = await prisma.jobRequest.findMany({
+  // Get all featured careers (assuming these are active/open)
+  const careers = await prisma.career.findMany({
     where: {
-      status: 'open'
+      featured: true
     }
   })
 
   // Calculate match scores
-  const matches = jobRequests
-    .map(jobRequest => {
-      const criteria: MatchCriteria = {
-        category: jobRequest.category,
-        country: jobRequest.country,
-        requiredExperience: jobRequest.requiredExperience,
-        gender: jobRequest.gender || undefined,
-        ageMin: jobRequest.ageMin || undefined,
-        ageMax: jobRequest.ageMax || undefined,
+  const matches = careers
+    .map(career => {
+      const criteria: CareerCriteria = {
+        category: career.title,
+        location: career.location || undefined,
+        type: career.type,
+        requiredExperience: 0, // Default to 0 since careers don't have required experience
       }
 
       return {
-        jobRequest,
-        score: calculateMatchScore(applicant as ApplicantProfile, criteria)
+        career,
+        score: calculateCareerMatchScore(applicant as ApplicantProfile, criteria)
       }
     })
     .filter(match => match.score >= 60) // Only include matches with 60% or higher score

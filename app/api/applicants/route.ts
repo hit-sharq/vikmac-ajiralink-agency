@@ -36,6 +36,15 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
+    // Check if applicant with this email already exists
+    const existingApplicant = await prisma.applicant.findUnique({
+      where: { email: body.email }
+    })
+
+    if (existingApplicant) {
+      return NextResponse.json({ error: "An applicant with this email already exists" }, { status: 409 })
+    }
+
     const applicant = await prisma.applicant.create({
       data: {
         firstName: body.firstName,
@@ -73,13 +82,15 @@ export async function POST(request: NextRequest) {
     // Create certifications records
     if (body.certifications?.length > 0) {
       await prisma.certification.createMany({
-        data: body.certifications.map((cert: any) => ({
-          applicantId: applicant.id,
-          certName: cert.certName,
-          issuedBy: cert.issuedBy,
-          issueDate: new Date(cert.issueDate),
-          expiryDate: cert.expiryDate ? new Date(cert.expiryDate) : null,
-        })),
+        data: body.certifications
+          .filter((cert: any) => cert.certName && cert.issuedBy && cert.issueDate) // Filter out incomplete certifications
+          .map((cert: any) => ({
+            applicantId: applicant.id,
+            certName: cert.certName,
+            issuedBy: cert.issuedBy,
+            issueDate: new Date(cert.issueDate),
+            expiryDate: cert.expiryDate ? new Date(cert.expiryDate) : null,
+          })),
       })
     }
 

@@ -189,7 +189,7 @@ export default function CareersPage() {
                     </p>
                     <div className={styles.careerMeta}>
                       {career.location && <span className={styles.careerLocation}>📍 {career.location}</span>}
-                      <span className={styles.careerType}>{career.type.replace("-", " ")}</span>
+                      <span className={styles.careerType} data-type={career.type}>{career.type.replace("-", " ")}</span>
                       {career.salary && (
                         <span className={styles.careerSalary}>💰 {career.salary}</span>
                       )}
@@ -297,27 +297,12 @@ export default function CareersPage() {
                 )}
 
                 <div className={styles.modalActions}>
-                  {selectedCareer.applicationUrl ? (
-                    <a
-                      href={selectedCareer.applicationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.applyBtn}
-                    >
-                      Apply Now →
-                    </a>
-                  ) : selectedCareer.contactEmail ? (
-                    <a
-                      href={`mailto:${selectedCareer.contactEmail}?subject=Application for ${selectedCareer.title}`}
-                      className={styles.applyBtn}
-                    >
-                      Apply via Email →
-                    </a>
-                  ) : (
-                    <a href="/contact" className={styles.applyBtn}>
-                      Contact Us →
-                    </a>
-                  )}
+                  <a
+                    href={`/applicant-register?careerId=${selectedCareer.id}`}
+                    className={styles.applyBtn}
+                  >
+                    Apply Now →
+                  </a>
                 </div>
               </div>
             </div>

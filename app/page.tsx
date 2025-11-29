@@ -70,20 +70,15 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay}></div>
-        <img
-          src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
-          alt="Developer Coding Animation"
-          className={styles.heroGif}
-        />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Vikmac Ajira</h1>
-          <p className={styles.heroSubtitle}>Global Workforce Solutions</p>
+          <h1 className={styles.heroTitle}>VikMac Agency</h1>
+          <p className={styles.heroSubtitle}>Global Ajira Solutions</p>
           <p className={styles.heroDescription}>
             Connecting skilled workers with employers worldwide. Streamlining recruitment, visa processing, and
             deployment with transparency and efficiency.
           </p>
           <Link href="/membership" className={styles.joinButton}>
-            Start Your Project
+            Join Our Network
           </Link>
         </div>
       </section>
@@ -155,11 +150,6 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className={styles.ctaSection}>
-        <img
-          src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif"
-          alt="Developer Coding Animation"
-          className={styles.ctaGif}
-        />
         <div className={styles.ctaOverlay}></div>
         <div className={`${styles.container} ${styles.ctaContainer}`}>
           <h2 className={styles.ctaTitle}>Ready to Find Your Next Opportunity?</h2>
@@ -168,7 +158,7 @@ export default function HomePage() {
             here to connect you with the right fit.
           </p>
           <Link href="/membership" className={styles.ctaButton}>
-            Start Your Project
+            Join Our Network
           </Link>
         </div>
       </section>

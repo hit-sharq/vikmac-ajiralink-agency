@@ -72,15 +72,13 @@ export default function AboutPage() {
         <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
           <div style={{ flex: 1 }}>
             <p className={styles.text}>
-              Vikmac Ajira Link Agency is a leading workforce management platform connecting skilled professionals with
-              employers globally. We streamline recruitment, visa processing, and international deployment with
-              transparency, efficiency, and reliability.
+              Vikmac Ajira Link Agency is a premier workforce management and recruitment platform specializing in connecting skilled professionals with employers worldwide. We provide comprehensive staffing solutions, visa processing services, and international deployment support with a focus on transparency, efficiency, and compliance.
             </p>
           </div>
           <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
             <img
               src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
-              alt="Coding Animation"
+              alt="Global Workforce Animation"
               style={{ width: "200px", height: "200px", borderRadius: "12px", objectFit: "cover" }}
             />
           </div>
@@ -110,27 +108,25 @@ export default function AboutPage() {
       title: "What We Do",
       content: (
         <>
-          <p className={styles.text}>We specialize in comprehensive digital solutions:</p>
+          <p className={styles.text}>We provide comprehensive workforce management solutions:</p>
           <ul className={styles.list}>
             <li>
-              <strong>Web Design & Development:</strong> Creating beautiful, responsive websites that engage users and
-              drive results
+              <strong>Global Recruitment:</strong> Connecting skilled professionals with employers worldwide through our advanced matching platform
             </li>
             <li>
-              <strong>Branding & Digital Strategy:</strong> Developing comprehensive digital strategies that align with
-              your brand vision
+              <strong>Visa Processing:</strong> Streamlined visa application and processing services for international deployment
             </li>
             <li>
-              <strong>Full-Stack Application Development:</strong> Building robust, scalable applications with modern
-              technologies and best practices
+              <strong>Staffing Solutions:</strong> End-to-end staffing services for various industries including domestic work, security, and professional services
             </li>
             <li>
-              <strong>Cloud Integration & Hosting:</strong> Seamless cloud solutions for reliable, secure, and scalable
-              hosting
+              <strong>Applicant Management:</strong> Comprehensive applicant tracking, background verification, and documentation management
             </li>
             <li>
-              <strong>Maintenance & Security:</strong> Ongoing support, updates, and security monitoring to keep your
-              digital assets safe
+              <strong>Employer Support:</strong> Dedicated support for employers throughout the recruitment and deployment process
+            </li>
+            <li>
+              <strong>Compliance & Documentation:</strong> Ensuring all processes meet international labor standards and immigration requirements
             </li>
           </ul>
         </>
@@ -144,22 +140,22 @@ export default function AboutPage() {
           <p className={styles.text}>What sets us apart:</p>
           <ul className={styles.list}>
             <li>
-              <strong>Clean, Modern Design:</strong> We follow clean design principles that prioritize user experience
-              and visual appeal
+              <strong>Extensive Global Database:</strong> Access to thousands of pre-vetted candidates across multiple countries and skill levels
             </li>
             <li>
-              <strong>Scalable Technology:</strong> Built with modern, scalable technologies that grow with your
-              business needs
+              <strong>Fast & Efficient Placement:</strong> Average placement time of 2-4 weeks with our streamlined recruitment process
             </li>
             <li>
-              <strong>Security First:</strong> Implementing best practices for security and data protection
+              <strong>100% Compliance Guarantee:</strong> All placements meet international labor standards and immigration requirements
             </li>
             <li>
-              <strong>Client-First Approach:</strong> Transparent communication and collaboration throughout every
-              project
+              <strong>24/7 Support Network:</strong> Round-the-clock assistance for employers and employees throughout the deployment process
             </li>
             <li>
-              <strong>Proven Track Record:</strong> Successfully launched numerous projects with measurable results
+              <strong>Proven Success Rate:</strong> Over 95% client satisfaction rate with successful long-term placements
+            </li>
+            <li>
+              <strong>Cost-Effective Solutions:</strong> Competitive pricing with no hidden fees and transparent billing
             </li>
           </ul>
         </>
@@ -268,7 +264,7 @@ export default function AboutPage() {
       title: "Get Started",
       content: (
         <p className={styles.text}>
-          Ready to bring your vision to light? Let's build something extraordinary together.
+          Ready to find the perfect talent for your organization or start your international career journey? Let's connect you with the right opportunities.
         </p>
       ),
     },
@@ -277,27 +273,27 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Vikmac | Global Workforce Solutions</title>
+        <title>About Vikmac | Premier Global Recruitment & Staffing Agency</title>
         <meta
           name="description"
-          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
+          content="Discover Vikmac Ajira Link Agency, a leading global recruitment platform specializing in workforce management, visa processing, and international staffing solutions."
         />
         <meta
           name="keywords"
-          content="Vikmac, workforce management, staffing solutions, global recruitment, employment"
+          content="Vikmac, recruitment agency, global staffing, workforce management, visa processing, international employment, job placement"
         />
-        <meta property="og:title" content="About Vikmac | Global Workforce Solutions" />
+        <meta property="og:title" content="About Vikmac | Premier Global Recruitment & Staffing Agency" />
         <meta
           name="og:description"
-          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
+          content="Discover Vikmac Ajira Link Agency, a leading global recruitment platform specializing in workforce management, visa processing, and international staffing solutions."
         />
         <meta property="og:url" content="https://vikmac.vercel.app/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Vikmac | Global Workforce Solutions" />
+        <meta name="twitter:title" content="About Vikmac | Premier Global Recruitment & Staffing Agency" />
         <meta
           name="twitter:description"
-          content="Learn about Vikmac Ajira Link Agency, a leading global workforce management platform connecting professionals with employers worldwide."
+          content="Discover Vikmac Ajira Link Agency, a leading global recruitment platform specializing in workforce management, visa processing, and international staffing solutions."
         />
         <link rel="canonical" href="https://vikmac.vercel.app/about" />
       </Head>

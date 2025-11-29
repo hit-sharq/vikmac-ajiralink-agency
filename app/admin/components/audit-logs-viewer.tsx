@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import styles from "./manager.module.css"
+import styles from "./audit-logs-viewer.module.css"
 
 interface AuditLog {
   id: number
@@ -37,7 +37,9 @@ export default function AuditLogsViewer() {
     }
   }
 
-  const filteredLogs = filter ? logs.filter((log) => log.action.includes(filter) || log.user_id.includes(filter)) : logs
+  const filteredLogs = filter ? logs.filter((log) =>
+    (log.action || "").includes(filter) || (log.user_id || "").includes(filter)
+  ) : logs
 
   if (loading) return <div className={styles.loading}>Loading audit logs...</div>
   if (error) return <div className={styles.error}>{error}</div>

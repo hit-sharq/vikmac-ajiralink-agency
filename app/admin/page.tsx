@@ -134,51 +134,53 @@ export default function AdminPage() {
               Partners
             </button>
           </div>
-          <div className={`${styles.navSection} ${styles.vikmacSection}`}>
+          <div className={`${styles.navSection} ${styles.vikmacManagementSection}`}>
             <h3 className={styles.navSectionTitle}>VicMac Management</h3>
-            <button
-              className={`${styles.navBtn} ${activeTab === "applicants" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("applicants")}
-            >
-              Applicants
-            </button>
+            <div className={styles.tabContainer}>
+              <button
+                className={`${styles.navBtn} ${activeTab === "applicants" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("applicants")}
+              >
+                Applicants
+              </button>
 
-            <button
-              className={`${styles.navBtn} ${activeTab === "matching" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("matching")}
-            >
-              Matching
-            </button>
-            <button
-              className={`${styles.navBtn} ${activeTab === "visa-processing" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("visa-processing")}
-            >
-              Visa Processing
-            </button>
-            <button
-              className={`${styles.navBtn} ${activeTab === "payments" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("payments")}
-            >
-              Payments
-            </button>
-            <button
-              className={`${styles.navBtn} ${activeTab === "reports" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("reports")}
-            >
-              Reports
-            </button>
-            <button
-              className={`${styles.navBtn} ${activeTab === "users" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("users")}
-            >
-              Users
-            </button>
-            <button
-              className={`${styles.navBtn} ${activeTab === "audit-logs" ? styles.navBtnActive : ""}`}
-              onClick={() => setActiveTab("audit-logs")}
-            >
-              Audit Logs
-            </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "matching" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("matching")}
+              >
+                Matching
+              </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "visa-processing" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("visa-processing")}
+              >
+                Visa Processing
+              </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "payments" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("payments")}
+              >
+                Payments
+              </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "reports" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("reports")}
+              >
+                Reports
+              </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "users" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("users")}
+              >
+                Users
+              </button>
+              <button
+                className={`${styles.navBtn} ${activeTab === "audit-logs" ? styles.navBtnActive : ""}`}
+                onClick={() => setActiveTab("audit-logs")}
+              >
+                Audit Logs
+              </button>
+            </div>
           </div>
           <div className={`${styles.navSection} ${styles.gdprSection}`}>
             <h3 className={styles.navSectionTitle}>GDPR</h3>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import styles from "./reports-manager.module.css"
+import styles from "./applicants-manager.module.css"
 
 interface Applicant {
   id: string

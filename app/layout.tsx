@@ -7,13 +7,12 @@ import CookieConsentBanner from "@/components/cookie-consent"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Vikmac Ajira Link Agency - Workforce Management Platform",
+  title: "VikMac AjiraLink Agency - Ajira Management Platform",
   description:
     "Leading global workforce management platform for recruitment, deployment, and HR operations. Connect employers with skilled professionals worldwide.",
   icons: {
     icon: "/favicon.ico",
   },
-    generator: 'v0.app'
 }
 
 export default function RootLayout({

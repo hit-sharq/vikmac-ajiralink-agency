@@ -9,22 +9,31 @@ This document outlines the comprehensive design system for the Vikmac Ajira plat
 ## 1. Color Palette
 
 ### Primary Colors
-- **Primary Blue**: `#002060` - Used for headers, primary actions, and main navigation
-- **Primary Purple**: `#5b4bd9` - Used for highlights, active states, and secondary actions
-- **Primary Red**: `#d32f2f` - Used for critical actions, alerts, and urgent information
+- **Primary Teal**: `#0d9488` - Trust, professionalism, global workforce (main brand color)
+- **Primary Navy**: `#1e293b` - Authority, stability, corporate trust
+- **Accent Emerald**: `#059669` - Growth, opportunity, success
+- **Accent Amber**: `#d97706` - Energy, urgency, important actions
 
 ### Neutral Colors
-- **White**: `#ffffff` - Backgrounds, cards, and light surfaces
-- **Light Gray**: `#f5f7fa` - Secondary backgrounds, disabled states
-- **Medium Gray**: `#e5e5e5` - Borders, dividers
-- **Dark Gray**: `#999999` - Secondary text
-- **Black**: `#1a1a1a` - Primary text, headings
+- **Pure White**: `#ffffff` - Primary backgrounds, cards
+- **Off White**: `#fafafa` - Secondary backgrounds, subtle surfaces
+- **Light Gray**: `#f1f5f9` - Input backgrounds, hover states
+- **Medium Gray**: `#cbd5e1` - Borders, dividers, inactive elements
+- **Dark Gray**: `#64748b` - Secondary text, muted content
+- **Charcoal**: `#334155` - Primary text, headings
+- **Deep Navy**: `#0f172a` - Dark backgrounds, strong contrast
 
 ### Status Colors
-- **Success Green**: `#4ade80` - Positive actions, confirmations
-- **Warning Orange**: `#ffa500` - Warnings, attention needed
-- **Error Red**: `#ef4444` - Errors, destructive actions
-- **Info Blue**: `#3b82f6` - Informational messages
+- **Success Emerald**: `#10b981` - Positive confirmations, completed actions
+- **Warning Amber**: `#f59e0b` - Attention needed, pending states
+- **Error Coral**: `#ef4444` - Critical errors, destructive actions
+- **Info Sky**: `#0ea5e9` - Informational messages, help content
+
+### Semantic Colors
+- **Job Available**: `#059669` - Available positions, active listings
+- **Application Pending**: `#d97706` - Submitted applications, in review
+- **Hired/Placed**: `#10b981` - Successful placements, completed processes
+- **Rejected**: `#dc2626` - Unsuccessful applications, cancelled processes
 
 ---
 
@@ -80,12 +89,12 @@ This document outlines the comprehensive design system for the Vikmac Ajira plat
 ### Buttons
 
 #### Primary Button
-- **Background**: #5b4bd9
+- **Background**: #0d9488 (Primary Teal)
 - **Text Color**: White
 - **Padding**: 16px 24px
 - **Border Radius**: 8px
-- **Hover**: Background #6b5cdb, translate Y(-2px)
-- **Active**: Background #4a3cc5, shadow: 0 4px 12px rgba(91, 75, 217, 0.3)
+- **Hover**: Background #0f766e, translate Y(-2px)
+- **Active**: Background #115e59, shadow: 0 4px 12px rgba(13, 148, 136, 0.3)
 
 #### Secondary Button
 - **Background**: #f5f5f5
@@ -134,9 +143,9 @@ This document outlines the comprehensive design system for the Vikmac Ajira plat
 ### Navigation
 
 #### Sidebar Navigation
-- **Background**: #002060 (dark navy)
+- **Background**: #1e293b (Primary Navy)
 - **Text Color**: rgba(255, 255, 255, 0.8)
-- **Active Item Background**: #5b4bd9
+- **Active Item Background**: #0d9488 (Primary Teal)
 - **Item Padding**: 14px 16px
 - **Border Radius**: 8px
 
@@ -297,7 +306,7 @@ box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
 
 2. **Focus Management**
    - Visible focus indicators
-   - Focus outline: 2px solid #5b4bd9
+   - Focus outline: 2px solid #0d9488
    - Focus-within for containers
 
 3. **Keyboard Support**

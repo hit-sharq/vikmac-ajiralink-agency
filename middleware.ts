@@ -12,6 +12,8 @@ const isPublicRoute = createRouteMatcher([
   "/newsletter",
   "/privacy",
   "/terms",
+  "/careers", // Allow careers page for public access during testing
+  "/applicant-register", // Allow applicant registration for testing
   "/api/news(.*)",
   "/api/blog(.*)",
   "/api/events(.*)",
@@ -22,8 +24,16 @@ const isPublicRoute = createRouteMatcher([
   "/api/newsletter",
   "/api/stats",
   "/api/partners(.*)",
+  "/api/careers(.*)", // Allow careers API routes for public access
   "/api/auth(.*)", // Allow desktop user authentication routes
   "/api/desktop-users(.*)", // Allow desktop user management routes
+  "/api/applicants(.*)", // Allow applicants API routes for desktop app
+  "/api/payments(.*)", // Allow payments API routes for desktop app
+  "/api/shortlist(.*)", // Allow shortlist API routes for desktop app
+  "/api/job-requests(.*)", // Allow job requests API routes for desktop app
+  "/api/visa-processing(.*)", // Allow visa processing API routes for desktop app
+  "/api/auto-match(.*)", // Allow auto-match API routes
+  "/api/employers(.*)", // Allow employers API routes for testing
   "/sign-in(.*)",
   "/sign-up(.*)",
 ])
