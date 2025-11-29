@@ -4,6 +4,8 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
+export const dynamic = 'force-dynamic'
+
 function calculateMatchScore(applicant: any, jobRequest: any): number {
   let score = 0
 

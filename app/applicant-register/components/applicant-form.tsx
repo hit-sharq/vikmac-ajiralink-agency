@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import styles from "./form.module.css"
 
@@ -37,7 +37,7 @@ interface FormData {
   documents: File[]
 }
 
-export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdate }: any) {
+function ApplicantFormContent({ currentStep, setCurrentStep, onDataUpdate }: any) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const careerId = searchParams.get('careerId')
@@ -489,5 +489,13 @@ export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdat
         )}
       </div>
     </form>
+  )
+}
+
+export default function ApplicantForm({ currentStep, setCurrentStep, onDataUpdate }: any) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ApplicantFormContent currentStep={currentStep} setCurrentStep={setCurrentStep} onDataUpdate={onDataUpdate} />
+    </Suspense>
   )
 }
