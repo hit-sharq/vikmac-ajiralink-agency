@@ -58,7 +58,10 @@ export function calculateMatchScore(applicant: ApplicantProfile, criteria: Match
 
   // Country/Nationality match (required)
   totalCriteria++
-  if (applicant.nationality === criteria.country) {
+  if (applicant.nationality.toLowerCase().includes(criteria.country.toLowerCase()) ||
+      criteria.country.toLowerCase().includes(applicant.nationality.toLowerCase()) ||
+      applicant.nationality === criteria.country ||
+      criteria.country === applicant.nationality) {
     score += 25
   }
 
@@ -150,9 +153,7 @@ export async function findMatchingApplicants(jobRequestId: string): Promise<Arra
   // Get job request details
   const jobRequest = await prisma.jobRequest.findUnique({
     where: { id: jobRequestId },
-    include: {
-      employer: true
-    }
+    include: { employer: true }
   })
 
   if (!jobRequest) {
@@ -162,7 +163,7 @@ export async function findMatchingApplicants(jobRequestId: string): Promise<Arra
   const criteria: MatchCriteria = {
     category: jobRequest.category,
     country: jobRequest.country,
-    requiredExperience: jobRequest.requiredExperience || 0,
+    requiredExperience: jobRequest.requiredExperience,
     gender: jobRequest.gender || undefined,
     ageMin: jobRequest.ageMin || undefined,
     ageMax: jobRequest.ageMax || undefined,

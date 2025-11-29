@@ -5,25 +5,29 @@ const prisma = new PrismaClient()
 
 export async function GET(request: NextRequest) {
   try {
-    const jobRequests = await prisma.jobRequest.findMany({
+    // Get all auto-applications with their related data
+    const autoApplications = await prisma.autoApplication.findMany({
       include: {
-        employer: {
+        applicant: {
           select: {
             id: true,
-            companyName: true,
+            firstName: true,
+            lastName: true,
             email: true,
+            category: true,
+            status: true,
           },
         },
-        autoApplications: {
-          include: {
-            applicant: {
+        jobRequest: {
+          select: {
+            id: true,
+            category: true,
+            country: true,
+            employer: {
               select: {
                 id: true,
-                firstName: true,
-                lastName: true,
+                companyName: true,
                 email: true,
-                category: true,
-                nationality: true,
               },
             },
           },
@@ -34,7 +38,24 @@ export async function GET(request: NextRequest) {
       },
     })
 
-    return NextResponse.json(jobRequests)
+    // Transform the data to match the expected interface
+    const matches = autoApplications.map(autoApp => ({
+      id: autoApp.id,
+      jobRequestId: autoApp.jobRequestId,
+      applicantId: autoApp.applicantId,
+      jobRequest: autoApp.jobRequest ? {
+        category: autoApp.jobRequest.category,
+        country: autoApp.jobRequest.country,
+        employer: {
+          companyName: autoApp.jobRequest.employer.companyName,
+        },
+      } : null,
+      applicant: autoApp.applicant,
+      status: autoApp.status,
+      createdAt: autoApp.createdAt.toISOString(),
+    })).filter(match => match.jobRequest !== null) // Filter out matches without job requests
+
+    return NextResponse.json(matches)
   } catch (error) {
     console.error('Error fetching matching data:', error)
     return NextResponse.json({ error: 'Failed to fetch matching data' }, { status: 500 })

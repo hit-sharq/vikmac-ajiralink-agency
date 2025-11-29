@@ -5,31 +5,13 @@ const prisma = new PrismaClient()
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url)
-    const applicantId = searchParams.get('applicantId')
-
-    if (!applicantId) {
-      return NextResponse.json({ error: 'Applicant ID is required' }, { status: 400 })
-    }
-
     const autoApplications = await prisma.autoApplication.findMany({
-      where: {
-        applicantId: applicantId,
-        status: 'pending'
-      },
       include: {
-        jobRequest: {
-          include: {
-            employer: true
-          }
-        }
+        applicant: true,
+        career: true,
       },
-      orderBy: [
-        { matchScore: 'desc' },
-        { createdAt: 'desc' }
-      ]
+      orderBy: { createdAt: 'desc' }
     })
-
     return NextResponse.json(autoApplications)
   } catch (error) {
     console.error('Error fetching auto-applications:', error)

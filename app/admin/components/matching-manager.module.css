@@ -26,6 +26,29 @@
   margin: 0;
 }
 
+.headerActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.autoMatchBtn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.autoMatchBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
 .refreshBtn {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -138,6 +161,12 @@
     font-size: 2rem;
   }
 
+  .headerActions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .autoMatchBtn,
   .refreshBtn {
     width: 100%;
     max-width: 200px;
@@ -212,6 +241,7 @@
     padding: 4px 6px;
   }
 
+  .autoMatchBtn,
   .refreshBtn {
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -234,11 +264,16 @@
     text-align: center;
   }
 
+  .headerActions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .autoMatchBtn,
   .refreshBtn {
     width: 100%;
     padding: 10px 16px;
     font-size: 1rem;
-    margin-top: 8px;
   }
 
   .table {

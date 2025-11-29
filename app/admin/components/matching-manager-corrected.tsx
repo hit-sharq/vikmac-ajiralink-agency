@@ -68,16 +68,14 @@ export default function MatchingManager() {
   }
 
   const handleAutoMatch = async () => {
-    if (!confirm("Are you sure you want to run auto-matching? This will create auto-applications for all matching applicants and job requests.")) {
-      return
-    }
-
     try {
       setLoading(true)
       setError("")
       const response = await fetch("/api/auto-match/bulk", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
       })
+
       if (response.ok) {
         const data = await response.json()
         alert(`Auto-matching completed! Created ${data.totalAutoApplications} auto-applications for ${data.jobRequestsProcessed} job requests.`)
@@ -98,10 +96,10 @@ export default function MatchingManager() {
       <div className={styles.header}>
         <h2 className={styles.gradientTitle}>Matching Management</h2>
         <div className={styles.headerActions}>
-          <button className={styles.autoMatchBtn} onClick={handleAutoMatch}>
-            ⚡ Auto Match
+          <button className={styles.autoMatchBtn} onClick={handleAutoMatch} disabled={loading}>
+            ⚡ Auto Match All
           </button>
-          <button className={styles.refreshBtn} onClick={fetchMatches}>
+          <button className={styles.refreshBtn} onClick={fetchMatches} disabled={loading}>
             🔄 Refresh
           </button>
         </div>
@@ -138,11 +136,11 @@ export default function MatchingManager() {
             <tbody>
               {matches.map((match) => (
                 <tr key={match.id}>
-                  <td>{match.applicant ? `${match.applicant.firstName} ${match.applicant.lastName}` : 'N/A'}</td>
-                  <td>{match.applicant?.category || 'N/A'}</td>
-                  <td>{match.jobRequest?.employer?.companyName || 'N/A'}</td>
-                  <td>{match.jobRequest?.category || 'N/A'}</td>
-                  <td>{match.jobRequest?.country || 'N/A'}</td>
+                  <td>{match.applicant.firstName} {match.applicant.lastName}</td>
+                  <td>{match.applicant.category}</td>
+                  <td>{match.jobRequest.employer.companyName}</td>
+                  <td>{match.jobRequest.category}</td>
+                  <td>{match.jobRequest.country}</td>
                   <td>{match.status}</td>
                   <td>{new Date(match.createdAt).toLocaleDateString()}</td>
                   <td>
