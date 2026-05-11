@@ -3,10 +3,9 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #002060, #003080);
-  padding: 120px 20px 80px 20px;
+  padding: 120px 24px 80px;
   text-align: center;
-  color: white;
+  background: linear-gradient(135deg, var(--background) 0%, #2563eb 100%);
 }
 
 .heroContent {
@@ -15,33 +14,28 @@
 }
 
 .heroTitle {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 800;
-  margin: 0 0 20px 0;
-  animation: fadeInUp 0.8s ease-out;
+  margin: 0 0 20px;
+  letter-spacing: -1px;
+}
+
+.heroGradient {
+  background: linear-gradient(135deg, var(--primary), #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .heroSubtitle {
   font-size: 1.25rem;
   margin: 0;
-  opacity: 0.9;
-  animation: fadeInUp 0.8s ease-out 0.2s backwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  color: var(--muted-foreground);
 }
 
 .contactSection {
-  padding: 80px 20px;
-  background: #f5f5f5;
+  padding: 120px 24px;
+  background: var(--background);
 }
 
 .container {
@@ -56,24 +50,23 @@
 }
 
 .contactInfo {
-  background: white;
+  background: var(--card);
   padding: 48px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
 }
 
 .infoTitle {
   font-size: 2rem;
   font-weight: 800;
-  margin: 0 0 16px 0;
-  color: #002060;
+  margin: 0 0 16px;
 }
 
 .infoText {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: #666;
-  margin: 0 0 40px 0;
+  color: var(--muted-foreground);
+  margin: 0 0 40px;
 }
 
 .infoCards {
@@ -85,9 +78,9 @@
 
 .infoCard {
   padding: 24px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border-left: 4px solid #d32f2f;
+  background: var(--secondary);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary);
 }
 
 .infoIcon {
@@ -98,26 +91,24 @@
 .infoCardTitle {
   font-size: 1.125rem;
   font-weight: 700;
-  margin: 0 0 8px 0;
-  color: #002060;
+  margin: 0 0 8px;
 }
 
 .infoCardText {
   font-size: 1rem;
-  color: #666;
+  color: var(--muted-foreground);
   margin: 0;
 }
 
 .socialSection {
   padding-top: 32px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border);
 }
 
 .socialTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 20px 0;
-  color: #002060;
+  margin: 0 0 20px;
 }
 
 .socialLinks {
@@ -128,8 +119,8 @@
 
 .socialLink {
   padding: 12px 24px;
-  background: #002060;
-  color: white;
+  background: var(--primary);
+  color: var(--primary-foreground);
   text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
@@ -137,48 +128,47 @@
 }
 
 .socialLink:hover {
-  background: #d32f2f;
+  background: #2563eb;
   transform: translateY(-2px);
 }
 
 .contactForm {
-  background: white;
+  background: var(--card);
   padding: 48px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
 }
 
 .formTitle {
   font-size: 2rem;
   font-weight: 800;
-  margin: 0 0 32px 0;
-  color: #002060;
+  margin: 0 0 32px;
 }
 
 .successMessage {
   padding: 16px 24px;
-  background: #d4edda;
-  border: 1px solid #c3e6cb;
-  border-radius: 8px;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: var(--radius);
   margin-bottom: 24px;
 }
 
 .successMessage p {
-  color: #155724;
+  color: #2563eb;
   margin: 0;
   font-weight: 600;
 }
 
 .errorMessage {
   padding: 16px 24px;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: var(--radius);
   margin-bottom: 24px;
 }
 
 .errorMessage p {
-  color: #721c24;
+  color: #2563eb;
   margin: 0;
   font-weight: 600;
 }
@@ -192,7 +182,6 @@
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #333;
 }
 
 .input,
@@ -201,18 +190,20 @@
   width: 100%;
   padding: 14px 16px;
   font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
   transition: all 0.3s ease;
   font-family: inherit;
+  background: var(--background);
+  color: var(--foreground);
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus {
   outline: none;
-  border-color: #002060;
-  box-shadow: 0 0 0 3px rgba(0, 32, 96, 0.1);
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px #2563eb;
 }
 
 .textarea {
@@ -223,22 +214,22 @@
 .submitBtn {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #d32f2f, #b71c1c);
-  color: white;
+  background: var(--primary);
+  color: var(--primary-foreground);
   border: none;
   border-radius: 50px;
   font-size: 1.125rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+  box-shadow: 0 4px 15px -4px var(--primary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+  box-shadow: 0 6px 20px -4px var(--primary);
 }
 
 .submitBtn:disabled {
@@ -247,10 +238,6 @@
 }
 
 @media (max-width: 968px) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
   .contactGrid {
     grid-template-columns: 1fr;
     gap: 32px;

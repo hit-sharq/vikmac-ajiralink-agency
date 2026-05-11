@@ -4,7 +4,11 @@ import { ClerkProvider } from "@clerk/nextjs"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import CookieConsentBanner from "@/components/cookie-consent"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+
+
+
 
 export const metadata: Metadata = {
   title: "VikMac AjiraLink Agency - Ajira Management Platform",
@@ -22,14 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-          <Header />
-          <main style={{ marginTop: "80px" }}>{children}</main>
-          <Footer />
-          <CookieConsentBanner />
-        </body>
-      </html>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <html lang="en">
+          <body suppressHydrationWarning>
+             <Header />
+             <main style={{ paddingTop: '72px' }}>{children}</main>
+             <Footer />
+             <CookieConsentBanner />
+           </body>
+        </html>
+      </ThemeProvider>
     </ClerkProvider>
   )
 }

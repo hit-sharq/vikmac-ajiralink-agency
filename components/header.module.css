@@ -4,95 +4,157 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 32, 96, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.dark .header {
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 72px;
 }
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
   transition: transform 0.3s ease;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), #2563eb);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+  font-size: 1rem;
 }
 
 .logoText {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: white;
-  letter-spacing: 2px;
+  letter-spacing: -0.5px;
 }
 
-.logoSubtext {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #ffd700;
-  text-transform: uppercase;
+.dark .logoText {
+  color: white;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .navLink {
-  color: white;
+  color: var(--foreground);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
   position: relative;
+  padding: 8px 0;
+}
+
+.navLink:hover {
+  color: var(--primary);
 }
 
 .navLink::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background: #ffd700;
+  background: var(--primary);
   transition: width 0.3s ease;
-}
-
-.navLink:hover {
-  color: #ffd700;
 }
 
 .navLink:hover::after {
   width: 100%;
 }
 
-.joinBtn {
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #d32f2f, #b71c1c);
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.joinBtn:hover {
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.themeToggle:hover {
+  background: var(--muted);
+}
+
+.signInBtn {
+  padding: 10px 22px;
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signInBtn:hover {
+  background: var(--secondary);
+  border-color: var(--ring);
+}
+
+.getStartedBtn {
+  padding: 10px 24px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px -4px var(--primary);
+}
+
+.getStartedBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+  box-shadow: 0 8px 24px -6px var(--primary);
 }
 
 .menuToggle {
@@ -101,14 +163,20 @@
   border: none;
   cursor: pointer;
   padding: 8px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.menuToggle:hover {
+  background: var(--secondary);
 }
 
 .menuIcon,
 .menuIconOpen {
   display: block;
-  width: 28px;
+  width: 24px;
   height: 2px;
-  background: white;
+  background: var(--foreground);
   position: relative;
   transition: all 0.3s ease;
 }
@@ -119,9 +187,9 @@
 .menuIconOpen::after {
   content: "";
   position: absolute;
-  width: 28px;
+  width: 24px;
   height: 2px;
-  background: white;
+  background: var(--foreground);
   transition: all 0.3s ease;
 }
 
@@ -147,28 +215,6 @@
   transform: rotate(-45deg);
 }
 
-.authButtons {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-}
-
-.signInBtn {
-  padding: 10px 24px;
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.signInBtn:hover {
-  background: white;
-  color: #002060;
-}
-
 @media (max-width: 968px) {
   .menuToggle {
     display: block;
@@ -176,17 +222,20 @@
 
   .nav {
     position: fixed;
-    top: 80px;
+    top: 72px;
     left: 0;
     right: 0;
-    background: rgba(0, 32, 96, 0.98);
+    background: var(--background);
+    backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 32px 24px;
     gap: 24px;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   }
 
   .navOpen {
@@ -199,8 +248,9 @@
     display: none;
   }
 
-  .authButtons {
-    margin-left: 0;
+  .actions {
     margin-top: 16px;
+    width: 100%;
+    justify-content: center;
   }
 }

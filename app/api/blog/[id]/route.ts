@@ -37,7 +37,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     })
     return NextResponse.json(post)
   } catch (error) {
-    console.error("[v0] Error updating blog post:", error)
+    console.error("Error updating blog post:", error)
     return NextResponse.json({ error: "Failed to update blog post" }, { status: 500 })
   }
 }
