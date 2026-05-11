@@ -26,16 +26,15 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <html lang="en">
-          <body suppressHydrationWarning>
-             <Header />
-             <main style={{ paddingTop: '72px' }}>{children}</main>
-             <Footer />
-             <CookieConsentBanner />
-           </body>
-        </html>
-      </ThemeProvider>
+      <html lang="en">
+        <body suppressHydrationWarning>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Header />
+            <main style={{ paddingTop: '72px' }}>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
   )
 }

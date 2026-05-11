@@ -10,7 +10,9 @@ export default function CookieConsentBanner() {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
+  if (!mounted) {
+    return null
+  }
 
   return (
     <CookieConsent
@@ -23,16 +25,13 @@ export default function CookieConsentBanner() {
       declineButtonStyle={{ fontSize: "13px" }}
       expires={150}
       onAccept={() => {
-        // Enable analytics, etc.
         console.log("Cookies accepted")
       }}
       onDecline={() => {
-        // Disable non-essential cookies
         console.log("Cookies declined")
       }}
     >
-      This website uses cookies to enhance the user experience. By continuing to use this site, you agree to our use of
-      cookies.{" "}
+      This website uses cookies to enhance the user experience. By continuing to use this site, you agree to our use of cookies.{" "}
       <a href="/privacy" style={{ color: "#FFD700" }}>
         Learn more
       </a>

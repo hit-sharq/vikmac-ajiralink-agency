@@ -77,7 +77,6 @@
   justify-content: center;
   color: var(--foreground);
   text-decoration: none;
-  font-size: 0.85rem;
   transition: all 0.2s ease;
 }
 
@@ -85,6 +84,7 @@
   background: var(--primary);
   color: var(--primary-foreground);
   transform: translateY(-2px);
+  border-color: var(--primary);
 }
 
 .footerSection {

@@ -6,7 +6,6 @@ import { SignInButton, UserButton, useUser } from "@clerk/nextjs"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import styles from "./header.module.css"
-import SearchComponent from "./search"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -30,12 +29,8 @@ export default function Header() {
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           <div className={styles.logoIcon}>VA</div>
-          <span className={styles.logoText}>Vikmac Ajira</span>
+          <span className={styles.logoText}>VikMac Ajira</span>
         </Link>
-
-        <button className={styles.menuToggle} onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-          <span className={isMenuOpen ? styles.menuIconOpen : styles.menuIcon}></span>
-        </button>
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}>
           <Link href="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>

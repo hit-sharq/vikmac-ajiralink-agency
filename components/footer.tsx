@@ -1,5 +1,15 @@
+"use client"
+
 import Link from "next/link"
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import styles from "./footer.module.css"
+
+const socialLinks = [
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/vikmac.ajiralink/" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/_vikmac/" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/vikmac-ajira" },
+  { name: "Twitter", icon: Twitter, href: "https://twitter.com/vikmac_ajira" },
+]
 
 export default function Footer() {
   return (
@@ -15,18 +25,21 @@ export default function Footer() {
               Leading global recruitment and workforce management platform connecting exceptional talent with forward-thinking companies worldwide.
             </p>
             <div className={styles.socialLinks}>
-              <a href="https://www.facebook.com/vikmac.ajiralink/" className={styles.socialLink} aria-label="Facebook">
-                f
-              </a>
-              <a href="https://www.instagram.com/_vikmac/" className={styles.socialLink} aria-label="Instagram">
-                ig
-              </a>
-              <a href="https://www.linkedin.com/company/vikmac-ajira" className={styles.socialLink} aria-label="LinkedIn">
-                in
-              </a>
-              <a href="https://twitter.com/vikmac_ajira" className={styles.socialLink} aria-label="Twitter">
-                t
-              </a>
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className={styles.socialLink}
+                    aria-label={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon size={20} />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
