@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
+import Link from "next/link"
 import styles from "./careers.module.css"
 
 interface Career {
@@ -49,7 +50,7 @@ export default function CareersPage() {
     }
   }
 
-  const careerTypes = ["all", "contract"]
+  const careerTypes = ["all", "full-time", "part-time", "contract", "internship", "freelance"]
 
   const filteredCareers = filter === "all"
     ? careers
@@ -62,6 +63,11 @@ export default function CareersPage() {
     setShowDetailModal(true)
   }
 
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return null
+    return new Date(dateString).toLocaleDateString()
+  }
+
   return (
     <>
       <Head>
@@ -71,18 +77,12 @@ export default function CareersPage() {
           content="Explore career opportunities at Vikmac AjiraLink Agency. Join our team and work on innovative recruitment and placement solutions."
         />
         <meta name="keywords" content="careers, jobs, employment, opportunities, recruitment, placement, agency" />
-        <meta property="og:title" content="Careers | Vikmac AjiraLink Agency - Join Our Team" />
-        <meta
-          name="og:description"
-          content="Explore career opportunities at Vikmac AjiraLink Agency. Join our team and work on innovative recruitment and placement solutions."
-        />
       </Head>
 
       <div className={styles.careersPage}>
-        {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroOverlay}></div>
-          <div className={`${styles.container} ${styles.heroContainer}`}>
+          <div className={styles.container}>
             <h1 className={styles.heroTitle}>Join Our Team</h1>
             <p className={styles.heroSubtitle}>
               Shape the future of recruitment and placement with us
@@ -93,7 +93,6 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Featured Careers Section */}
         {featuredCareers.length > 0 && (
           <section className={styles.featuredSection}>
             <div className={styles.container}>
@@ -141,7 +140,6 @@ export default function CareersPage() {
           </section>
         )}
 
-        {/* All Careers Section */}
         <section className={styles.careersSection}>
           <div className={styles.container}>
             <div className={styles.sectionHeader}>
@@ -196,7 +194,7 @@ export default function CareersPage() {
                       {career.commission && <span className={styles.careerCommission}>💵 Commission: {career.commission}%</span>}
                       {career.applicationDeadline && (
                         <span className={styles.careerDeadline}>
-                          ⏰ Deadline: {new Date(career.applicationDeadline).toLocaleDateString()}
+                          ⏰ Deadline: {formatDate(career.applicationDeadline)}
                         </span>
                       )}
                     </div>
@@ -220,21 +218,19 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className={styles.ctaSection}>
           <div className={styles.ctaOverlay}></div>
-          <div className={`${styles.container} ${styles.ctaContainer}`}>
+          <div className={styles.container}>
             <h2 className={styles.ctaTitle}>Don't See the Right Fit?</h2>
             <p className={styles.ctaText}>
               We're always interested in meeting talented individuals. Send us your resume and let's talk.
             </p>
-            <a href="/contact" className={styles.ctaButton}>
+            <Link href="/contact" className={styles.ctaButton}>
               Get In Touch
-            </a>
+            </Link>
           </div>
         </section>
 
-        {/* Career Detail Modal */}
         {showDetailModal && selectedCareer && (
           <div className={styles.modal} onClick={() => setShowDetailModal(false)}>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -272,7 +268,7 @@ export default function CareersPage() {
                   </div>
                   {selectedCareer.applicationDeadline && (
                     <div className={styles.modalDeadline}>
-                      Application Deadline: {new Date(selectedCareer.applicationDeadline).toLocaleDateString()}
+                      Application Deadline: {formatDate(selectedCareer.applicationDeadline)}
                     </div>
                   )}
                 </div>
@@ -297,12 +293,12 @@ export default function CareersPage() {
                 )}
 
                 <div className={styles.modalActions}>
-                  <a
+                  <Link
                     href={`/applicant-register?careerId=${selectedCareer.id}`}
                     className={styles.applyBtn}
                   >
                     Apply Now →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
